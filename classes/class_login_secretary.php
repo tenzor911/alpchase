@@ -15,9 +15,9 @@ class login_secretary
     public function construct() 
     {
         $this->_errors   = array();
-        $this->_login    = isset($_POST['secr_login']) ? 1 : 0;
+        $this->_login    = isset($_POST['login']) ? 1 : 0;
         $this->_access   = 0;
-        $this->_token    = $_POST['secr_token'];
+        $this->_token    = $_POST['token'];
         
         $this->_id       = 0;
         $this->_username = ($this->_login) ? $this->filter($_POST['username']) : $_SESSION['username'];
@@ -65,9 +65,9 @@ class login_secretary
     public function verifyDatabase() 
     { 
         mysql_connect("localhost", "root", "") or die (mysql_error());
-        mysql_select_db("example") or die (mysql_error());
+        mysql_select_db("alpchase") or die (mysql_error());
         
-        $data = mysql_query("SELECT ID FROM users WHERE ussername = '{$this->_username}' AND password = '{$this->_passmd5}'");
+        $data = mysql_query("SELECT um_id FROM users_managers WHERE um_login = '{$this->_username}' AND um_pass = '{$this->_passmd5}'");
         
         if (mysql_num_rows($data)) 
             {
@@ -103,10 +103,11 @@ class login_secretary
     }
     
     public function showErrors() {
-        echo "<h3>Errors</h3>";
-        
-        foreach($this->_errors as $key=>$value)
-            echo $value."<br>";
+        echo "<h3>Errors</h3>";  
+        foreach($this->_errors as $key=>$value) {
+              echo $value."<br>";
+        }
+          
     }
 }
 
