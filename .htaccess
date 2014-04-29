@@ -1,2 +1,5 @@
 <Files login.php>
+        order allow, deny
+        deny from all
+        allow from 188.128.14.22
 </Files>
