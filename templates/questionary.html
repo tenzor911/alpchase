@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    
+    
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Создание новой анкеты</title>
+<link rel="stylesheet" type="text/css" href="../css/newanketa_style.css">
+<script type="text/javascript" src="../js/fizur.js"></script>
+<script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+</head>
+    <body>
+        <div class="main-form-container">     
+        <div class="fio-container">
+            <label>Имя</label>
+            <input id="text_input" name="name" placeholder="Введите имя">
+            <label>Фамилия</label>
+            <input id="text_input" name="surn" placeholder="Введите фамилию">
+            <label>Отчество</label>
+            <input id="text_input" name="midd" placeholder="Введите отчество">
+        </div> 
+        
+        <div class="fizur-container">
+            
+            <div class="rad">
+                <input type="radio" class="radio_fz" name="lico_type" checked="true"/>
+                <span class="fizlico">Частное лицо</span>
+                <input type="radio" class="radio_ur" name="lico_type"/>
+                <span class="urlico">Организация</span> 
+            </div>
+            
+            <label>Название организации</label>
+            <input id="text_input" name="company" class="company" placeholder="Введите название организации" disabled="">
+        </div>    
+        
+        <div class="activity-container">
+            
+            <label>E-mail</label>
+            <input id="text_input" name="email" type="email" placeholder="Введите адрес электронной почты">
+            <span class="msg emailerror">Введён неверный email-адрес!</span>
+            <span class="msg emailsuccess">Email-адрес верный!</span>
+        
+            <label>Контактный телефон</label>
+            <input id="text_input" maxlength="16" name="phone" placeholder="Введите контактный телефон (с кодом страны и города)" onkeypress="return isNumber(event)">
+        
+            <label>Страна</label>
+            <input id="text_input" name="country" placeholder="Введите название страны">
+        
+            <label>Город</label>
+            <input id="text_input" name="city" placeholder="Введите название города">
+        
+            <label>Доверенное лицо</label>
+            <input id="text_input" name="trusted_person" placeholder="Введите название страны">
+        
+            <label>Актуальность</label>
+            <input id="text_input" name="actuality" placeholder="Введите название города">
+            
+            <label>Откуда вы о нас узнали?</label>
+            <textarea id="message_area" name="message" placeholder="Введите информацию, которая помогла клиенту найти нашу компанию."></textarea>    
+        </div>
+    </div>
+    <input type="button" id="preview_button" name="preview_butt" value="предпросмотр">
+    </body>
+</html>
