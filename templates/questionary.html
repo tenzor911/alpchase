@@ -1,64 +1,208 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-    
-    
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Создание новой анкеты</title>
-<link rel="stylesheet" type="text/css" href="../css/newanketa_style.css">
-<script type="text/javascript" src="../js/fizur.js"></script>
-<script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
-</head>
-    <body>
-        <div class="main-form-container">     
-        <div class="fio-container">
-            <label>Имя</label>
-            <input id="text_input" name="name" placeholder="Введите имя">
-            <label>Фамилия</label>
-            <input id="text_input" name="surn" placeholder="Введите фамилию">
-            <label>Отчество</label>
-            <input id="text_input" name="midd" placeholder="Введите отчество">
-        </div> 
-        
-        <div class="fizur-container">
-            
-            <div class="rad">
-                <input type="radio" class="radio_fz" name="lico_type" checked="true"/>
-                <span class="fizlico">Частное лицо</span>
-                <input type="radio" class="radio_ur" name="lico_type"/>
-                <span class="urlico">Организация</span> 
-            </div>
-            
-            <label>Название организации</label>
-            <input id="text_input" name="company" class="company" placeholder="Введите название организации" disabled="">
-        </div>    
-        
-        <div class="activity-container">
-            
-            <label>E-mail</label>
-            <input id="text_input" name="email" type="email" placeholder="Введите адрес электронной почты">
-            <span class="msg emailerror">Введён неверный email-адрес!</span>
-            <span class="msg emailsuccess">Email-адрес верный!</span>
-        
-            <label>Контактный телефон</label>
-            <input id="text_input" maxlength="16" name="phone" placeholder="Введите контактный телефон (с кодом страны и города)" onkeypress="return isNumber(event)">
-        
-            <label>Страна</label>
-            <input id="text_input" name="country" placeholder="Введите название страны">
-        
-            <label>Город</label>
-            <input id="text_input" name="city" placeholder="Введите название города">
-        
-            <label>Доверенное лицо</label>
-            <input id="text_input" name="trusted_person" placeholder="Введите название страны">
-        
-            <label>Актуальность</label>
-            <input id="text_input" name="actuality" placeholder="Введите название города">
-            
-            <label>Откуда вы о нас узнали?</label>
-            <textarea id="message_area" name="message" placeholder="Введите информацию, которая помогла клиенту найти нашу компанию."></textarea>    
+<html lang="en-gb" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Создание новой анкеты</title>
+	<link rel="shortcut icon" href="docs/images/favicon.ico" type="image/x-icon">
+	<link rel="apple-touch-icon-precomposed" href="docs/images/apple-touch-icon.png">
+	<link rel="stylesheet" href="../css/uikit.css">
+        <script src="../js/jquery-1.10.2.js"></script>
+    </head>
+<body class="tm-background">
+    <div class="tm-header">
+	<div class="uk-container uk-container-center uk-header-bg">
+            <form class="uk-form uk-margin uk-form-stacked">
+                <fieldset>
+                    <legend>Заполните поля заявки</legend>
+                    <div class="uk-grid">
+                        <div class="uk-width-1-1">
+                            <label class="uk-form-label" for="form-gs-street">Имя</label>
+                            <div class="uk-form-controls">
+                                <input type="text" id="form-gs-street" placeholder="Введите ваше имя" class="uk-width-1-1">
+                            </div>
+                        </div>
+                    </div>
+					
+                    <div class="uk-grid">
+                        <div class="uk-width-1-1">
+                            <label class="uk-form-label" for="form-gs-street">Фамилия</label>
+                            <div class="uk-form-controls">
+                                <input type="text" id="form-gs-street" placeholder="Введите вашу фамилию" class="uk-width-1-1">
+                            </div>
+                        </div>
+                    </div>
+					
+                    <div class="uk-grid">
+                        <div class="uk-width-1-1">
+                            <label class="uk-form-label" for="form-gs-street">Отчество</label>
+                            <div class="uk-form-controls">
+                                <input type="text" id="form-gs-street" placeholder="Введите ваше отчество" class="uk-width-1-1">
+                            </div>
+                        </div>
+                    </div>					
+
+                    <div class="uk-grid">
+                        <div class="uk-width-1-1 uk-text-center">
+                            <label><input type="radio" class="radio_fz" name="lico_type"/>Частное лицо</label>     
+                            <label><input type="radio" class="radio_ur" name="lico_type" checked="true"/> Организация</label>
+                        </div>
+                    </div>
+					
+                    <div class="uk-grid">
+                        <div class="uk-width-1-1">
+                            <label class="uk-form-label" for="form-gs-street">Название организации</label>
+                            <div class="uk-form-controls">
+                                <input type="text" id="form-gs-street" name="company" placeholder="Введите название организации"  class="uk-width-1-1">
+                            </div>
+                        </div>
+                    </div>	
+					
+                    <div class="uk-grid">
+                        <div class="uk-width-1-1">
+                            <label class="uk-form-label" for="form-gs-street">E-mail</label>
+                            <div class="uk-form-controls">
+                                <input type="text" id="form-gs-street" placeholder="Введите адрес электронной почты" class="uk-width-1-1">
+                            </div>
+                        </div>
+                    </div>		
+					
+                    <div class="uk-grid">
+                        <div class="uk-width-1-1">
+                            <label class="uk-form-label" for="form-gs-street">Основной телефон</label>
+                            <div class="uk-form-controls">
+                                <input type="text" id="form-gs-street" placeholder="+7 (xxx) xxx-xx-xx" class="uk-width-1-1">
+                            </div>
+                        </div>
+                    </div>	
+                    
+                    <div class="uk-grid">
+                        <div class="uk-width-1-1">
+                            <label class="uk-form-label" for="form-gs-street">Дополнительный телефон</label>
+                            <div class="uk-form-controls">
+                                <input type="text" id="form-gs-street" placeholder="+7 (xxx) xxx-xx-xx" class="uk-width-1-1">
+                            </div>
+                        </div>
+                    </div>	
+					
+                    <div class="uk-grid">
+                        <div class="uk-width-1-1">
+                            <label class="uk-form-label" for="form-gs-street">Страна</label>
+                            <div class="uk-form-controls">
+                                <input type="text" id="form-gs-street" placeholder="Введите вашу страну" class="uk-width-1-1">
+                            </div>
+                        </div>
+                    </div>						
+
+                    <div class="uk-grid">
+                        <div class="uk-width-1-1">
+                            <label class="uk-form-label" for="form-gs-street">Город</label>
+                            <div class="uk-form-controls">
+                                <input type="text" id="form-gs-street" placeholder="Введите название города" class="uk-width-1-1">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="uk-grid">
+                        <div class="uk-width-1-1">
+                            <label class="uk-form-label" for="form-gs-street">Доверенное лицо</label>
+                            <div class="uk-form-controls">
+                                <input type="text" id="form-gs-street" placeholder="Ф.И.О доверенного лица" class="uk-width-1-1">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="uk-grid">
+                        <div class="uk-width-1-1">
+                            <label class="uk-form-label" for="form-gs-street">Актуальность</label>
+                            <div class="uk-form-controls">
+                                <input type="text" id="form-gs-street" placeholder="Введите срок актуальности предложения" class="uk-width-1-1">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="uk-grid">
+                        <div class="uk-width-1-1">
+                            <label class="uk-form-label" for="form-gs-street">Откуда Вы о нас узнали?</label>
+                            <div class="uk-form-controls">
+                                <textarea id="form-s-t" cols="50" rows="5" placeholder="Введите информацию, которая помогла клиенту нацти нашу компанию"></textarea>
+                            </div>
+                        </div>
+                    </div>
+					
+                    <hr/>
+                    <div class="uk-grid">
+                        <div class="uk-width-1-1">
+                            <select class="uk-margin-small-top">
+                                <option>Option 01</option>
+                                <option>Option 02</option>
+                            </select>
+                            
+                            <select class="uk-margin-small-top">
+                                <option>Option 01</option>
+                                <option>Option 02</option>
+                            </select>
+					  
+                            <div class="uk-form-controls uk-margin-top">
+                                <input type="button" value="Добавить услугу">
+                                <input type="button" value="Удалить услугу">
+                            </div>
+					  
+                        </div>
+                    </div>
+					
+                    <div class="uk-grid">
+                        <div class="uk-width-1-1">
+                            <div class="uk-form-controls">
+                                <span class="uk-form-help-inline">Option 01</span>
+                            </div>
+                        </div>
+                    </div>
+					
+                    <hr/>
+					
+                    <div class="uk-grid uk-text-center">
+                        <div class="uk-width-1-4">
+                            <div class="uk-form-controls uk-margin-top">
+                                <input type="button" value="Отправить">
+                            </div>
+                        </div>
+                        <div class="uk-width-1-4">
+                            <div class="uk-form-controls uk-margin-top">
+                                <input type="button" value="Предпросмотр">
+                            </div>
+			</div>
+                        <div class="uk-width-1-4">
+                            <div class="uk-form-controls uk-margin-top">
+                                <input type="button" value="Сохранить">
+                            </div>
+                        </div>
+                        <div class="uk-width-1-4">
+                            <div class="uk-form-controls uk-margin-top">
+                                <input type="button" value="Очистить">
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
         </div>
-    </div>
-    <input type="button" id="preview_button" name="preview_butt" value="предпросмотр">
-    </body>
+   </div>
+    <script>
+        function isNumber(evt) {
+    evt = (evt) ? evt : window.event;
+    var charCode = (evt.which) ? evt.which : evt.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+        return false;
+    }
+    return true;
+}
+
+$('input[name=lico_type]').click(function() {
+    if ($('.radio_fz').is(':checked')) {
+        $("input[name*='company']").prop('disabled', true);
+    } else {
+        $("input[name*='company']").prop('disabled', false);
+    }
+});
+    </script>
+</body>
 </html>
