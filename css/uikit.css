@@ -2626,6 +2626,7 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
   height: 30px;
   /* 2 */
   max-width: 100%;
+  //width: 600px;
   /* 3 */
   padding: 4px 6px;
   /* 4 */
@@ -2744,6 +2745,7 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
 .uk-form select[multiple],
 .uk-form select[size] {
   height: auto !important;
+  resize: none;
 }
 /* Validation states
  * Using !important to keep the selector simple
@@ -6524,4 +6526,35 @@ padding-top: 80px;
 }
 .title-valeria{
 font-family: 'helioscbold';
+}
+
+.msg_email {
+   display: none;
+}
+
+.msg_send {
+   display: none;
+}
+
+.emailerror {
+    margin-top:-10px;
+    margin-left: 0px;
+    color: red;
+
+}
+
+.emailsuccess {
+    margin-top:-10px;
+    margin-left: 0px;
+    color: green;
+}
+
+.sending_disable {
+    margin-top:-10px;
+    margin-left: 0px;
+    color: red;
+}
+
+.my_area_width {
+    width: 700px;
 }

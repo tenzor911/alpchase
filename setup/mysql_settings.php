@@ -4,10 +4,7 @@
     $dbname="root";
     $dbpassword="";
     $dbinstance="alpchase";
-
-    mysql_query("SET NAMES 'utf8'");
-    mysql_query("SET CHARACTER SET 'utf8'");
-
+    
     if (mysql_connect($dbserver, $dbname, $dbpassword)) 
     {
  
