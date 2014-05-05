@@ -1,6 +1,6 @@
 divid='data_field';
 
-function obnovit()
+function refreshRegistryData()
 {
 var oXmlHttp = createXMLHttp();
 oXmlHttp.open("post", "../ajax_scripts/loadRegistryData.php", true);

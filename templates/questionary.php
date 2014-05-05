@@ -12,7 +12,7 @@
 <body class="tm-background" onLoad="ajax_update_country()">
     <div class="tm-header">
 	<div class="uk-container uk-container-center uk-header-bg">
-            <form class="uk-form uk-margin uk-form-stacked">
+            <form class="uk-form uk-margin uk-form-stacked" method="post" action="../system/getDataFromQuestionary.php">
                 <fieldset>
                     <legend>Анкета №</legend>
                     <div class="uk-grid">
@@ -172,7 +172,7 @@
                     <div class="uk-grid uk-text-center">
                         <div class="uk-width-1-4">
                             <div class="uk-form-controls uk-margin-top">
-                                <input type="button" name="option_send" value="Отправить" disabled>
+                                <input type="submit" name="option_send" value="Отправить" disabled>
                             </div>
                         </div>
                         <div class="uk-width-1-4">
@@ -196,6 +196,7 @@
         </div>
    </div>
 <script>
+    
     function isNumber(evt) {
         evt = (evt) ? evt : window.event;
         var charCode = (evt.which) ? evt.which : evt.keyCode;
@@ -204,7 +205,7 @@
         }
         return true;
     }
-
+    
     $('input[name=lico_type]').click(function() {
         if ($('.radio_fz').is(':checked')) {
             $("input[name*='company']").prop('disabled', true);

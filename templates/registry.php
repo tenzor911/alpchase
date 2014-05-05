@@ -4,6 +4,9 @@ include('../setup/mysql_settings.php');
 
 session_start();
 
+    mysql_query("SET NAMES 'utf8'");
+    mysql_query("SET CHARACTER SET 'utf8'");
+
 if(!$_SESSION['uname']){
     header("location: ../login.php");
 }
@@ -22,7 +25,7 @@ echo "Welcome ".$_SESSION['uname']."! <a href='../logout.php'>Logout Here</a></h
         <script type="text/javascript" src="../js/jquery-1.10.2.js"> </script>
         <link rel="stylesheet" type="text/css" href="../css/styleRegistry.css">   </link>   
     </head>
-    <body onload="obnovit()">
+    <body onload="refreshRegistryData()">
         <hr></hr>
             <br></br>
         <div id="data_field" align="center">Загрузка данных...</div>

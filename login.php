@@ -35,7 +35,7 @@
 	
 	$_SESSION['uname']=$uname;
 	
-	echo "<script>window.open('./system/navigation.php','_self')</script>";
+	echo "<script>window.open('./templates/navigation.php','_self')</script>";
 	}
 	else 
         {

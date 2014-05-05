@@ -9,6 +9,7 @@ echo "
   <tr>
     <td width='50'>№</td>
     <td width='100'>Дата</td>
+    <td width='100'>Статус</td>
     <td width='200'>ФИО</td>
     <td width='150'>Email</td>
     <td width='120'>Телефон</td>
@@ -25,6 +26,7 @@ while($data = mysql_fetch_assoc($result))
     echo "<tr>";
     echo    "<td width='50'>".$data['customer_id']."</td>";
     echo    "<td width='100'>".$data['quest_date']."</td>";
+    echo    "<td width='100'>".$data['quest_status']."</td>";
     echo    "<td width='200'>".$data['customer_name']."</td>";
     echo    "<td width='150'>".$data['customer_email']."</td>";
     echo    "<td width='120'>".$data['customer_primaryphone']."</td>";
