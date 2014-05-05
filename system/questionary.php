@@ -7,8 +7,9 @@
 	<link rel="apple-touch-icon-precomposed" href="docs/images/apple-touch-icon.png">
         <link rel="stylesheet" href="../css/uikit.css">
         <script src="../js/jquery-1.10.2.js"></script>
+        <script src="../js/ajaxLoadCountryService.js"></script>
     </head>
-<body class="tm-background">
+<body class="tm-background" onLoad="ajax_update_country()">
     <div class="tm-header">
 	<div class="uk-container uk-container-center uk-header-bg">
             <form class="uk-form uk-margin uk-form-stacked">
@@ -144,13 +145,11 @@
                     <hr/>
                     <div class="uk-grid">
                         <div class="uk-width-1-1">
-                            <select class="uk-margin-small-top">
-                               
-                            </select>
+                            <select name='select_country' class="uk-margin-small-top" id='select_country_id' onchange="ajax_update_service(this.value);"><option value=''>страна не указана</option></select>
+                 
                             
-                            <select class="uk-margin-small-top">
+                            <select name='select_service' class="uk-margin-small-top" id='select_service_id'><option value=''>услуга не назначена</option></select>
                              
-                            </select>
 					  
                             <div class="uk-form-controls uk-margin-top">
                                 <input type="button" value="Добавить услугу">

@@ -20,11 +20,11 @@ echo "Welcome ".$_SESSION['uname']."! <a href='../logout.php'>Logout Here</a></h
         <title>ALPCHASE - Реестр анкет клиентов</title>
         <script type="text/javascript" src="../js/ajaxLoadRegistryData.js"> </script>
         <script type="text/javascript" src="../js/jquery-1.10.2.js"> </script>
-        <link rel="stylesheet" type="text/css" href="../css/styleRegistry.css">      
+        <link rel="stylesheet" type="text/css" href="../css/styleRegistry.css">   </link>   
     </head>
     <body onload="obnovit()">
-        <hr>
-        <br>
+        <hr></hr>
+            <br></br>
         <div id="data_field" align="center">Загрузка данных...</div>
     </body>
 </html>
