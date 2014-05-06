@@ -117,18 +117,9 @@
 
                     <div class="uk-grid">
                         <div class="uk-width-1-1">
-                            <label class="uk-form-label" for="form-gs-street">Доверенное лицо</label>
+                            <label class="uk-form-label" for="form-gs-street">Лицо принимающее решение (обязательное поле)</label>
                             <div class="uk-form-controls">
-                                <input type="text" id="form-gs-street" name="cust_trustee" placeholder="Ф.И.О доверенного лица" class="uk-width-1-1">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="uk-grid">
-                        <div class="uk-width-1-1">
-                            <label class="uk-form-label" for="form-gs-street">Актуальность (обязательное поле)</label>
-                            <div class="uk-form-controls">
-                                <input type="text" id="form-gs-street" name="cust_topicality " placeholder="Введите срок актуальности предложения" class="uk-width-1-1">
+                                <input type="text" id="form-gs-street" name="cust_trustee" placeholder="Должность лица принимающего решения" class="uk-width-1-1">
                             </div>
                         </div>
                     </div>
@@ -145,27 +136,20 @@
                     <hr/>
                     <div class="uk-grid">
                         <div class="uk-width-1-1">
-                            <select name='select_country' class="uk-margin-small-top" id='select_country_id' onchange="ajax_update_service(this.value);"><option value=''>страна не указана</option></select>
-                 
-                            
-                            <select name='select_service' class="uk-margin-small-top" id='select_service_id'><option value=''>услуга не назначена</option></select>
-                             
-					  
+                            <div id="ServiceBlockGroup"> 
+                                <div id="CountryServiceOptionsBlock">
+                                    <select name='dynfields[]' class="uk-margin-small-top" id='select_country_id_1' onchange="ajax_update_service(this.value);"><option value=''>страна не выбрана</option></select>
+                                    <select name='dynfields[]' class="uk-margin-small-top" id='select_service_id_1'><option value=''>услуга не назначена</option></select><p>
+                                </div>
+                            </div>		  
                             <div class="uk-form-controls uk-margin-top">
-                                <input type="button" value="Добавить услугу">
-                                <input type="button" value="Удалить услугу">
+                                <input type="button" id="add_field" value="Добавить услугу">
+                                <input type="button" id="rem_field" value="Удалить услугу">
                             </div>
 					  
                         </div>
                     </div>
 					
-                    <div class="uk-grid">
-                        <div class="uk-width-1-1">
-                            <div class="uk-form-controls">
-                                <span class="uk-form-help-inline">Option 01</span>
-                            </div>
-                        </div>
-                    </div>
 					
                     <hr/>
 			<span class="msg_send sending_disable">Необходимые поля не заполнены! Отправка невозможна!</span>		
@@ -195,6 +179,43 @@
             </form>
         </div>
    </div>
+   
+<script type="text/javascript">
+  var counter = 1;
+ 
+    $("#add_field").click(function () {
+ 
+	if(counter>10){
+            alert("Достигнут лимит добавления полей!");
+            return false;
+	}   
+ 
+	var newTextBoxDiv = $(document.createElement('div'))
+	     .attr("id", 'CountryServiceOptionsBlock' + counter);
+
+                newTextBoxDiv.after().html('<select name="dynfields[]' + '" class="uk-margin-small-top" id="select_country_id_' + counter + '" onchange="ajax_update_service(this.value);""><option value="">страна не выбрана</option></select> <select name="dynfields[]' + '" class="uk-margin-small-top" id="select_service_id_' + counter + '""><option value="">услуга не назначена</option></select><p>');
+                                                                                                                                  
+	newTextBoxDiv.appendTo("#ServiceBlockGroup");
+ 
+	counter++;
+        
+     });	
+    
+    $("#rem_field").click(function () {
+	if(counter==1){
+          alert("Достигнут лимит удаления полей!");
+          return false;
+       }   
+ 
+	counter--;
+ 
+        $("#CountryServiceOptionsBlock" + counter).remove();
+ 
+     });  
+     
+	
+</script>
+
 <script>
     
     function isNumber(evt) {
@@ -231,7 +252,7 @@
     });
     
     $(':text').keyup(function() {
-        if($("input[name*='cust_name']").val() !== "" && $("input[name*='cust_surn']").val() !== "" && $("input[name*='cust_email']").val() !== "" && $("input[name*='cust_primphone']").val() !== "" && $("input[name*='cust_country']").val() !== "" && $("input[name*='cust_city']").val() !== "" && $("input[name*='cust_topicality']").val() !== "") 
+        if($("input[name*='cust_name']").val() !== "" && $("input[name*='cust_surn']").val() !== "" && $("input[name*='cust_email']").val() !== "" && $("input[name*='cust_primphone']").val() !== "" && $("input[name*='cust_country']").val() !== "" && $("input[name*='cust_city']").val() !== "" && $("input[name*='cust_trustee']").val() !== "") 
         {
             $("input[name*='option_send']").removeAttr('disabled');
             $('.msg_send').hide();
@@ -242,6 +263,13 @@
             $('.sending_disable').show();
         }
     });
+</script>
+
+<script>
+
+window.onbeforeunload = function() {
+  return "Внимание! Перезагрузка страницы приведёт к потере данных!";
+};
 </script>
 </body>
 </html>

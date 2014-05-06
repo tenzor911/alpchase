@@ -1,41 +1,48 @@
-var country_id='select_country_id';
-var service_id='select_service_id';
-
-function ajax_update_country()
-{
-var oXmlHttp = createXMLHttp();
-oXmlHttp.open("post", "../ajax_scripts/countryListUpdate.php", true);
-oXmlHttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded; charset=UTF-8");
-oXmlHttp.send('info1='+country_id);
-oXmlHttp.onreadystatechange = function() //перехват и обработка ответа сервера 
-{if(oXmlHttp.readyState == 4) 
-{if(oXmlHttp.status == 200) 
-{a = oXmlHttp.responseText;
-document.getElementById(country_id).innerHTML = a; //вставка полученного ответа сервера в div, с помощью свойства innerhtml и id элемента, id был задан в самом начале, то есть можно выводить в любой div, зная его id
-} 
-else {displayCustomerInfo("Ошибка: " + oXmlHttp.statusText);}
-}
-};
-
+function getCountryValue(counter) {
+    var country_id = 'select_country_id_';
+    return country_id.concat(this.counter.toString()); 
 }
 
-//функция обновления таблицы, которая обновляется каждые 2000 милисекунд с помощью таймера поставленного в начале html setInterval(obnovit, 2000);
-function ajax_update_service(country_id)
-{
-var oXmlHttp = createXMLHttp();
-oXmlHttp.open("post", "../ajax_scripts/serviceListUpdate.php", true);
-oXmlHttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded; charset=UTF-8");
-oXmlHttp.send('info1='+country_id);
-oXmlHttp.onreadystatechange = function() //перехват и обработка ответа сервера 
-{if(oXmlHttp.readyState == 4) 
-{if(oXmlHttp.status == 200) 
-{a = oXmlHttp.responseText;
-document.getElementById(service_id).innerHTML = a; //вставка полученного ответа сервера в div, с помощью свойства innerhtml и id элемента, id был задан в самом начале, то есть можно выводить в любой div, зная его id
-} 
-else {displayCustomerInfo("Ошибка: " + oXmlHttp.statusText);}
+function getServiceValue(counter) {
+    var service_id = 'select_service_id_';
+    return service_id.concat(this.counter.toString()); 
 }
-};
 
+
+function ajax_update_country()  {
+    var oXmlHttp = createXMLHttp();
+    oXmlHttp.open("post", "../ajax_scripts/countryListUpdate.php", true);
+    oXmlHttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded; charset=UTF-8");
+    oXmlHttp.send(null);
+    oXmlHttp.onreadystatechange = function()  {
+        if(oXmlHttp.readyState == 4) 
+        {
+            if(oXmlHttp.status == 200) 
+            {  
+                a = oXmlHttp.responseText;
+                document.getElementById(getCountryValue()).innerHTML = a;
+            } 
+                else {displayCustomerInfo("Ошибка: " + oXmlHttp.statusText);}
+        }
+    };
+}
+
+function ajax_update_service()  {
+    var oXmlHttp = createXMLHttp();
+    oXmlHttp.open("post", "../ajax_scripts/serviceListUpdate.php", true);
+    oXmlHttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded; charset=UTF-8");
+    oXmlHttp.send('info1='+1);
+    oXmlHttp.onreadystatechange = function()  {
+        if(oXmlHttp.readyState == 4) 
+        {
+            if(oXmlHttp.status == 200) 
+            {
+                b = oXmlHttp.responseText;
+                document.getElementById(getServiceValue()).innerHTML = b;
+            } 
+                else {displayCustomerInfo("Ошибка: " + oXmlHttp.statusText);}
+        }
+    };
 }
 //-------------------------------------------------
 
