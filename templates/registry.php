@@ -26,6 +26,7 @@ echo "Welcome ".$_SESSION['uname']."! <a href='../logout.php'>Logout Here</a></h
         <link rel="stylesheet" type="text/css" href="../css/styleRegistry.css">   </link>   
     </head>
     <body onload="refreshRegistryData()">
+        <a href="#"  onclick="refreshRegistryData('customer_id')">click1</a>
         <hr></hr>
             <br></br>
         <div id="data_field" align="center">Загрузка данных...</div>

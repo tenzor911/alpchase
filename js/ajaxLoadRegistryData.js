@@ -1,11 +1,14 @@
 divid='data_field';
 
-function refreshRegistryData()
+
+function refreshRegistryData(filter_param)
 {
+    
+info = filter_param;
 var oXmlHttp = createXMLHttp();
 oXmlHttp.open("post", "../ajax_scripts/loadRegistryData.php", true);
 oXmlHttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded; charset=UTF-8");
-oXmlHttp.send(null);
+oXmlHttp.send('info1='+info);
 oXmlHttp.onreadystatechange = function() 	//перехват и обработка ответа сервера		
  	{if(oXmlHttp.readyState == 4) 
    	 	{if(oXmlHttp.status == 200) 

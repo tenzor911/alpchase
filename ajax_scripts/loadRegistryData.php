@@ -2,7 +2,9 @@
 
 include ('../setup/mysql_settings.php');
 
-$result=mysql_query("SELECT * FROM users_customers");
+$info1 = $_POST['info1'];
+
+$result=mysql_query("SELECT $info1 FROM users_customers");
 
 echo "
 <table width='1652' border='1' cellpadding='0' cellspacing='0' align='center'>
