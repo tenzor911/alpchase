@@ -7,14 +7,27 @@
 	<link rel="apple-touch-icon-precomposed" href="docs/images/apple-touch-icon.png">
         <link rel="stylesheet" href="../css/uikit.css">
         <script src="../js/jquery-1.10.2.js"></script>
-        <script src="../js/ajaxLoadCountryService.js"></script>
+        <script src="../js/onlyNumbersField.js"></script>
+        <script src="../js/makeNewPass.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $("input[name*='cust_pass']").val(makeNewPass());
+            });
+        </script>
     </head>
-<body class="tm-background" onLoad="ajax_update_country()">
+<body class="tm-background">
     <div class="tm-header">
 	<div class="uk-container uk-container-center uk-header-bg">
             <form class="uk-form uk-margin uk-form-stacked" method="post" action="../system/getDataFromQuestionary.php">
                 <fieldset>
                     <legend>Анкета №</legend>
+                     <div class="uk-grid">
+                        <div class="uk-width-1-1">
+                            <div class="uk-form-controls">
+                                <input type="hidden" id="form-gs-street" name="cust_pass" class="uk-width-1-1" value="">
+                            </div>
+                        </div>
+                    </div>
                     <div class="uk-grid">
                         <div class="uk-width-1-1">
                             <label class="uk-form-label" for="form-gs-street">Имя (обязательное поле)</label>
@@ -128,7 +141,30 @@
                         <div class="uk-width-1-1">
                             <label class="uk-form-label" for="form-gs-street">Откуда Вы о нас узнали?</label>
                             <div class="uk-form-controls">
-                                <textarea class="my_area_width" id="form-s-t" cols="50" rows="5" placeholder="Введите информацию, которая помогла клиенту найти нашу компанию"></textarea>
+                                <select id="form-gs-street" class="uk-margin-small-top" name="cust_knowabout">
+                                    <option value=''>Интернет</option>
+                                    <option value=''>СМИ</option>
+                                    <option value=''>Знакомые</option>
+                                    <option value=''>Рекламные каталоги</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="uk-grid">
+                        <div class="uk-width-1-1">
+                            <label class="uk-form-label" for="form-gs-street">Вопросы к нашей компании</label>
+                            <div class="uk-form-controls">
+                                <textarea class="my_area_width" id="form-s-t" cols="50" rows="5" name="cust_questions" placeholder="Если у клиента есть вопросы, то их можно ввести в это поле"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="uk-grid">
+                        <div class="uk-width-1-1">
+                            <label class="uk-form-label" for="form-gs-street">Вопросы к нашей компании</label>
+                            <div class="uk-form-controls">
+                                <textarea class="my_area_width" id="form-s-t" cols="50" rows="5" name="cust_answers" placeholder="Введите ответы на вопросы клиента сюда"></textarea>
                             </div>
                         </div>
                     </div>
@@ -136,10 +172,10 @@
                     <hr/>
                     <div class="uk-grid">
                         <div class="uk-width-1-1">
+                            <label class="uk-form-label" for="form-gs-street">Секция выбора услуг для клиента</label>
                             <div id="ServiceBlockGroup"> 
                                 <div id="CountryServiceOptionsBlock">
-                                    <select name='dynfields[]' class="uk-margin-small-top" id='select_country_id_1' onchange="ajax_update_service(this.value);"><option value=''>страна не выбрана</option></select>
-                                    <select name='dynfields[]' class="uk-margin-small-top" id='select_service_id_1'><option value=''>услуга не назначена</option></select><p>
+                                    <select name='dynfields[]' class="uk-margin-small-top" id='select_country_id'><option value=''>страна не выбрана</option></select><p>
                                 </div>
                             </div>		  
                             <div class="uk-form-controls uk-margin-top">
@@ -179,27 +215,41 @@
             </form>
         </div>
    </div>
-   
-<script type="text/javascript">
-  var counter = 1;
- 
-    $("#add_field").click(function () {
- 
-	if(counter>10){
-            alert("Достигнут лимит добавления полей!");
-            return false;
-	}   
- 
-	var newTextBoxDiv = $(document.createElement('div'))
-	     .attr("id", 'CountryServiceOptionsBlock' + counter);
+     
+<script>
+function updateSelect(selectId) {
+  $.ajax({
+    type: "POST",
+    url: "../ajax_scripts/countryListUpdate.php",  
+    dataType: "html",
+    cache: false,
+    success: function (response) {
+      //alert(response); 
+      $('#' + selectId).html(response);
+    }
+  });
+}
 
-                newTextBoxDiv.after().html('<select name="dynfields[]' + '" class="uk-margin-small-top" id="select_country_id_' + counter + '" onchange="ajax_update_service(this.value);""><option value="">страна не выбрана</option></select> <select name="dynfields[]' + '" class="uk-margin-small-top" id="select_service_id_' + counter + '""><option value="">услуга не назначена</option></select><p>');
-                                                                                                                                  
-	newTextBoxDiv.appendTo("#ServiceBlockGroup");
- 
-	counter++;
-        
-     });	
+$(document).ready(function () {
+  updateSelect('select_country_id');
+});
+</script>
+
+    
+<script type="text/javascript">
+var counter = 1;
+$("#add_field").click(function () {
+  if (counter > 10) {
+    alert("Достигнут лимит добавления полей!");
+    return false;
+  }
+  var newTextBoxDiv = $(document.createElement('div'))
+    .attr("id", 'CountryServiceOptionsBlock' + counter);
+  newTextBoxDiv.after().html('<select id="select_country_id' + counter + '"><option value="">страна не выбрана</option></select><p>');
+  newTextBoxDiv.appendTo("#ServiceBlockGroup");
+  updateSelect('select_country_id' + counter);
+  counter++;
+});	
     
     $("#rem_field").click(function () {
 	if(counter==1){
@@ -217,15 +267,6 @@
 </script>
 
 <script>
-    
-    function isNumber(evt) {
-        evt = (evt) ? evt : window.event;
-        var charCode = (evt.which) ? evt.which : evt.keyCode;
-        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-            return false;
-        }
-        return true;
-    }
     
     $('input[name=lico_type]').click(function() {
         if ($('.radio_fz').is(':checked')) {
@@ -263,13 +304,6 @@
             $('.sending_disable').show();
         }
     });
-</script>
-
-<script>
-
-window.onbeforeunload = function() {
-  return "Внимание! Перезагрузка страницы приведёт к потере данных!";
-};
 </script>
 </body>
 </html>
