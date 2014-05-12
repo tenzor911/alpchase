@@ -14,12 +14,14 @@ echo "Welcome ".$_SESSION['uname']."! <a href='../logout.php'>Logout Here</a></h
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-gb" dir="ltr">
     <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>ALPCHASE - Навигационное меню</title>
         <script type="text/javascript" src="../js/ajaxLoadRegistryData.js"> </script>
         <script type="text/javascript" src="../js/jquery-1.10.2.js"> </script>
-        <link rel="stylesheet" type="text/css" href="">      
+        <!--<link rel="stylesheet" type="text/css" href="">      !-->
     </head>
     <body>
         <br>

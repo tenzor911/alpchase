@@ -162,7 +162,7 @@
                     
                     <div class="uk-grid">
                         <div class="uk-width-1-1">
-                            <label class="uk-form-label" for="form-gs-street">Вопросы к нашей компании</label>
+                            <label class="uk-form-label" for="form-gs-street">Ответы нашей компании</label>
                             <div class="uk-form-controls">
                                 <textarea class="my_area_width" id="form-s-t" cols="50" rows="5" name="cust_answers" placeholder="Введите ответы на вопросы клиента сюда"></textarea>
                             </div>
