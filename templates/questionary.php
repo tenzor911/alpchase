@@ -1,3 +1,10 @@
+<?php
+include('../system/getQuestNumber.php');
+
+$questNum = new QuestNumber();
+
+?>
+
 <html lang="en-gb" dir="ltr">
     <head>
         <meta charset="utf-8">
@@ -14,13 +21,22 @@
                 $("input[name*='cust_pass']").val(makeNewPass());
             });
         </script>
+        <script type="text/javascript">
+            function openPopup() {
+                var popup = window.open("", "", "width=1024,height=768,resizeable,scrollbars"),
+                table = document.getElementById("QuestionaryForm");
+  
+                popup.document.write(table.outerHTML);
+                popup.document.close();
+            }
+        </script>
     </head>
 <body class="tm-background">
     <div class="tm-header">
 	<div class="uk-container uk-container-center uk-header-bg">
-            <form class="uk-form uk-margin uk-form-stacked" method="post" action="../system/getDataFromQuestionary.php">
+            <form class="uk-form uk-margin uk-form-stacked" method="post" action="../system/getDataFromQuestionary.php" id="QuestionaryForm">
                 <fieldset>
-                    <legend>Анкета №</legend>
+                    <legend><center>Анкета № <?php $questNum->countQuestCustomer()?> / Дата <?php echo date("d.m.y");?></center></legend>
                      <div class="uk-grid">
                         <div class="uk-width-1-1">
                             <div class="uk-form-controls">
@@ -142,10 +158,10 @@
                             <label class="uk-form-label" for="form-gs-street">Откуда Вы о нас узнали?</label>
                             <div class="uk-form-controls">
                                 <select id="form-gs-street" class="uk-margin-small-top" name="cust_knowabout">
-                                    <option value=''>Интернет</option>
-                                    <option value=''>СМИ</option>
-                                    <option value=''>Знакомые</option>
-                                    <option value=''>Рекламные каталоги</option>
+                                    <option>Интернет</option>
+                                    <option>СМИ</option>
+                                    <option>Знакомые</option>
+                                    <option>Рекламные каталоги</option>
                                 </select>
                             </div>
                         </div>
@@ -197,7 +213,7 @@
                         </div>
                         <div class="uk-width-1-4">
                             <div class="uk-form-controls uk-margin-top">
-                                <input type="button" value="Предпросмотр">
+                                <input type="button" value="Предпросмотр" onclick="openPopup()">
                             </div>
 			</div>
                         <div class="uk-width-1-4">

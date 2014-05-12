@@ -13,7 +13,6 @@ if(!$_SESSION['uname']){
 
 echo "Welcome ".$_SESSION['uname']."! <a href='../logout.php'>Logout Here</a></h1>";
 
-
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
