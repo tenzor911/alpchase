@@ -208,7 +208,7 @@ $questNum = new QuestNumber();
                     <div class="uk-grid uk-text-center">
                         <div class="uk-width-1-4">
                             <div class="uk-form-controls uk-margin-top">
-                                <input type="submit" name="option_send" value="Отправить" disabled>
+                                <input type="submit" name="option_send" value="Отправить">
                             </div>
                         </div>
                         <div class="uk-width-1-4">
@@ -261,7 +261,7 @@ $("#add_field").click(function () {
   }
   var newTextBoxDiv = $(document.createElement('div'))
     .attr("id", 'CountryServiceOptionsBlock' + counter);
-  newTextBoxDiv.after().html('<select id="select_country_id' + counter + '"><option value="">страна не выбрана</option></select><p>');
+  newTextBoxDiv.after().html('<select name="dynfields[]" id="select_country_id' + counter + '"><option value="">страна не выбрана</option></select><p>');
   newTextBoxDiv.appendTo("#ServiceBlockGroup");
   updateSelect('select_country_id' + counter);
   counter++;
@@ -308,7 +308,7 @@ $("#add_field").click(function () {
         }
     });
     
-    $(':text').keyup(function() {
+  /*  $(':text').keyup(function() {
         if($("input[name*='cust_name']").val() !== "" && $("input[name*='cust_surn']").val() !== "" && $("input[name*='cust_email']").val() !== "" && $("input[name*='cust_primphone']").val() !== "" && $("input[name*='cust_country']").val() !== "" && $("input[name*='cust_city']").val() !== "" && $("input[name*='cust_trustee']").val() !== "") 
         {
             $("input[name*='option_send']").removeAttr('disabled');
@@ -319,7 +319,7 @@ $("#add_field").click(function () {
             $('.msg_send').hide();
             $('.sending_disable').show();
         }
-    });
+    });*
 </script>
 </body>
 </html>

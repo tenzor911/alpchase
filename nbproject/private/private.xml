@@ -18,6 +18,9 @@
             <file>file:/opt/lampp/htdocs/alpchase/templates/navigation.php</file>
             <file>file:/opt/lampp/htdocs/alpchase/ajax_scripts/serviceListUpdate.php</file>
             <file>file:/opt/lampp/htdocs/alpchase/setup/mysql_settings.php</file>
+            <file>file:/opt/lampp/htdocs/alpchase/ajax_scripts/filterDataUpdate.php</file>
+            <file>file:/opt/lampp/htdocs/alpchase/system/getQuestNumber.php</file>
+            <file>file:/opt/lampp/htdocs/alpchase/js/ajaxLoadRegistryData.js</file>
         </group>
     </open-files>
 </project-private>

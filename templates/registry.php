@@ -28,7 +28,7 @@ echo "Welcome ".$_SESSION['uname']."! <a href='../logout.php'>Logout Here</a></h
     </head>
     <body onload="refreshRegistryData()">
         <hr></hr>
-        <select name='' id="filter_option">
+        <center><select name='' id="filter_option">
             <option value='*'>критерий фильтра не указан</option>
             <option value='quest_status'>статус анкеты</option>
             <option value='customer_country'>страна обращения</option>
@@ -37,7 +37,7 @@ echo "Welcome ".$_SESSION['uname']."! <a href='../logout.php'>Logout Here</a></h
             <option value=''>город услуги</option>
             <option value=''>наименование услуги</option>
         </select>
-        <select name='' id="filter_parameter"></select>
+            <select name='' id="filter_parameter"></select></center>
         <br></br>
         <div id="data_field" align="center">Загрузка данных...</div>
     </body>

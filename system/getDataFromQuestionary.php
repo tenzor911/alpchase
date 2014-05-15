@@ -19,7 +19,22 @@ $cust_knowabout = $_POST['cust_knowabout'];
 $cust_questions = $_REQUEST['cust_questions'];
 $cust_answers = $_REQUEST['cust_answers'];
 
-mysql_query("SET NAMES 'utf8'");
+
+  if (isset($_POST['option_send'])) 
+    {
+    if ($_POST['dynfields']) 
+    {
+        foreach ( $_POST['dynfields'] as $key=>$value ) 
+        {
+            $values = mysql_real_escape_string($value);
+            $query = mysql_query("INSERT INTO order_basket (country_id) VALUES ('$values')");
+        }
+    }
+echo "<i><h2><strong>" . count($_POST['dynfields']) . "</strong> Hobbies Added</h2></i>";
+    }
+
+
+/*mysql_query("SET NAMES 'utf8'");
 mysql_query("SET CHARACTER SET 'utf8'");
 
 mysql_query("INSERT INTO users_customers (quest_date, "
@@ -87,5 +102,5 @@ echo $cust_knowabout;
 echo "<p>";
 echo $cust_questions;
 echo "<p>";
-echo $cust_answers;
+echo $cust_answers;*/
 ?>
