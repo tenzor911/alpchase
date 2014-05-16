@@ -191,7 +191,7 @@ $questNum = new QuestNumber();
                             <label class="uk-form-label" for="form-gs-street">Секция выбора услуг для клиента</label>
                             <div id="ServiceBlockGroup"> 
                                 <div id="CountryServiceOptionsBlock">
-                                    <select name='dynfields[]' class="uk-margin-small-top" id='select_country_id'><option value=''>страна не выбрана</option></select><p>
+                                    <select name='dynfields1[]' class="uk-margin-small-top" id='select_country_id'><option value=''>страна не выбрана</option></select> <select name='dynfields2[]' class="uk-margin-small-top" id='select_service_id'><option value=''>услуга не выбрана</option></select><p>
                                 </div>
                             </div>		  
                             <div class="uk-form-controls uk-margin-top">
@@ -208,7 +208,7 @@ $questNum = new QuestNumber();
                     <div class="uk-grid uk-text-center">
                         <div class="uk-width-1-4">
                             <div class="uk-form-controls uk-margin-top">
-                                <input type="submit" name="option_send" value="Отправить">
+                                <input type="submit" name="option_send" value="Отправить" disabled>
                             </div>
                         </div>
                         <div class="uk-width-1-4">
@@ -233,7 +233,7 @@ $questNum = new QuestNumber();
    </div>
      
 <script>
-function updateSelect(selectId) {
+function updateSelectCountry(selectCountryId) {
   $.ajax({
     type: "POST",
     url: "../ajax_scripts/countryListUpdate.php",  
@@ -241,14 +241,19 @@ function updateSelect(selectId) {
     cache: false,
     success: function (response) {
       //alert(response); 
-      $('#' + selectId).html(response);
+      $('#' + selectCountryId).html(response);
     }
   });
 }
 
 $(document).ready(function () {
-  updateSelect('select_country_id');
+  updateSelectCountry('select_country_id');
 });
+
+$(document).ready(function () {
+  updateSelectService('select_country_id','select_service_id');
+});
+
 </script>
 
     
@@ -261,9 +266,9 @@ $("#add_field").click(function () {
   }
   var newTextBoxDiv = $(document.createElement('div'))
     .attr("id", 'CountryServiceOptionsBlock' + counter);
-  newTextBoxDiv.after().html('<select name="dynfields[]" id="select_country_id' + counter + '"><option value="">страна не выбрана</option></select><p>');
+  newTextBoxDiv.after().html('<select name="dynfields1[]" id="select_country_id' + counter + '"><option value="">страна не выбрана</option></select> <select name="dynfields2[]" id="select_service_id' + counter + '"><option value="">услуга не выбрана</option></select><p>');
   newTextBoxDiv.appendTo("#ServiceBlockGroup");
-  updateSelect('select_country_id' + counter);
+  updateSelectCountry('select_country_id' + counter);
   counter++;
 });	
     
@@ -308,7 +313,7 @@ $("#add_field").click(function () {
         }
     });
     
-  /*  $(':text').keyup(function() {
+    $(':text').keyup(function() {
         if($("input[name*='cust_name']").val() !== "" && $("input[name*='cust_surn']").val() !== "" && $("input[name*='cust_email']").val() !== "" && $("input[name*='cust_primphone']").val() !== "" && $("input[name*='cust_country']").val() !== "" && $("input[name*='cust_city']").val() !== "" && $("input[name*='cust_trustee']").val() !== "") 
         {
             $("input[name*='option_send']").removeAttr('disabled');
@@ -319,7 +324,7 @@ $("#add_field").click(function () {
             $('.msg_send').hide();
             $('.sending_disable').show();
         }
-    });*
+    });
 </script>
 </body>
 </html>

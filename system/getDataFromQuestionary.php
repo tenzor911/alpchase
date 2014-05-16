@@ -19,58 +19,22 @@ $cust_knowabout = $_POST['cust_knowabout'];
 $cust_questions = $_REQUEST['cust_questions'];
 $cust_answers = $_REQUEST['cust_answers'];
 
+mysql_query("SET NAMES 'utf8'");
+mysql_query("SET CHARACTER SET 'utf8'");
 
-  if (isset($_POST['option_send'])) 
+/*
+if ($_POST['dynfields1']) 
     {
-    if ($_POST['dynfields']) 
-    {
-        foreach ( $_POST['dynfields'] as $key=>$value ) 
+        foreach ( $_POST['dynfields1'] as $key=>$value ) 
         {
             $values = mysql_real_escape_string($value);
             $query = mysql_query("INSERT INTO order_basket (country_id) VALUES ('$values')");
         }
     }
-echo "<i><h2><strong>" . count($_POST['dynfields']) . "</strong> Hobbies Added</h2></i>";
-    }
+echo "<i><h2><strong>" . count($_POST['dynfields1']) . "</strong> Hobbies Added</h2></i>";
+    */
 
-
-/*mysql_query("SET NAMES 'utf8'");
-mysql_query("SET CHARACTER SET 'utf8'");
-
-mysql_query("INSERT INTO users_customers (quest_date, "
-        . "customer_name, "
-        . "customer_surn, "
-        . "customer_midd, "
-        . "customer_email, "
-        . "customer_pass, "
-        . "customer_compname, "
-        . "customer_position,"
-        . "customer_primaryphone,"
-        . "customer_additphone, "
-        . "customer_country, "
-        . "customer_city, "
-        . "customer_duty, "
-        . "customer_questions, "
-        . "customer_answers, "
-        . "quest_status,"
-        . "customer_knowabout) VALUES ("
-        . "'$date_today',"
-        . "'$cust_name', "
-        . "'$cust_surname', "
-        . "'$cust_middle', "
-        . "'$cust_email', "
-        . "md5('$cust_pass'), "
-        . "'$cust_companyname', "
-        . "'$cust_position', "
-        . "'$cust_primphone', "
-        . "'$cust_addphone', "
-        . "'$cust_country', "
-        . "'$cust_city', "
-        . "'$cust_trustee', "
-        . "'$cust_questions', "
-        . "'$cust_answers', "
-        . "'извещён',"
-        . "'$cust_knowabout')");
+mysql_query("INSERT INTO users_customers (quest_date, customer_name, customer_surn, customer_midd) VALUES ('$date_today','$cust_name', '$cust_surname', '$cust_middle')");
 
 echo $date_today;
 echo "<p>";
@@ -102,5 +66,5 @@ echo $cust_knowabout;
 echo "<p>";
 echo $cust_questions;
 echo "<p>";
-echo $cust_answers;*/
+echo $cust_answers;
 ?>
