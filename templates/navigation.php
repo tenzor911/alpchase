@@ -5,10 +5,10 @@ include('../setup/mysql_settings.php');
 session_start();
 
 if(!$_SESSION['uname']){
-    header("location: ../login.php");
+    header("location: ../index");
 }
 
-echo "Welcome ".$_SESSION['uname']."! <a href='../logout.php'>Logout Here</a></h1>";
+echo "Welcome ".$_SESSION['uname']."! <a href='../logout'>Logout Here</a></h1>";
 
 
 ?>
@@ -26,8 +26,8 @@ echo "Welcome ".$_SESSION['uname']."! <a href='../logout.php'>Logout Here</a></h
     <body>
         <br>
         <hr>
-        <input value="Создать новую анкету" onclick="location.href='questionary.php'" type="button">
+        <input value="Создать новую анкету" onclick="location.href='questionary'" type="button">
         <br>
-        <input value="Реестр анкет клиентов" onclick="location.href='registry.php'" type="button">
+        <input value="Реестр анкет клиентов" onclick="location.href='registry'" type="button">
     </body>
 </html>

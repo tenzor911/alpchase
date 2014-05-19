@@ -8,10 +8,10 @@ session_start();
     mysql_query("SET CHARACTER SET 'utf8'");
 
 if(!$_SESSION['uname']){
-    header("location: ../login.php");
+    header("location: ../index");
 }
 
-echo "Welcome ".$_SESSION['uname']."! <a href='../logout.php'>Logout Here</a></h1>";
+echo "Welcome ".$_SESSION['uname']."! <a href='../logout'>Logout Here</a></h1>";
 
 ?>
 
