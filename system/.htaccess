@@ -1,2 +1,3 @@
 Options -Indexes
 AddDefaultCharset UTF-8
+Deny from all

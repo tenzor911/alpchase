@@ -13,7 +13,7 @@ if( isset($_POST["parameter"]) )
     $result=mysql_query("SELECT * FROM users_customers WHERE $filt = '$param'");
     
     echo "
-    <table width='1500' border='1' cellpadding='0' cellspacing='0' align='center'>
+    <table width='2000' border='1' cellpadding='0' cellspacing='0' align='center'>
         <tr>
             <td width='40'>№</td>
             <td width='100'>Дата</td>
@@ -21,7 +21,7 @@ if( isset($_POST["parameter"]) )
             <td width='300'>ФИО</td>
             <td width='200'>Email</td>
             <td width='140'>Телефон</td>
-            <td width='100'>Наименование компании</td>
+            <td width='200'>Наименование компании</td>
             <td width='180'>Страна обращения</td>
             <td width='140'>Город обращения</td>
             <td width='180'>Страна услуги</td>
@@ -39,7 +39,7 @@ if( isset($_POST["parameter"]) )
     echo    "<td width='200'>".$data['customer_surn']." ".$data['customer_name']." ".$data['customer_midd']."</td>";
     echo    "<td width='200'>".$data['customer_email']."</td>";
     echo    "<td width='140'>".$data['customer_primaryphone']."</td>";
-    echo    "<td width='100'>".$data['customer_compname']."</td>";
+    echo    "<td width='200'>".$data['customer_compname']."</td>";
     echo    "<td width='180'>".$data['customer_country']."</td>";
     echo    "<td width='140'>".$data['customer_city']."</td>";
     echo    "<td width='180'>".$data['customer_country']."</td>";
@@ -54,7 +54,7 @@ echo "<hr>";
 $result2=mysql_query("SELECT * FROM users_customers");
 
 echo "
-    <table width='2400' border='1' cellpadding='0' cellspacing='0' align='center'>
+    <table width='2000' border='1' cellpadding='0' cellspacing='0' align='center'>
         <tr>
             <td width='40'>№</td>
             <td width='100'>Дата</td>
@@ -62,7 +62,7 @@ echo "
             <td width='300'>ФИО</td>
             <td width='200'>Email</td>
             <td width='140'>Телефон</td>
-            <td width='350'>Наименование компании</td>
+            <td width='200'>Наименование компании</td>
             <td width='180'>Страна обращения</td>
             <td width='140'>Город обращения</td>
             <td width='180'>Страна услуги</td>
@@ -80,7 +80,7 @@ echo "
     echo    "<td width='200'>".$data1['customer_surn']." ".$data1['customer_name']." ".$data1['customer_midd']."</td>";
     echo    "<td width='200'>".$data1['customer_email']."</td>";
     echo    "<td width='140'>".$data1['customer_primaryphone']."</td>";
-    echo    "<td width='350'>".$data1['customer_compname']."</td>";
+    echo    "<td width='200'>".$data1['customer_compname']."</td>";
     echo    "<td width='180'>".$data1['customer_country']."</td>";
     echo    "<td width='140'>".$data1['customer_city']."</td>";
     echo    "<td width='180'>".$data1['customer_country']."</td>";
