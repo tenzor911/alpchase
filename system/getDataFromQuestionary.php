@@ -34,7 +34,42 @@ if ($_POST['dynfields1'])
 echo "<i><h2><strong>" . count($_POST['dynfields1']) . "</strong> Hobbies Added</h2></i>";
     */
 
-mysql_query("INSERT INTO users_customers (quest_date, customer_name, customer_surn, customer_midd) VALUES ('$date_today','$cust_name', '$cust_surname', '$cust_middle')");
+mysql_query("INSERT INTO users_customers ("
+        . "quest_date, "
+        . "customer_name, "
+        . "customer_surn, "
+        . "customer_midd, "
+        . "customer_compname, "
+        . "customer_position, "
+        . "customer_email, "
+        . "customer_pass, "
+        . "customer_primaryphone, "
+        . "customer_additphone, "
+        . "customer_country, "
+        . "customer_city, "
+        . "customer_duty, "
+        . "customer_knowabout, "
+        . "customer_questions, "
+        . "customer_answers, "
+        . "quest_status) "
+        . "VALUES "
+        . "('$date_today', "
+        . "'$cust_name', "
+        . "'$cust_surname', "
+        . "'$cust_middle', "
+        . "'$cust_companyname', "
+        . "'$cust_position', "
+        . "'$cust_email', "
+        . "md5('$cust_pass'), "
+        . "'$cust_primphone',"
+        . "'$cust_addphone', "
+        . "'$cust_country', "
+        . "'$cust_city', "
+        . "'$cust_trustee', "
+        . "'$cust_knowabout', "
+        . "'$cust_questions', "
+        . "'$cust_answers', "
+        . "'извещён')");
 
 echo $date_today;
 echo "<p>";

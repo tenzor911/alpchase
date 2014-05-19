@@ -3,6 +3,14 @@ include('../system/getQuestNumber.php');
 
 $questNum = new QuestNumber();
 
+session_start();
+
+if(!$_SESSION['uname']){
+    header("location: ../index");
+}
+
+echo "Welcome ".$_SESSION['uname']."! <a href='../logout'>Logout Here</a></h1>";
+
 ?>
 
 <html lang="en-gb" dir="ltr">

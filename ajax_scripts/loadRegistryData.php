@@ -13,7 +13,7 @@ if( isset($_POST["parameter"]) )
     $result=mysql_query("SELECT * FROM users_customers WHERE $filt = '$param'");
     
     echo "
-    <table width='2400' border='1' cellpadding='0' cellspacing='0' align='center'>
+    <table width='1500' border='1' cellpadding='0' cellspacing='0' align='center'>
         <tr>
             <td width='40'>№</td>
             <td width='100'>Дата</td>
@@ -21,7 +21,7 @@ if( isset($_POST["parameter"]) )
             <td width='300'>ФИО</td>
             <td width='200'>Email</td>
             <td width='140'>Телефон</td>
-            <td width='350'>Наименование компании</td>
+            <td width='100'>Наименование компании</td>
             <td width='180'>Страна обращения</td>
             <td width='140'>Город обращения</td>
             <td width='180'>Страна услуги</td>
@@ -39,7 +39,7 @@ if( isset($_POST["parameter"]) )
     echo    "<td width='200'>".$data['customer_surn']." ".$data['customer_name']." ".$data['customer_midd']."</td>";
     echo    "<td width='200'>".$data['customer_email']."</td>";
     echo    "<td width='140'>".$data['customer_primaryphone']."</td>";
-    echo    "<td width='350'>".$data['customer_compname']."</td>";
+    echo    "<td width='100'>".$data['customer_compname']."</td>";
     echo    "<td width='180'>".$data['customer_country']."</td>";
     echo    "<td width='140'>".$data['customer_city']."</td>";
     echo    "<td width='180'>".$data['customer_country']."</td>";
