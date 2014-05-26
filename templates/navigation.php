@@ -20,7 +20,7 @@ echo "Welcome ".$_SESSION['uname']."! <a href='../logout'>Logout Here</a></h1>";
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>ALPCHASE - Навигационное меню</title>
         <script type="text/javascript" src="../js/ajaxLoadRegistryData.js"> </script>
-        <script type="text/javascript" src="../js/jquery-1.10.2.js"> </script>
+        <script type="text/javascript" src="../js/jquery/jquery-1.10.2.js"> </script>
         <!--<link rel="stylesheet" type="text/css" href="">      !-->
     </head>
     <body>
