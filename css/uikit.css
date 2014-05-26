@@ -6551,6 +6551,13 @@ font-family: 'helioscbold';
     color: green;
 }
 
+.alreadyexist {
+    margin-top:-10px;
+    margin-left: 0px;
+    color: red;
+
+}
+
 .sending_disable {
     margin-top:-10px;
     margin-left: 0px;

@@ -3,14 +3,6 @@ include('../system/getQuestNumber.php');
 
 $questNum = new QuestNumber();
 
-session_start();
-
-if(!$_SESSION['uname']){
-    header("location: ../index");
-}
-
-echo "Welcome ".$_SESSION['uname']."! <a href='../logout'>Logout Here</a></h1>";
-
 ?>
 
 <html lang="en-gb" dir="ltr">
@@ -112,6 +104,7 @@ echo "Welcome ".$_SESSION['uname']."! <a href='../logout'>Logout Here</a></h1>";
                                 <br>
                                 <span class="msg_email emailerror">указан неверный email-адрес!</span>
                                 <span class="msg_email emailsuccess">email-адрес указан правильно.</span>
+                                <span class="alreadyexist">a</span>
                             </div>
                         </div>
                     </div>		
@@ -264,6 +257,20 @@ $(document).ready(function () {
 
 </script>
 
+<script>
+     $(document).ready(function() {
+        $("input[name*='cust_email']").change(function(){
+          $.post( 
+             "../ajax_scripts/emailDatabaseCheck.php",
+             {email_select: $(this).val() },
+             function(data) {
+                $('#alreadyexist').html(data);
+             }
+          );
+        });
+      });
+</script>
+
     
 <script type="text/javascript">
 var counter = 1;
@@ -307,7 +314,7 @@ $("#add_field").click(function () {
         }
     });
     
-    $('form input[name="cust_email"]').blur(function () {
+    /*$('form input[name="cust_email"]').blur(function () {
         var email = $(this).val();
         var re = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}/igm;
         if (re.test(email)) {
@@ -319,7 +326,7 @@ $("#add_field").click(function () {
             $('.emailerror').show();
             return false;
         }
-    });
+    });*/
     
     $(':text').keyup(function() {
         if($("input[name*='cust_name']").val() !== "" && $("input[name*='cust_surn']").val() !== "" && $("input[name*='cust_email']").val() !== "" && $("input[name*='cust_primphone']").val() !== "" && $("input[name*='cust_country']").val() !== "" && $("input[name*='cust_city']").val() !== "" && $("input[name*='cust_trustee']").val() !== "") 
