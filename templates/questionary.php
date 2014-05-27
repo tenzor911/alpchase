@@ -245,13 +245,15 @@ $questNum = new QuestNumber();
     });
     }
     
-    function updateSelectService(CountryId) {
-    $('#' + CountryId).change(function(){
+    function updateSelectService(CountryId, ServiceId) {
+    $('#'+CountryId).change(function(){
           $.post( 
              "../ajax_scripts/serviceListUpdate.php",
              {country_select: $(this).val() },
              function(data) {
                 $('#select_service_id').html(data);
+                //alert($('#'+CountryId).val());
+              
              }
           );
         });
@@ -263,8 +265,11 @@ $questNum = new QuestNumber();
     });
 
     $(document).ready(function () {
-        updateSelectService('select_country_id');
+        updateSelectService('select_country_id', 'select_service_id');
     });
+
+    
+   
 
 
     </script>

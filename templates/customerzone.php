@@ -5,10 +5,10 @@ include('../setup/mysql_settings.php');
 session_start();
 
 if(!$_SESSION['email']){
-    header("location: ../index");
+    header("location: ../customer");
 }
 
-echo "Welcome ".$_SESSION['email']."! <a href='../logout'>Logout Here</a></h1>";
+echo "Welcome ".$_SESSION['email']."! <a href='../exit'>Logout Here</a></h1>";
 
 
 ?>

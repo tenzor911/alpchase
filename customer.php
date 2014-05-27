@@ -5,9 +5,9 @@
         <script type="text/javascript" src="jquery/jquery-1.10.2.js"></script>
     </head>
     <body>
-        <form method="POST" action="templates/customerzone">
+        <form method="POST" action="customer">
             <table>
-                <tr><td>Welcome to remote version!</td></tr>
+                <tr><td>Welcome to private zone!</td></tr>
                 <tr><td>Логин </td><td><input type="text" name="email" placeholder="укажите email"/></td></tr>
                 <tr><td>Пароль </td><td><input type="password" name="pass" placeholder="укажите пароль"/></td></tr>
                 <tr><td>Запомнить вас </td><td><input type="checkbox" checked=""/></td></tr>
@@ -36,7 +36,7 @@
 	
 	$_SESSION['email']=$uname;
 	
-	echo "<script>window.open('./templates/customer_zone','_self')</script>";
+	echo "<script>window.open('./templates/customerzone','_self')</script>";
 	}
 	else 
         {
