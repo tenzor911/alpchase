@@ -192,7 +192,7 @@ $questNum = new QuestNumber();
                                 <label class="uk-form-label" for="form-gs-street">Секция выбора услуг для клиента</label>
                                 <div id="ServiceBlockGroup"> 
                                     <div id="CountryServiceOptionsBlock">
-                                        <select name='dynfields1[]' class="uk-margin-small-top" id='select_country_id'><option value=''>страна не выбрана</option></select> <select name='dynfields2[]' class="uk-margin-small-top" id='select_service_id'><option value=''>услуга не выбрана</option></select><p>
+                                        <select name='dynfields1[]' class="uk-margin-small-top" id='select_country_id'><option value=''>страна не выбрана</option></select> <select name='dynfields2[]' class="uk-margin-small-top" id='select_service_id'><option value=''>услуга не назначена</option></select><p>
                                     </div>
                                 </div>		  
                                 <div class="uk-form-controls uk-margin-top">
@@ -244,14 +244,28 @@ $questNum = new QuestNumber();
         }
     });
     }
+    
+    function updateSelectService(CountryId) {
+    $('#' + CountryId).change(function(){
+          $.post( 
+             "../ajax_scripts/serviceListUpdate.php",
+             {country_select: $(this).val() },
+             function(data) {
+                $('#select_service_id').html(data);
+             }
+          );
+        });
+    }
+      
 
     $(document).ready(function () {
         updateSelectCountry('select_country_id');
     });
 
     $(document).ready(function () {
-        updateSelectService('select_country_id','select_service_id');
+        updateSelectService('select_country_id');
     });
+
 
     </script>
     </body>

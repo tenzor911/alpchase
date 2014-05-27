@@ -7,7 +7,7 @@ $(document).ready(function(){
         }
         var newTextBoxDiv = $(document.createElement('div'))
         .attr("id", 'CountryServiceOptionsBlock' + counter);
-        newTextBoxDiv.after().html('<select name="dynfields1[]" id="select_country_id' + counter + '"><option value="">страна не выбрана</option></select> <select name="dynfields2[]" id="select_service_id' + counter + '"><option value="">услуга не выбрана</option></select><p>');
+        newTextBoxDiv.after().html('<select name="dynfields1[]" class="uk-margin-small-top" id="select_country_id' + counter + '"><option value="">страна не выбрана</option></select> <select name="dynfields2[]" class="uk-margin-small-top" id="select_service_id' + counter + '"><option value="">услуга не назначена</option></select><p>');
         newTextBoxDiv.appendTo("#ServiceBlockGroup");
         updateSelectCountry('select_country_id' + counter);
         counter++;

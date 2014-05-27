@@ -28,16 +28,18 @@ echo "Welcome ".$_SESSION['uname']."! <a href='../logout'>Logout Here</a></h1>";
     </head>
     <body onload="refreshRegistryData()">
         <hr></hr>
-        <center><select name='' id="filter_option">
-            <option value='*'>критерий фильтра не указан</option>
-            <option value='quest_status'>статус анкеты</option>
-            <option value='customer_country'>страна обращения</option>
-            <option value='customer_city'>город обращения</option>
-            <option value=''>страна услуги</option>
-            <option value=''>город услуги</option>
-            <option value=''>наименование услуги</option>
-        </select>
-            <select name='' id="filter_parameter"></select></center>
+        <center>
+            <select name='' id="filter_option">
+                <option value='*'>критерий фильтра не указан</option>
+                <option value='quest_status'>статус анкеты</option>
+                <option value='customer_country'>страна обращения</option>
+                <option value='customer_city'>город обращения</option>
+                <option value=''>страна услуги</option>
+                <option value=''>город услуги</option>
+                <option value=''>наименование услуги</option>
+            </select>
+            <select name='' id="filter_parameter"></select>
+        </center>
         <br></br>
         <div id="data_field" align="center">Загрузка данных...</div>
     </body>

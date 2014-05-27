@@ -4,23 +4,27 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/opt/lampp/htdocs/alpchase/templates/registry.php</file>
+            <file>file:/opt/lampp/htdocs/alpchase/templates/adminpanel.php</file>
             <file>file:/opt/lampp/htdocs/alpchase/index.php</file>
             <file>file:/opt/lampp/htdocs/alpchase/templates/questionary.php</file>
-            <file>file:/opt/lampp/htdocs/alpchase/js/onlyNumbersField.js</file>
             <file>file:/opt/lampp/htdocs/alpchase/ajax_scripts/countryListUpdate.php</file>
             <file>file:/opt/lampp/htdocs/alpchase/system/getDataFromQuestionary.php</file>
             <file>file:/opt/lampp/htdocs/alpchase/js/ajaxLoadCountryService.js</file>
+            <file>file:/opt/lampp/htdocs/alpchase/ajax_scripts/emailDatabaseCheck.php</file>
+            <file>file:/opt/lampp/htdocs/alpchase/js/functions/function_CheckLegalForm.js</file>
             <file>file:/opt/lampp/htdocs/alpchase/ajax_scripts/loadRegistryData.php</file>
-            <file>file:/opt/lampp/htdocs/alpchase/js/makeNewPass.js</file>
-            <file>file:/opt/lampp/htdocs/alpchase/login.php</file>
             <file>file:/opt/lampp/htdocs/alpchase/js/appendSelectedItems.js</file>
             <file>file:/opt/lampp/htdocs/alpchase/alpchase.sql</file>
             <file>file:/opt/lampp/htdocs/alpchase/templates/navigation.php</file>
             <file>file:/opt/lampp/htdocs/alpchase/ajax_scripts/serviceListUpdate.php</file>
+            <file>file:/opt/lampp/htdocs/alpchase/templates/drafts.php</file>
+            <file>file:/opt/lampp/htdocs/alpchase/js/functions/function_AddOrDeleteFields.js</file>
             <file>file:/opt/lampp/htdocs/alpchase/setup/mysql_settings.php</file>
+            <file>file:/opt/lampp/htdocs/alpchase/templates/customerzone.php</file>
             <file>file:/opt/lampp/htdocs/alpchase/ajax_scripts/filterDataUpdate.php</file>
-            <file>file:/opt/lampp/htdocs/alpchase/system/getQuestNumber.php</file>
+            <file>file:/opt/lampp/htdocs/alpchase/js/functions/function_EmailChecking.js</file>
             <file>file:/opt/lampp/htdocs/alpchase/js/ajaxLoadRegistryData.js</file>
+            <file>file:/opt/lampp/htdocs/alpchase/system/getQuestNumber.php</file>
         </group>
     </open-files>
 </project-private>
