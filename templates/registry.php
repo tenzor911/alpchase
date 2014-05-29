@@ -44,28 +44,27 @@ echo "Welcome ".$_SESSION['uname']."! <a href='../logout'>Logout Here</a></h1>";
         <div id="data_field" align="center">Загрузка данных...</div>
     </body>
     <script>
-      $(document).ready(function() {
-        $("#filter_option").change(function(){
-          $.post( 
-             "../ajax_scripts/filterDataUpdate.php",
-             {name_select: $(this).val() },
-             function(data) {
-                $('#filter_parameter').html(data);
-             }
-          );
+        $(document).ready(function() {
+            $("#filter_option").change(function(){
+                $.post( 
+                    "../ajax_scripts/filterDataUpdate.php",
+                    {name_select: $(this).val() },
+                    function(data) {
+                        $('#filter_parameter').html(data);
+                    }
+                );
+            });
         });
-      });
     </script>
     <script>
         $("#filter_parameter").change(function(){
-          $.post( 
-             "../ajax_scripts/loadRegistryData.php",
-             { parameter: $(this).val(), name_select2: $('#filter_option').val() },
-             function(success) {
-                $('#data_field').html(success);
-             }
-          );
+            $.post( 
+                "../ajax_scripts/loadRegistryData.php",
+                { parameter: $(this).val(), name_select2: $('#filter_option').val() },
+                function(success) {
+                    $('#data_field').html(success);
+                }
+            );
         });
-    </script>
-    
+    </script>  
 </html>
