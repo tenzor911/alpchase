@@ -30,15 +30,15 @@ echo "Welcome ".$_SESSION['uname']."! <a href='../logout'>Logout Here</a></h1>";
         <hr></hr>
         <center>
             <select name='' id="filter_option">
-                <option value='*'>критерий фильтра не указан</option>
+                <option value='null'>критерий фильтра не указан</option>
                 <option value='quest_status'>статус анкеты</option>
                 <option value='customer_country'>страна обращения</option>
                 <option value='customer_city'>город обращения</option>
                 <option value=''>страна услуги</option>
-                <option value=''>город услуги</option>
-                <option value=''>наименование услуги</option>
             </select>
             <select name='' id="filter_parameter"></select>
+            <input type="text" value="" id="search_data" placeholder="введите название фирмы" onchange="">
+            <input type="button" value="сброс критериев поиска" onclick="">
         </center>
         <br></br>
         <div id="data_field" align="center">Загрузка данных...</div>
@@ -48,19 +48,31 @@ echo "Welcome ".$_SESSION['uname']."! <a href='../logout'>Logout Here</a></h1>";
             $("#filter_option").change(function(){
                 $.post( 
                     "../ajax_scripts/filterDataUpdate.php",
-                    {name_select: $(this).val() },
+                    {filter_data_select: $(this).val() },
                     function(data) {
                         $('#filter_parameter').html(data);
                     }
                 );
             });
-        });
+       
+        
+   
+            $("#search_data").keyup(function(){
+                $.post( 
+                    "../ajax_scripts/loadRegistryData.php",
+                    {company_search_name: $(this).val() },
+                    function(data) {
+                        $('#data_field').html(data);
+                    }
+                );
+            });
+         });
     </script>
     <script>
-        $("#filter_parameter").change(function(){
+        $("#filter_parameter").click(function(){
             $.post( 
                 "../ajax_scripts/loadRegistryData.php",
-                { parameter: $(this).val(), name_select2: $('#filter_option').val() },
+                {parameter: $(this).val(), filter_parameter_select: $('#filter_option').val() },
                 function(success) {
                     $('#data_field').html(success);
                 }

@@ -3,15 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/tenzor/Documents/xampp/htdocs/alpchase/templates/customerzone.php</file>
-            <file>file:/C:/Users/tenzor/Documents/xampp/htdocs/alpchase/logout.php</file>
-            <file>file:/C:/Users/tenzor/Documents/xampp/htdocs/alpchase/index.php</file>
-            <file>file:/C:/Users/tenzor/Documents/xampp/htdocs/alpchase/customer.php</file>
-            <file>file:/C:/Users/tenzor/Documents/xampp/htdocs/alpchase/js/ajaxLoadRegistryData.js</file>
-            <file>file:/C:/Users/tenzor/Documents/xampp/htdocs/alpchase/templates/registry.php</file>
-            <file>file:/C:/Users/tenzor/Documents/xampp/htdocs/alpchase/default.php</file>
-            <file>file:/C:/Users/tenzor/Documents/xampp/htdocs/alpchase/templates/questionary.php</file>
-            <file>file:/C:/Users/tenzor/Documents/xampp/htdocs/alpchase/exit.php</file>
+            <file>file:/opt/lampp/htdocs/alpchase/templates/registry.php</file>
+            <file>file:/opt/lampp/htdocs/alpchase/ajax_scripts/loadRegistryData.php</file>
+            <file>file:/opt/lampp/htdocs/alpchase/templates/questionary.php</file>
+            <file>file:/opt/lampp/htdocs/alpchase/system/getDataFromQuestionary.php</file>
+            <file>file:/opt/lampp/htdocs/alpchase/ajax_scripts/filterDataUpdate.php</file>
         </group>
     </open-files>
 </project-private>
