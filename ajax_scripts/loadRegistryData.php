@@ -48,17 +48,9 @@ if( isset($_POST["parameter"]) )
     echo "</table>";
     
 } else {
-    $result = mysql_query("SELECT * FROM users_customers");
-}
-
-if( isset($_POST["company_search_name"]) )
-{
     $company_data = $_REQUEST['company_search_name'];
     $result=mysql_query("SELECT * FROM users_customers WHERE customer_compname LIKE '%$company_data%'");
-} else {
-    $result=  mysql_query("SELECT * FROM users_customers");
-}
-
+    
 echo "
     <table width='2000' border='1' cellpadding='0' cellspacing='0' align='center'>
         <tr>
@@ -93,5 +85,5 @@ echo "
         echo "</tr>";
     }
     echo "</table>";
-
+}
 ?>
