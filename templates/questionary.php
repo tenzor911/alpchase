@@ -20,15 +20,6 @@ $questNum = new QuestNumber();
         <script src="../js/functions/function_MakeNewPass.js"></script>
         <script src="../js/functions/function_OnlyNumbersField.js"></script>
         <script src="../js/functions/function_RequiredFields.js"></script>
-        <script type="text/javascript">
-            function openPopup() {
-                var popup = window.open("", "", "width=1024,height=768,resizeable,scrollbars"),
-                table = document.getElementById("QuestionaryForm");
-  
-                popup.document.write(table.outerHTML);
-                popup.document.close();
-            }
-        </script>
     </head>
     <body class="tm-background">
         <div class="tm-header">
@@ -189,17 +180,9 @@ $questNum = new QuestNumber();
                         <hr/>
                         <div class="uk-grid">
                             <div class="uk-width-1-1">
-                                <label class="uk-form-label" for="form-gs-street">Секция выбора услуг для клиента</label>
+                                <label class="uk-form-label" for="form-gs-street">Секции выбора услуг для клиента</label>
                                 <div id="ServiceBlockGroup"> 
-                                    <div id="CountryServiceOptionsBlock">
-                                        <select name='dynfields1[]' class="uk-margin-small-top" id='select_country_id'><option value=''>страна не выбрана</option></select><p>
-                                        <hr>    
-                                    </div>
-                                </div>		  
-                                <div class="uk-form-controls uk-margin-top">
-                                    <input type="button" id="add_field" value="Добавить услугу">
-                                    <input type="button" id="rem_field" value="Удалить услугу">
-                                </div>	  
+                                </div>									<input type="button" onclick="addSection(); return false;" value="Добавить секцию">								<input type="hidden" id="countSections" value="1">
                             </div>
                         </div>		
                         <hr/>
@@ -213,7 +196,7 @@ $questNum = new QuestNumber();
                             </div>
                             <div class="uk-width-1-4">
                                 <div class="uk-form-controls uk-margin-top">
-                                    <input type="button" value="Предпросмотр" onclick="openPopup()">
+                                    <input type="button" value="Предпросмотр" id ="print" onclick="SelectName()">
                                 </div>
                             </div>
                             <div class="uk-width-1-4">
@@ -231,42 +214,60 @@ $questNum = new QuestNumber();
                 </form>
             </div>
         </div>
+        
+<script type="text/javascript">
+    var popup;
+    function SelectName() {
+        popup = window.open("preview.html", "Popup", "width=1024,height=768");
+        popup.focus();
+    }
+</script>
      
     <script>
-        
-    $(document).ready(function () {
-        updateSelectCountry('select_country_id');
-    });
-    
-   
     function updateSelectCountry(selectCountryId) {
-    $.ajax({
-        type: "POST",
-        url: "../ajax_scripts/countryListUpdate.php",  
-        dataType: "html",
-        cache: false,
-        success: function (response) {
-        //alert(response); 
-        $('#' + selectCountryId).html(response);
-        
-        }
-    });
+        $.ajax({
+            type: "POST",
+            url: "../ajax_scripts/countryListUpdate.php",  
+            dataType: "html",
+            cache: false,
+            success: function (response) {
+                $('#' + selectCountryId).html(response);
+            }
+	});
+    }		    
+    
+    function selectCountry(id, country) {		
+        $.post( "../ajax_scripts/serviceListUpdate.php", 
+        {country_select: country}, 
+        function(data) {
+            $('#select_service_id'+id).html(data);		
+        });    
     }
-
-    $('#select_country_id').change(function(){
-          $.post( 
-             "../ajax_scripts/serviceListUpdate.php",
-             { country_select: $(this).val()},
-             function(data) {
-                $('#select_service_id').html(data);
-             }
-          );
-    });
     
+    function selectCountryAll(id, country) {		
+        $.post( "../ajax_scripts/serviceListUpdate.php", 
+        {country_select: country}, 
+        function(data) {			
+            $('.select_service'+id).each( 
+                function() {				
+                    $( this ).html(data);			
+                }
+            );			
+            $('.select_podservice'+id).each( 
+                function() {				
+                    $( this ).html('<option value="0">Услуга не назначена</option>');			
+                }
+            );		
+        });    
+    }
     
-   
-
-
+    function selectService(id,service) {         		
+        $.post( "../ajax_scripts/podserviceListUpdate.php", 
+        {service_select: service}, 
+        function(data) {			
+            $('#select_podservice_id'+id).html(data);		
+        });    
+    }
     </script>
     </body>
 </html>

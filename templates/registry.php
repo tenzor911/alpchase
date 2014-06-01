@@ -37,8 +37,8 @@ echo "Welcome ".$_SESSION['uname']."! <a href='../logout'>Logout Here</a></h1>";
                 <option value=''>страна услуги</option>
             </select>
             <select name='' id="filter_parameter"></select>
-            <input type="text" value="" id="search_data" placeholder="введите название фирмы" onchange="">
-            <input type="button" value="сброс критериев поиска" onclick="">
+            <input type="text" value="" id="search_data" placeholder="введите название фирмы" style="width: 220px;">
+            <input type="button" value="сброс критериев поиска" onclick="location.reload();">
         </center>
         <br></br>
         <div id="data_field" align="center">Загрузка данных...</div>
@@ -51,12 +51,11 @@ echo "Welcome ".$_SESSION['uname']."! <a href='../logout'>Logout Here</a></h1>";
                     {filter_data_select: $(this).val() },
                     function(data) {
                         $('#filter_parameter').html(data);
+                        $("#data_field").val("0");
                     }
                 );
             });
        
-        
-   
             $("#search_data").keyup(function(){
                 $.post( 
                     "../ajax_scripts/loadRegistryData.php",
@@ -67,14 +66,15 @@ echo "Welcome ".$_SESSION['uname']."! <a href='../logout'>Logout Here</a></h1>";
                 );
             });
          });
-    </script>
-    <script>
+
         $("#filter_parameter").click(function(){
+            
             $.post( 
                 "../ajax_scripts/loadRegistryData.php",
                 {parameter: $(this).val(), filter_parameter_select: $('#filter_option').val() },
                 function(success) {
                     $('#data_field').html(success);
+                    
                 }
             );
         });
