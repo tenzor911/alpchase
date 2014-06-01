@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost
--- Время создания: Май 12 2014 г., 23:45
+-- Время создания: Июн 01 2014 г., 23:30
 -- Версия сервера: 5.5.16
 -- Версия PHP: 5.3.8
 
@@ -31,11 +31,34 @@ CREATE TABLE IF NOT EXISTS `order_basket` (
   `country_id` int(11) NOT NULL,
   `service_id` int(11) NOT NULL,
   `podservice_id` int(11) NOT NULL,
-  PRIMARY KEY (`customer_id`),
   KEY `country_id` (`country_id`),
   KEY `service_id` (`service_id`),
   KEY `podservice_id` (`podservice_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Дамп данных таблицы `order_basket`
+--
+
+INSERT INTO `order_basket` (`customer_id`, `country_id`, `service_id`, `podservice_id`) VALUES
+(0, 3, 0, 0),
+(0, 10, 0, 0),
+(0, 15, 0, 0),
+(0, 8, 0, 0),
+(0, 2, 0, 0),
+(0, 7, 0, 0),
+(0, 14, 0, 0),
+(0, 15, 0, 0),
+(0, 2, 0, 0),
+(0, 7, 0, 0),
+(0, 14, 0, 0),
+(0, 15, 0, 0),
+(24, 4, 5, 0),
+(24, 4, 5, 0),
+(24, 1, 1, 0),
+(24, 1, 2, 0),
+(24, 1, 3, 0),
+(24, 6, 3, 0);
 
 -- --------------------------------------------------------
 
@@ -46,35 +69,26 @@ CREATE TABLE IF NOT EXISTS `order_basket` (
 CREATE TABLE IF NOT EXISTS `system_con_serv` (
   `country_id` int(11) NOT NULL,
   `service_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `system_con_serv`
 --
 
 INSERT INTO `system_con_serv` (`country_id`, `service_id`) VALUES
-(0, 0),
-(1, 0),
 (1, 1),
 (1, 2),
 (1, 3),
 (1, 4),
-(2, 0),
 (2, 1),
 (2, 5),
 (2, 6),
-(3, 0),
 (3, 1),
 (3, 2),
-(4, 0),
 (4, 5),
-(5, 0),
 (5, 1),
-(6, 0),
 (6, 2),
-(6, 3),
-(7, 0),
-(8, 0);
+(6, 3);
 
 -- --------------------------------------------------------
 
@@ -86,7 +100,7 @@ CREATE TABLE IF NOT EXISTS `system_countries` (
   `country_id` int(11) NOT NULL AUTO_INCREMENT,
   `country_name` varchar(60) CHARACTER SET cp1251 NOT NULL,
   PRIMARY KEY (`country_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=16 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=16 ;
 
 --
 -- Дамп данных таблицы `system_countries`
@@ -118,9 +132,9 @@ INSERT INTO `system_countries` (`country_id`, `country_name`) VALUES
 
 CREATE TABLE IF NOT EXISTS `system_podservice` (
   `podservice_id` int(11) NOT NULL AUTO_INCREMENT,
-  `podservice_name` int(11) NOT NULL,
+  `podservice_name` varchar(255) NOT NULL,
   PRIMARY KEY (`podservice_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -132,14 +146,13 @@ CREATE TABLE IF NOT EXISTS `system_services` (
   `service_id` int(11) NOT NULL AUTO_INCREMENT,
   `service_name` varchar(60) CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`service_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=cp1251 AUTO_INCREMENT=8 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=cp1251 AUTO_INCREMENT=8 ;
 
 --
 -- Дамп данных таблицы `system_services`
 --
 
 INSERT INTO `system_services` (`service_id`, `service_name`) VALUES
-(0, 'услуга не назначена'),
 (1, 'Регистрация ИП'),
 (2, 'Регистрация ООО'),
 (3, 'Бухгалтерия'),
@@ -147,6 +160,17 @@ INSERT INTO `system_services` (`service_id`, `service_name`) VALUES
 (5, 'Налоговый учёт'),
 (6, 'Кадровый учёт'),
 (7, 'Ликвидация');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `system_serv_pod`
+--
+
+CREATE TABLE IF NOT EXISTS `system_serv_pod` (
+  `service_id` int(11) NOT NULL,
+  `podservice_id` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -175,37 +199,39 @@ CREATE TABLE IF NOT EXISTS `users_customers` (
   `customer_notifyperiod` int(11) NOT NULL,
   `customer_position` varchar(60) DEFAULT NULL,
   `customer_answers` varchar(6000) DEFAULT NULL,
-  `customer_knowabout` varchar(60) DEFAULT NULL,
+  `customer_knowabout` varchar(20) NOT NULL,
   PRIMARY KEY (`customer_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=23 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=25 ;
 
 --
 -- Дамп данных таблицы `users_customers`
 --
 
 INSERT INTO `users_customers` (`quest_date`, `customer_id`, `customer_name`, `customer_surn`, `customer_midd`, `customer_email`, `customer_pass`, `customer_form`, `customer_primaryphone`, `customer_additphone`, `customer_duty`, `customer_city`, `customer_country`, `customer_actuality`, `customer_questions`, `customer_compname`, `quest_status`, `customer_notifyperiod`, `customer_position`, `customer_answers`, `customer_knowabout`) VALUES
-('26.04.14', 1, 'Фёдор', 'Иванов', 'Викторович', 'test1@mail.ru', '098f6bcd4621d373cade4e832627b4f6', 'Частное лицо', '4991234536', '9031234567', 'Частное лицо', 'Москва', 'Россия', '1 день', 'Вопрос по услуге', '', '', 0, NULL, NULL, NULL),
-('10.03.14', 2, 'Иван', 'Антонов', 'Андреевич', 'test2@mail.ru', '098f6bcd4621d373cade4e832627b4f6', 'Юрлицо', '499234823484', '903234234234', 'Директор', 'Баку', 'Азербайджан', '1 год', 'Вопрос по сервису', 'Опельниссан', '', 0, NULL, NULL, NULL),
-('31.07.14', 3, 'Марат', 'Купустин', 'Александрович', 'test3@mail.ru', '098f6bcd4621d373cade4e832627b4f6', 'Юрлицо', '499123123', '903234324234', 'Директор', 'Ереван', 'Армения', '1 день', 'Вопрос по услуге', 'Ящикпандоры', '', 0, NULL, NULL, NULL),
-('10.07.14', 4, 'Вадим', 'Максимов', 'Кириллович', 'test4@mail.ru', '11223344', 'физлицо', '4992357595', '9038585753', 'Петров Валерий', 'Харьков', 'Украина', '3', '', '', '', 0, NULL, NULL, NULL),
-('', 5, 'Петр', 'Петров', 'Петрович', '', '', '', '', '', '', '', '', '', '', '', '', 3, NULL, NULL, NULL),
-('', 6, 'sdfsdf', 'sdfsdf', 'fsfsdfs', '', '', '', '', '', '', '', '', '', '', '', '', 0, NULL, NULL, NULL),
-('05.11.14', 7, 'asdasd', 'asdasdasd', 'asdasdasd', '', '', '', '', '', '', '', '', '', '', '', '', 0, NULL, NULL, NULL),
-('12.05.14', 8, 'qweqwe', '', '', '', '8f55b5e3f7f65c655dbe846e2f8e2a99', '', '', '', '', '', '', '', '', '', '???????', 0, '', '', NULL),
-('12.05.14', 9, 'asdasda', '', '', '', 'e3aa6b51ec54c9a30df0825f6efa3dd0', '', '', '', '', '', '', '', '', '', '???????', 0, '', '', NULL),
-('12.05.14', 10, 'adada', '', '', '', 'bd6a500990bcfd2bd2d66d6115184da2', '', '', '', '', '', '', '', '', '', '???????', 0, '', '', NULL),
-('12.05.14', 11, 'adada', '', '', '', 'bd6a500990bcfd2bd2d66d6115184da2', '', '', '', '', '', '', '', '', '', '???????', 0, '', '', NULL),
-('12.05.14', 12, 'asdad', '', '', '', '3dcd6edc1e2ffb12b9b79a0102bc8316', '', '', '', '', '', '', '', '', '', '???????', 0, '', '', NULL),
-('12.05.14', 13, 'asdad', '', '', '', '3dcd6edc1e2ffb12b9b79a0102bc8316', '', '', '', '', '', '', '', '', '', '???????', 0, '', '', NULL),
-('12.05.14', 14, 'asdasdad', '', '', '', '144b539d39bc356af043e0f50d9fae2d', '', '', '', '', '', '', '', '', '', '???????', 0, '', '', NULL),
-('12.05.14', 15, '234234', '', '', '', '1d349a2dbb4c7984ec855433ee9a0bbb', '', '', '', '', '', '', '', '', '', '???????', 0, '', '', NULL),
-('12.05.14', 16, 'eewrwerwr', '', '', '', 'b358b3da8fd392b2532a3085164ff1f0', '', '', '', '', '', '', '', '', '', '???????', 0, '', '', NULL),
-('12.05.14', 17, 'eewrwerwr', '', '', '', 'b358b3da8fd392b2532a3085164ff1f0', '', '', '', '', '', '', '', '', '', '???????', 0, '', '', NULL),
-('12.05.14', 18, 'eewrwerwr', '', '', '', 'b358b3da8fd392b2532a3085164ff1f0', '', '', '', '', '', '', '', '', '', '???????', 0, '', '', NULL),
-('12.05.14', 19, 'eewrwerwr', '', '', '', 'b358b3da8fd392b2532a3085164ff1f0', '', '', '', '', '', '', '', '', '', '???????', 0, '', '', NULL),
-('12.05.14', 20, 'eewrwerwr', '', '', '', 'b358b3da8fd392b2532a3085164ff1f0', '', '', '', '', '', '', '', '', '', '???????', 0, '', '', NULL),
-('12.05.14', 21, 'sdfdsfs', '', '', '', '71c41194b0ae69040cc6e743518cbc42', '', '', '', '', '', '', '', '', '', '???????', 0, '', '', NULL),
-('12.05.14', 22, '????????', '?????', '????????????', 'president@president.ru', '3068ba5ac8fa1096307c58eb85f6579c', '', '2131313131331321', '2354343454364564', '???????', '??????', '??????', '', '??????? ????', '??????', '???????', 0, '?????????', '? ??? ??? ? ?????', '????????? ????????');
+('26.04.14', 1, 'Фёдор', 'Иванов', 'Викторович', 'test1@mail.ru', '098f6bcd4621d373cade4e832627b4f6', 'Частное лицо', '4991234536', '9031234567', 'Частное лицо', 'Москва', 'Россия', '1 день', 'Вопрос по услуге', '', '', 0, NULL, NULL, ''),
+('10.03.14', 2, 'Иван', 'Антонов', 'Андреевич', 'test2@mail.ru', '098f6bcd4621d373cade4e832627b4f6', 'Юрлицо', '499234823484', '903234234234', 'Директор', 'Баку', 'Азербайджан', '1 год', 'Вопрос по сервису', 'Опельниссан', '', 0, NULL, NULL, ''),
+('31.07.14', 3, 'Марат', 'Купустин', 'Александрович', 'test3@mail.ru', '098f6bcd4621d373cade4e832627b4f6', 'Юрлицо', '499123123', '903234324234', 'Директор', 'Ереван', 'Армения', '1 день', 'Вопрос по услуге', 'Ящикпандоры', '', 0, NULL, NULL, ''),
+('10.07.14', 4, 'Вадим', 'Максимов', 'Кириллович', 'test4@mail.ru', '11223344', 'физлицо', '4992357595', '9038585753', 'Петров Валерий', 'Харьков', 'Украина', '3', '', '', '', 0, NULL, NULL, ''),
+('', 5, 'Петр', 'Петров', 'Петрович', '', '', '', '', '', '', '', '', '', '', '', '', 3, NULL, NULL, ''),
+('05.12.14', 6, '?›?µ????????', '?‘?€?µ?¶???µ??', '???»?????‡', '', '', '', '', '', '', '', '', '', '', '', '', 0, NULL, NULL, ''),
+('05.12.14', 7, 'Ð’Ð»Ð°Ð´Ð¸Ð¼Ð¸Ñ€', 'Ð›ÐµÐ½Ð¸Ð½', 'Ð˜Ð»ÑŒÐ¸Ñ‡', '', '', '', '', '', '', '', '', '', '', '', '', 0, NULL, NULL, ''),
+('12.05.14', 8, 'Петр', 'Петров', 'Петрович', 'toolbar@nm.ru', 'b86a8490f3b2411045855fc3203b59ae', '', '', '', '', '', '', '', '', '', '', 0, NULL, NULL, ''),
+('12.05.14', 9, 'цукцку', 'цукцук', 'ыавыаыаыа', 'mail@mail.com', 'c441ac6f27ac0a5895f9996a3e5beecb', '', '3453453453', '53453452324', 'лицо', 'Москва', 'Россия', '', '', 'ымымыма', '', 0, NULL, NULL, ''),
+('12.05.14', 10, 'Петр', 'Петров', 'Петрович', 'toolbar@nm.ru', 'b86a8490f3b2411045855fc3203b59ae', '', '2349438923432432', '3453453534534535', 'Дворник', 'Минск', 'Белоруссия', '', '', 'Фирма', 'извещён', 0, 'менеджер', NULL, ''),
+('', 11, 'sdfsdf', 'sdf', 'sdf', '', '', '', '', '', '', '', '', '', '', '', '', 0, NULL, NULL, ''),
+('', 12, 'Александр', 'Пушкин', 'Сергеевич', '', '', '', '', '', '', '', '', '', '', '', '', 0, NULL, NULL, ''),
+('16.05.14', 13, 'dfgdg', 'dg', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, NULL, NULL, ''),
+('21.05.14', 14, 'adsasd', '424', '24243', '', '', '', '', '', '', '', '', '', '', '', '', 0, NULL, NULL, ''),
+('29.05.14', 15, 'Имя', 'Фамилия', 'Отчество', '', '', '', '', '', '', '', '', '', '', '', '', 0, NULL, NULL, ''),
+('29.05.14', 16, 'Имя', 'Фамилия', 'Отчество', '', '', '', '', '', '', '', '', '', '', 'Организация', '', 0, 'Должность', NULL, ''),
+('29.05.14', 17, 'Имя', 'Фамилия', 'Отчество', 'email@email.com', 'dc6d85e05f0d4f3c8727d3aed96d7232', '', '', '', '', '', '', '', '', 'Организация', '', 0, 'Должность', NULL, ''),
+('29.05.14', 18, 'Имя', 'Фамилия', 'Отчество', 'email@email.com', 'dc6d85e05f0d4f3c8727d3aed96d7232', '', '1111111111111111', '2222222222222222', '', '', '', '', '', 'Организация', '', 0, 'Должность', NULL, ''),
+('29.05.14', 19, 'Имя', 'Фамилия', 'Отчество', 'email@email.com', 'dc6d85e05f0d4f3c8727d3aed96d7232', '', '1111111111111111', '2222222222222222', '', 'Город', 'Страна', '', '', 'Организация', '', 0, 'Должность', NULL, ''),
+('29.05.14', 20, 'Имя', 'Фамилия', 'Отчество', 'email@email.com', 'dc6d85e05f0d4f3c8727d3aed96d7232', '', '1111111111111111', '2222222222222222', 'Лицо', 'Город', 'Страна', '', '', 'Организация', '', 0, 'Должность', NULL, 'Интернет'),
+('29.05.14', 21, 'Имя', 'Фамилия', 'Отчество', 'email@email.com', 'dc6d85e05f0d4f3c8727d3aed96d7232', '', '1111111111111111', '2222222222222222', 'Лицо', 'Город', 'Страна', '', 'Вопрос', 'Организация', '', 0, 'Должность', 'Ответ', 'Интернет'),
+('29.05.14', 22, 'Имя', 'Фамилия', 'Отчество', 'email@email.com', 'dc6d85e05f0d4f3c8727d3aed96d7232', '', '1111111111111111', '2222222222222222', 'Лицо', 'Город', 'Страна', '', 'Вопрос', 'Организация', 'извещён', 0, 'Должность', 'Ответ', 'Интернет'),
+('31.05.14', 23, 'Владилен', 'Невзоров', 'Александрович', 'mail@mail.to', 'da4579e7a087876af2104d38737e7d0a', '', '3333333333333333', '4444444444444444', 'Директор', 'Баку', 'Азербайджан', '', '', 'Нимфа и КО', 'извещён', 0, 'Менеджер по развитию', '', 'СМИ'),
+('31.05.14', 24, 'Павел', 'Гришин', 'Павлович', 'mail@mail.usa', '17054db617e7666c97149e69b44d3c4f', '', '42141414', '32322323523', 'Директор', 'Астана', 'Казахстан', '', '', 'Трио', 'извещён', 0, 'Директор', '', 'Интернет');
 
 -- --------------------------------------------------------
 
@@ -220,7 +246,7 @@ CREATE TABLE IF NOT EXISTS `users_managers` (
   `um_email` varchar(40) NOT NULL,
   `um_role` varchar(10) NOT NULL,
   PRIMARY KEY (`um_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
 
 --
 -- Дамп данных таблицы `users_managers`
@@ -232,19 +258,6 @@ INSERT INTO `users_managers` (`um_id`, `um_login`, `um_pass`, `um_email`, `um_ro
 (9, 'tenzor', '22c14f311a60486b36f79f3bc962be66', 'toolbar@nm.ru', 'user'),
 (10, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'braindead@bk.ru', 'admin'),
 (11, 'test', '098f6bcd4621d373cade4e832627b4f6', 'tema@tema.ru', 'admin');
-
---
--- Ограничения внешнего ключа сохраненных таблиц
---
-
---
--- Ограничения внешнего ключа таблицы `order_basket`
---
-ALTER TABLE `order_basket`
-  ADD CONSTRAINT `order_basket_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `users_customers` (`customer_id`),
-  ADD CONSTRAINT `order_basket_ibfk_2` FOREIGN KEY (`country_id`) REFERENCES `system_countries` (`country_id`),
-  ADD CONSTRAINT `order_basket_ibfk_3` FOREIGN KEY (`service_id`) REFERENCES `system_services` (`service_id`),
-  ADD CONSTRAINT `order_basket_ibfk_4` FOREIGN KEY (`podservice_id`) REFERENCES `system_podservice` (`podservice_id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
