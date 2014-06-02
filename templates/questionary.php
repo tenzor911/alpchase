@@ -17,6 +17,7 @@ $questNum = new QuestNumber();
         <script src="../js/functions/function_AddOrDeleteFields.js"></script>
         <script src="../js/functions/function_CheckLegalForm.js"></script>
         <script src="../js/functions/function_EmailChecking.js"></script>
+        <script src="../js/functions/function_FormPreview.js.js"></script>
         <script src="../js/functions/function_MakeNewPass.js"></script>
         <script src="../js/functions/function_OnlyNumbersField.js"></script>
         <script src="../js/functions/function_RequiredFields.js"></script>
@@ -25,7 +26,7 @@ $questNum = new QuestNumber();
         <div class="tm-header">
             <div class="uk-container uk-container-center uk-header-bg">
                 <form class="uk-form uk-margin uk-form-stacked" method="post" action="../system/getDataFromQuestionary.php" id="QuestionaryForm">
-                    <fieldset>
+                    <fieldset class="action">
                         <legend><center>Анкета № <?php $questNum->countQuestCustomer()?> / Дата <?php echo date("d.m.y");?></center></legend>
                         <div class="uk-grid">
                             <div class="uk-width-1-1">
@@ -186,7 +187,7 @@ $questNum = new QuestNumber();
                             </div>
                         </div>		
                         <hr/>
-                        
+
 			<span class="msg_send sending_disable">Необходимые поля не заполнены! Отправка невозможна!</span>		
                         <div class="uk-grid uk-text-center">
                             <div class="uk-width-1-4">
@@ -196,7 +197,7 @@ $questNum = new QuestNumber();
                             </div>
                             <div class="uk-width-1-4">
                                 <div class="uk-form-controls uk-margin-top">
-                                    <input type="button" value="Предпросмотр" id ="print" onclick="SelectName()">
+                                    <input type="button" id="previewButton" value="Предпросмотр" alt="#TB_inline?width=400&height=250&inlineId=preview&modal=true">
                                 </div>
                             </div>
                             <div class="uk-width-1-4">
@@ -214,14 +215,12 @@ $questNum = new QuestNumber();
                 </form>
             </div>
         </div>
-        
-<script type="text/javascript">
-    var popup;
-    function SelectName() {
-        popup = window.open("preview.html", "Popup", "width=1024,height=768");
-        popup.focus();
-    }
-</script>
+       
+    <script type="text/javascript">
+        $('#previewButton').click(function(){
+            formPreview('QuestionaryForm', 'preview.php', 'mailpreviewiframe');
+        });
+    </script>
      
     <script>
     function updateSelectCountry(selectCountryId) {
