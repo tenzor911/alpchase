@@ -22,12 +22,10 @@ echo "Welcome ".$_SESSION['uname']."! <a href='../logout'>Logout Here</a></h1>";
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>ALPCHASE - Реестр анкет клиентов</title>
-        <script type="text/javascript" src="../js/ajaxLoadRegistryData.js"> </script>
-        <script type="text/javascript" src="../js/functions/function_RegistrySearch.js"></script>
         <script type="text/javascript" src="../js/jquery/jquery-1.10.2.js"> </script>
         <link rel="stylesheet" type="text/css" href="../css/styleRegistry.css">   </link>   
     </head>
-    <body onload="refreshRegistryData()">
+    <body onload="my()">
         <hr></hr>
         <center>
             <select name='' id="filter_option">
@@ -73,7 +71,11 @@ echo "Welcome ".$_SESSION['uname']."! <a href='../logout'>Logout Here</a></h1>";
                                 $('#data_field').html(data);
                             }
                         );
-                    });  
+                    }); 
+                    
+                    $(document).ready(function(){
+                        $("#data_field").load('../ajax_scripts/loadRegistryData.php');
+                    });
                 });
             </script>
     </body>

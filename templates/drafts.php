@@ -31,7 +31,6 @@ echo "Welcome ".$_SESSION['uname']."! <a href='../logout'>Logout Here</a></h1>";
         <center>
             <select name='' id="filter_option">
                 <option value='null'>критерий фильтра не указан</option>
-                <option value='quest_status'>статус анкеты</option>
                 <option value='customer_country'>страна обращения</option>
                 <option value='customer_city'>город обращения</option>
                 <option value=''>страна услуги</option>
@@ -55,28 +54,30 @@ echo "Welcome ".$_SESSION['uname']."! <a href='../logout'>Logout Here</a></h1>";
                     }
                 );
             });
-       
+         
+            $("#filter_parameter").click(function(){
+                $.post( 
+                    "../ajax_scripts/loadDraftData.php",
+                    {parameter: $(this).val(), filter_parameter_select: $('#filter_option').val() },
+                    function(success) {
+                        $('#data_field').html(success);          
+                    }
+                );
+            });
+            
             $("#search_data").keyup(function(){
                 $.post( 
-                    "../ajax_scripts/loadRegistryData.php",
+                    "../ajax_scripts/loadDraftData.php",
                     {company_search_name: $(this).val() },
                     function(data) {
                         $('#data_field').html(data);
                     }
                 );
             });
-         });
-
-        $("#filter_parameter").click(function(){
             
-            $.post( 
-                "../ajax_scripts/loadRegistryData.php",
-                {parameter: $(this).val(), filter_parameter_select: $('#filter_option').val() },
-                function(success) {
-                    $('#data_field').html(success);
-                    
-                }
-            );
+            $(document).ready(function(){
+                        $("#data_field").load('../ajax_scripts/loadDraftData.php');
+            });
         });
     </script>  
 </html>

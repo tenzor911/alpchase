@@ -67,7 +67,6 @@ print_r( $_POST);
 
 foreach( $countries_arr as $country_key => $value ) {
     $country_id = intval( $countries_arr[$country_key] );	
-    
     if( $country_id > 0 ) {			
         foreach( $services_arr as $key => $value ) {				
             if( isset( $services_arr[$country_key][$key] )) { 

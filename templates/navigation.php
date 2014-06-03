@@ -26,8 +26,10 @@ echo "Welcome ".$_SESSION['uname']."! <a href='../logout'>Logout Here</a></h1>";
     <body>
         <br>
         <hr>
-        <input value="Создать новую анкету" onclick="location.href='questionary'" type="button">
+            <input value="Создать новую анкету" onclick="location.href='questionary'" type="button" style="width: 200px">
         <br>
-        <input value="Реестр анкет клиентов" onclick="location.href='registry'" type="button">
+        <input value="Реестр анкет клиентов" onclick="location.href='registry'" type="button" style="width: 200px">
+        <br>
+        <input value="Черновики анкет" onclick="location.href='drafts'" type="button" style="width: 200px">
     </body>
 </html>
