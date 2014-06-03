@@ -10,7 +10,7 @@ if( isset($_POST["parameter"]) )
     $parameter = $_REQUEST['parameter'];
     $filter = $_REQUEST['filter_parameter_select'];
     
-    $result = mysql_query("SELECT * FROM users_customers WHERE $filter = '$parameter'");
+    $result = mysql_query("SELECT * FROM users_customers WHERE $filter = '$parameter' AND quest_status != 'черновик'");
     
     echo "
     <table width='2000' border='1' cellpadding='0' cellspacing='0' align='center'>
@@ -49,7 +49,7 @@ if( isset($_POST["parameter"]) )
     
 } elseif (isset($_POST["company_search_name"])){
     $company_data = $_REQUEST['company_search_name'];
-    $result = mysql_query("SELECT * FROM users_customers WHERE customer_compname LIKE '%$company_data%'");
+    $result = mysql_query("SELECT * FROM users_customers WHERE customer_compname LIKE '%$company_data%' AND quest_status != 'черновик'");
     
 echo "
     <table width='2000' border='1' cellpadding='0' cellspacing='0' align='center'>

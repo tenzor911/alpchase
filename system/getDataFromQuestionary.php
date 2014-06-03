@@ -22,18 +22,6 @@ $cust_answers = $_REQUEST['cust_answers'];
 mysql_query("SET NAMES 'utf8'");
 mysql_query("SET CHARACTER SET 'utf8'");
 
-/*
-if ($_POST['dynfields1']) 
-    {
-        foreach ( $_POST['dynfields1'] as $key=>$value ) 
-        {
-            $values = mysql_real_escape_string($value);
-            $query = mysql_query("INSERT INTO order_basket (country_id) VALUES ('$values')");
-        }
-    }
-echo "<i><h2><strong>" . count($_POST['dynfields1']) . "</strong> Hobbies Added</h2></i>";
-    */
-
 mysql_query("INSERT INTO users_customers "
         . "(quest_date, "
         . "customer_name, "
@@ -70,24 +58,35 @@ mysql_query("INSERT INTO users_customers "
         . "'$cust_questions', "
         . "'$cust_answers',"
         . "'извещён')");//Услуги
-$customer_id = mysql_insert_id();$countries_arr = $_POST['countries'];$services_arr = $_POST['services'];$podservices_arr = $_POST['podservices'];print_r( $_POST);
-foreach( $countries_arr as $country_key => $value ) {	$country_id = intval( $countries_arr[$country_key] );	
-if( $country_id > 0 ) 
-    {			
-    foreach( $services_arr as $key => $value ) {				
-        if( isset( $services_arr[$country_key][$key] ) ) $service_id = intval( $services_arr[$country_key][$key] ); 
-        else $service_id = 0;			
-        if( isset( $services_arr[$country_key][$key] ) ) $podservice_id = intval( $podservices_arr[$country_key][$key] ); 
-        else $podservice_id = 0;			
-        if( $service_id > 0 ) 
-            {	
-                mysql_query( "INSERT INTO `order_basket` (`customer_id`, `country_id`, `service_id`, `podservice_id`) VALUES ('{$customer_id}', '{$country_id}', '{$service_id}', '{$podservice_id}')" 
-            );				
-            echo "INSERT INTO `order_basket` (`customer_id`, `country_id`, `service_id`, `podservice_id`) VALUES ('{$customer_id}', '{$country_id}', '{$service_id}', '{$podservice_id}')<br>";			
 
-        }		
+$customer_id = mysql_insert_id();
+$countries_arr = $_POST['countries'];
+$services_arr = $_POST['services'];
+$podservices_arr = $_POST['podservices'];
+print_r( $_POST);
 
-}	}}
+foreach( $countries_arr as $country_key => $value ) {
+    $country_id = intval( $countries_arr[$country_key] );	
+    
+    if( $country_id > 0 ) {			
+        foreach( $services_arr as $key => $value ) {				
+            if( isset( $services_arr[$country_key][$key] )) { 
+                $service_id = intval( $services_arr[$country_key][$key] ); 
+            } else {
+                $service_id = 0;			
+                if( isset( $services_arr[$country_key][$key] ) ) {
+                    $podservice_id = intval( $podservices_arr[$country_key][$key] ); 
+                } else {
+                    $podservice_id = 0;			
+                    if( $service_id > 0 ) {	
+                        mysql_query( "INSERT INTO `order_basket` (`customer_id`, `country_id`, `service_id`, `podservice_id`) VALUES ('{$customer_id}', '{$country_id}', '{$service_id}', '{$podservice_id}')" );				
+                        echo "INSERT INTO `order_basket` (`customer_id`, `country_id`, `service_id`, `podservice_id`) VALUES ('{$customer_id}', '{$country_id}', '{$service_id}', '{$podservice_id}')<br>";			
+                    }		
+                }
+            }
+        }
+    }
+}
 
 
 

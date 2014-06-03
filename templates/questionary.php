@@ -40,7 +40,7 @@ $questNum = new QuestNumber();
                             <div class="uk-width-1-1">
                                 <label class="uk-form-label" for="form-gs-street">Имя (обязательное поле)</label>
                                 <div class="uk-form-controls">
-                                    <input type="text" id="form-gs-street" name="cust_name" placeholder="Введите ваше имя" class="uk-width-1-1">
+                                    <input type="text" id="form-gs-street1" name="cust_name" placeholder="Введите ваше имя" class="uk-width-1-1">
                                 </div>
                             </div>
                         </div>
@@ -197,7 +197,7 @@ $questNum = new QuestNumber();
                             </div>
                             <div class="uk-width-1-4">
                                 <div class="uk-form-controls uk-margin-top">
-                                    <input type="button" id="previewButton" value="Предпросмотр" alt="#TB_inline?width=400&height=250&inlineId=preview&modal=true">
+                                    <input type="button" id="previewButton" value="Предпросмотр" onclick="SelectName()">
                                 </div>
                             </div>
                             <div class="uk-width-1-4">
@@ -217,9 +217,14 @@ $questNum = new QuestNumber();
         </div>
        
     <script type="text/javascript">
-        $('#previewButton').click(function(){
-            formPreview('QuestionaryForm', 'preview.php', 'mailpreviewiframe');
-        });
+        
+       document.getElementById('previewButton').onclick = function(){
+           
+        popup = window.open("preview", "Popup", "width=1024,height=768");
+        var my = popup.document.getElementById('txt').value; 
+        popup.focus();
+        my = document.getElementById('form-gs-street1').value;
+};
     </script>
      
     <script>

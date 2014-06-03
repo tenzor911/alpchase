@@ -17,12 +17,13 @@ echo "Welcome ".$_SESSION['uname']."! <a href='../logout'>Logout Here</a></h1>";
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en-gb" dir="ltr">
+<html lang="en-gb" dir="ltr">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>ALPCHASE - Реестр анкет клиентов</title>
         <script type="text/javascript" src="../js/ajaxLoadRegistryData.js"> </script>
+        <script type="text/javascript" src="../js/functions/function_RegistrySearch.js"></script>
         <script type="text/javascript" src="../js/jquery/jquery-1.10.2.js"> </script>
         <link rel="stylesheet" type="text/css" href="../css/styleRegistry.css">   </link>   
     </head>
@@ -34,7 +35,6 @@ echo "Welcome ".$_SESSION['uname']."! <a href='../logout'>Logout Here</a></h1>";
                 <option value='quest_status'>статус анкеты</option>
                 <option value='customer_country'>страна обращения</option>
                 <option value='customer_city'>город обращения</option>
-                <option value=''>страна услуги</option>
             </select>
             <select name='' id="filter_parameter"></select>
             <input type="text" value="" id="search_data" placeholder="введите название фирмы" style="width: 220px;">
@@ -42,41 +42,39 @@ echo "Welcome ".$_SESSION['uname']."! <a href='../logout'>Logout Here</a></h1>";
         </center>
         <br></br>
         <div id="data_field" align="center">Загрузка данных...</div>
-    </body>
-    <script>
-        $(document).ready(function() {
-            $("#filter_option").change(function(){
-                $.post( 
-                    "../ajax_scripts/filterDataUpdate.php",
-                    {filter_data_select: $(this).val() },
-                    function(data) {
-                        $('#filter_parameter').html(data);
-                        $("#data_field").val("0");
-                    }
-                );
-            });
+            <script>
+                $(document).ready(function() {
+                    $("#filter_option").change(function(){
+                        $.post( 
+                            "../ajax_scripts/filterDataUpdate.php",
+                            {filter_data_select: $(this).val() },
+                            function(data) {
+                                $('#filter_parameter').html(data);
+                                $("#data_field").val("0");
+                            }
+                        );
+                    });
        
-            $("#search_data").keyup(function(){
-                $.post( 
-                    "../ajax_scripts/loadRegistryData.php",
-                    {company_search_name: $(this).val() },
-                    function(data) {
-                        $('#data_field').html(data);
-                    }
-                );
-            });
-         });
-
-        $("#filter_parameter").click(function(){
-            
-            $.post( 
-                "../ajax_scripts/loadRegistryData.php",
-                {parameter: $(this).val(), filter_parameter_select: $('#filter_option').val() },
-                function(success) {
-                    $('#data_field').html(success);
-                    
-                }
-            );
-        });
-    </script>  
+                    $("#filter_parameter").click(function(){    
+                        $.post( 
+                            "../ajax_scripts/loadRegistryData.php",
+                            {parameter: $(this).val(), filter_parameter_select: $('#filter_option').val() },
+                            function(success) {
+                                $('#data_field').html(success);    
+                            }
+                        );
+                    });
+    
+                    $("#search_data").keyup(function(){
+                        $.post( 
+                            "../ajax_scripts/loadRegistryData.php",
+                            {company_search_name: $(this).val() },
+                            function(data) {
+                                $('#data_field').html(data);
+                            }
+                        );
+                    });  
+                });
+            </script>
+    </body>
 </html>
