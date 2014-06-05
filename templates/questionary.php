@@ -13,7 +13,9 @@ $questNum = new QuestNumber();
 	<link rel="shortcut icon" href="docs/images/favicon.ico" type="image/x-icon">
 	<link rel="apple-touch-icon-precomposed" href="docs/images/apple-touch-icon.png">
         <link rel="stylesheet" href="../css/uikit.css">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
         <script src="../js/jquery/jquery-1.10.2.js"></script>
+        <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
         <script src="../js/functions/function_AddOrDeleteFields.js"></script>
         <script src="../js/functions/function_CheckLegalForm.js"></script>
         <script src="../js/functions/function_EmailChecking.js"></script>
@@ -22,6 +24,8 @@ $questNum = new QuestNumber();
         <script src="../js/functions/function_OnlyNumbersField.js"></script>
         <script src="../js/functions/function_RequiredFields.js"></script>
     </head>
+    
+    
     <body class="tm-background">
         <div class="tm-header">
             <div class="uk-container uk-container-center uk-header-bg">
@@ -182,8 +186,8 @@ $questNum = new QuestNumber();
                         <div class="uk-grid">
                             <div class="uk-width-1-1">
                                 <label class="uk-form-label" for="form-gs-street">Секции выбора услуг для клиента</label>
-                                <div id="ServiceBlockGroup"> 
-                                </div>									<input type="button" onclick="addSection(); return false;" value="Добавить секцию">								<input type="hidden" id="countSections" value="1">
+                                <div id="ServiceBlockGroup"></div>
+                                <input type="button" onclick="addSection(); return false;" value="Добавить секцию">								<input type="hidden" id="countSections" value="1">
                             </div>
                         </div>		
                         <hr/>
@@ -197,12 +201,12 @@ $questNum = new QuestNumber();
                             </div>
                             <div class="uk-width-1-4">
                                 <div class="uk-form-controls uk-margin-top">
-                                    <input type="button" id="previewButton" value="Предпросмотр" onclick="SelectName()">
+                                    <input type="button" id="previewButton" value="Предпросмотр">
                                 </div>
                             </div>
                             <div class="uk-width-1-4">
                                 <div class="uk-form-controls uk-margin-top">
-                                    <input type="button" value="Сохранить">
+                                    <input type="button" id="saveDraft" value="Сохранить">
                                 </div>
                             </div>
                             <div class="uk-width-1-4">
@@ -215,18 +219,9 @@ $questNum = new QuestNumber();
                 </form>
             </div>
         </div>
-       
-    <script type="text/javascript">
-        
-       document.getElementById('previewButton').onclick = function(){
-           
-        popup = window.open("preview", "Popup", "width=1024,height=768");
-        var my = popup.document.getElementById('txt').value; 
-        popup.focus();
-        my = document.getElementById('form-gs-street1').value;
-};
-    </script>
-     
+        <div id="dialog-modal" title="Предпросмотр коммерческого предложения" hidden>
+            <p id="customer_name"></p>
+        </div>
     <script>
     function updateSelectCountry(selectCountryId) {
         $.ajax({
@@ -272,6 +267,47 @@ $questNum = new QuestNumber();
             $('#select_podservice_id'+id).html(data);		
         });    
     }
+    
+    $("#saveDraft").click(function(){    
+       $.post( 
+            "../system/getDataFromDraft.php",
+            {   c_name: $("input[name*='cust_name']").val(), 
+                c_surn: $("input[name*='cust_surname']").val(),
+		c_midd: $("input[name*='cust_middle']").val(),
+		c_comp: $("input[name*='cust_companyname']").val(),
+		c_psit: $("input[name*='cust_position']").val(),
+		c_mail: $("input[name*='cust_email']").val(),
+		c_prim: $("input[name*='cust_primphone']").val(),
+		c_addt: $("input[name*='cust_addphone']").val(),
+		c_cntr: $("input[name*='cust_country']").val(),
+		c_city: $("input[name*='cust_city']").val(),
+		c_trst: $("input[name*='cust_trustee']").val(),
+		c_knab: $("select[name*='cust_knowabout']").val(),
+		c_ques: $("area[name*='cust_questions']").val(),
+		c_answ: $("area[name*='cust_answers']").val()
+            },
+            function(success) {
+                alert('Анкета была сохранена как черновик! '+success);   
+            }
+        );
+    });
+    
+    $(document).ready(function(){
+        $("#previewButton").click(function(){ // Click to only happen on announce links
+            $(function() {
+                $( "#dialog-modal" ).dialog({
+                    of: $( "#parent" ),
+                    resizable: false,
+                    modal: true,
+                    width:1024, 
+                    height: 800,
+                    my: "center center", 
+                    at: "center center"
+                });
+            });
+        });
+    });
+    
     </script>
     </body>
 </html>

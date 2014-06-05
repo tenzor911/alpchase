@@ -12,10 +12,10 @@ $cust_position = $_REQUEST['c_psit'];
 $cust_email = $_REQUEST['c_mail'];
 $cust_primphone = $_REQUEST['c_prim'];
 $cust_addphone = $_REQUEST['c_addt'];
-$cust_country = $_REQUEST['c_cntr'];
+$cust_country = $_REQUEST['cust_cntr'];
 $cust_city = $_REQUEST['c_city'];
 $cust_trustee = $_REQUEST['c_trst'];
-$cust_knowabout = $_REQUEST['c_knab'];
+$cust_knowabout = $_POST['c_knab'];
 $cust_questions = $_REQUEST['c_ques'];
 $cust_answers = $_REQUEST['c_answ'];
 
