@@ -44,7 +44,7 @@ $questNum = new QuestNumber();
                             <div class="uk-width-1-1">
                                 <label class="uk-form-label" for="form-gs-street">Имя (обязательное поле)</label>
                                 <div class="uk-form-controls">
-                                    <input type="text" id="form-gs-street1" name="cust_name" placeholder="Введите ваше имя" class="uk-width-1-1">
+                                    <input type="text" id="form-gs-street1" name="cust_name" placeholder="Введите ваше имя" value="" class="uk-width-1-1">
                                 </div>
                             </div>
                         </div>
@@ -219,8 +219,8 @@ $questNum = new QuestNumber();
                 </form>
             </div>
         </div>
-        <div id="dialog-modal" title="Предпросмотр коммерческого предложения" hidden>
-            <p id="customer_name"></p>
+        <div id="dialog-modal" title="Предпросмотр коммерческого предложения" >
+            <div class="c_name"></div>
         </div>
     <script>
     function updateSelectCountry(selectCountryId) {
@@ -308,6 +308,14 @@ $questNum = new QuestNumber();
         });
     });
     
+    jQuery(function($) {
+        var input = $("input[name*='cust_name']");
+        var preview = $('#dialog-modal div.c_name');
+
+        input.keyup(function(e) {
+            preview.text(input.val());
+        });
+    });
     </script>
     </body>
 </html>
