@@ -3,10 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/tenzor/Documents/xampp/htdocs/alpchase/templates/preview.html</file>
+            <file>file:/C:/Users/tenzor/Documents/xampp/htdocs/alpchase/templates/navigation.php</file>
+            <file>file:/C:/Users/tenzor/Documents/xampp/htdocs/alpchase/ajax_scripts/loadDraftData.php</file>
+            <file>file:/C:/Users/tenzor/Documents/xampp/htdocs/alpchase/system/getDataFromDraft.php</file>
+            <file>file:/C:/Users/tenzor/Documents/xampp/htdocs/alpchase/system/getDataFromQuestionary.php</file>
+            <file>file:/C:/Users/tenzor/Documents/xampp/htdocs/alpchase/templates/preview.php</file>
+            <file>file:/C:/Users/tenzor/Documents/xampp/htdocs/alpchase/js/functions/function_LoadRegistryData.js</file>
+            <file>file:/C:/Users/tenzor/Documents/xampp/htdocs/alpchase/ajax_scripts/filterDataUpdate.php</file>
+            <file>file:/C:/Users/tenzor/Documents/xampp/htdocs/alpchase/ajax_scripts/loadRegistryData.php</file>
+            <file>file:/C:/Users/tenzor/Documents/xampp/htdocs/alpchase/js/functions/function_FormPreview.js</file>
+            <file>file:/C:/Users/tenzor/Documents/xampp/htdocs/alpchase/templates/registry.php</file>
             <file>file:/C:/Users/tenzor/Documents/xampp/htdocs/alpchase/templates/questionary.php</file>
-            <file>file:/C:/Users/tenzor/Documents/xampp/htdocs/alpchase/templates/Popup.html</file>
-            <file>file:/C:/Users/tenzor/Documents/xampp/htdocs/alpchase/templates/ind.html</file>
+            <file>file:/C:/Users/tenzor/Documents/xampp/htdocs/alpchase/templates/drafts.php</file>
+            <file>file:/C:/Users/tenzor/Documents/xampp/htdocs/alpchase/js/functions/function_RegistrySearch.js</file>
         </group>
     </open-files>
 </project-private>

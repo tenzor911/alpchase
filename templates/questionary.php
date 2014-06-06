@@ -219,8 +219,14 @@ $questNum = new QuestNumber();
                 </form>
             </div>
         </div>
-        <div id="dialog-modal" title="Предпросмотр коммерческого предложения" >
-            <div class="c_name"></div>
+        <div id="dialog-modal" title="Предпросмотр коммерческого предложения" hidden>
+            Коммерческое предложение
+            <br>
+            <br>
+            ФИО: <span class="p_name"></span> <span class="p_surn"></span> <span class="p_midd"></span>, Компания: <span class="p_comp"></span>, Дата: <span class="p_data"><?php echo date("d.m.y");?></span> 
+            <br>
+            <br>
+            Вас приветствует компания ALPS & CHASE и любезно просит ознакомиться с нашим коммерческим предложением:
         </div>
     <script>
     function updateSelectCountry(selectCountryId) {
@@ -283,8 +289,8 @@ $questNum = new QuestNumber();
 		c_city: $("input[name*='cust_city']").val(),
 		c_trst: $("input[name*='cust_trustee']").val(),
 		c_knab: $("select[name*='cust_knowabout']").val(),
-		c_ques: $("area[name*='cust_questions']").val(),
-		c_answ: $("area[name*='cust_answers']").val()
+		c_ques: $("textarea[name*='cust_questions']").val(),
+		c_answ: $("textarea[name*='cust_answers']").val()
             },
             function(success) {
                 alert('Анкета была сохранена как черновик! '+success);   
@@ -296,24 +302,45 @@ $questNum = new QuestNumber();
         $("#previewButton").click(function(){ // Click to only happen on announce links
             $(function() {
                 $( "#dialog-modal" ).dialog({
+                    position: "top",
                     of: $( "#parent" ),
                     resizable: false,
                     modal: true,
                     width:1024, 
-                    height: 800,
-                    my: "center center", 
-                    at: "center center"
+                    height: 800
                 });
             });
         });
     });
     
     jQuery(function($) {
-        var input = $("input[name*='cust_name']");
-        var preview = $('#dialog-modal div.c_name');
+        var input_name = $("input[name*='cust_name']");
+        var preview_name = $('#dialog-modal span.p_name');
+        
+        var input_surn = $("input[name*='cust_surn']");
+        var preview_surn = $('#dialog-modal span.p_surn');
+        
+        var input_midd = $("input[name*='cust_midd']");
+        var preview_midd = $('#dialog-modal span.p_midd');
+        
+        var input_comp = $("input[name*='cust_companyname']");
+        var preview_comp = $('#dialog-modal span.p_comp');
+        
 
-        input.keyup(function(e) {
-            preview.text(input.val());
+        input_name.keyup(function(e) {
+            preview_name.text(input_name.val());
+        });
+        
+        input_surn.keyup(function(e) {
+            preview_surn.text(input_surn.val());
+        });
+        
+        input_midd.keyup(function(e) {
+            preview_midd.text(input_midd.val());
+        });
+        
+        input_comp.keyup(function(e) {
+            preview_comp.text(input_comp.val());
         });
     });
     </script>
