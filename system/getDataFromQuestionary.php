@@ -65,29 +65,23 @@ $services_arr = $_POST['services'];
 $podservices_arr = $_POST['podservices'];
 print_r( $_POST);
 
-foreach( $countries_arr as $country_key => $value ) {
+foreach( $countries_arr as $country_key => $value ) {	
     $country_id = intval( $countries_arr[$country_key] );	
     if( $country_id > 0 ) {			
         foreach( $services_arr as $key => $value ) {				
-            if( isset( $services_arr[$country_key][$key] )) { 
-                $service_id = intval( $services_arr[$country_key][$key] ); 
-            } else {
+            if( isset( $services_arr[$country_key][$key] ) ) $service_id = intval( $services_arr[$country_key][$key] ); 
+            else 
                 $service_id = 0;			
-                if( isset( $services_arr[$country_key][$key] ) ) {
-                    $podservice_id = intval( $podservices_arr[$country_key][$key] ); 
-                } else {
-                    $podservice_id = 0;			
-                    if( $service_id > 0 ) {	
-                        mysql_query( "INSERT INTO `order_basket` (`customer_id`, `country_id`, `service_id`, `podservice_id`) VALUES ('{$customer_id}', '{$country_id}', '{$service_id}', '{$podservice_id}')" );				
-                        echo "INSERT INTO `order_basket` (`customer_id`, `country_id`, `service_id`, `podservice_id`) VALUES ('{$customer_id}', '{$country_id}', '{$service_id}', '{$podservice_id}')<br>";			
-                    }		
-                }
-            }
-        }
+            if( isset( $services_arr[$country_key][$key] ) ) $podservice_id = intval( $podservices_arr[$country_key][$key] ); 
+            else 
+                $podservice_id = 0;			
+            if( $service_id > 0 ) {	
+                mysql_query( "INSERT INTO `order_basket` (`customer_id`, `country_id`, `service_id`, `podservice_id`) VALUES ('{$customer_id}', '{$country_id}', '{$service_id}', '{$podservice_id}')" );				
+                echo "INSERT INTO `order_basket` (`customer_id`, `country_id`, `service_id`, `podservice_id`) VALUES ('{$customer_id}', '{$country_id}', '{$service_id}', '{$podservice_id}')<br>";			
+            }		
+        }	
     }
 }
-
-
 
 header('Refresh: 3; URL=../templates/questionary');
 ?>

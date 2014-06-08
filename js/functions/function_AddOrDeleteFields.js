@@ -45,6 +45,4 @@ $(document).ready(function(){
 	
     $("#countSections").val('0');
 	addSection();
-	
-	
 });  

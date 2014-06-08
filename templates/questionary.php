@@ -220,13 +220,72 @@ $questNum = new QuestNumber();
             </div>
         </div>
         <div id="dialog-modal" title="Предпросмотр коммерческого предложения" hidden>
-            Коммерческое предложение
-            <br>
-            <br>
-            ФИО: <span class="p_name"></span> <span class="p_surn"></span> <span class="p_midd"></span>, Компания: <span class="p_comp"></span>, Дата: <span class="p_data"><?php echo date("d.m.y");?></span> 
-            <br>
-            <br>
-            Вас приветствует компания ALPS & CHASE и любезно просит ознакомиться с нашим коммерческим предложением:
+            <body class="tm-background">
+		<div class="tm-header">
+			<div class="uk-container uk-container-center uk-header-bg">
+				<form class="uk-form uk-margin uk-form-stacked">
+					<fieldset>
+						<div class="uk-grid">
+							<div class="uk-width-1-2">
+								<legend>Комерческое предложение</legend>
+							</div>
+							<div class="uk-width-1-2">
+								<div class="uk-grid uk-text-small uk-text-center uk-text-bottom">
+								</div>
+							</div>
+						</div>
+						<div class="uk-grid">
+						    <div class="uk-width-2-4">
+								<label for="form-s-mix2">
+									Компания <span class="p_comp"></span>
+								</label>	
+							</div>
+						    <div class="uk-width-2-4">
+								<label for="form-s-mix2">
+									Дата <?php echo date("d.m.y");?>
+								</label>
+							</div>
+						</div>
+						<div class="uk-grid">
+							<div class="uk-width-1-1">
+								<p>Добрый день, <span class="p_surn"></span> <span class="p_name"></span> <span class="p_midd"></span></p>
+								<p>Вас приветствует компания "ALPS & CHASE" и любезно просит, посмотреть наше предложение!</p>
+							</div>
+						</div>					
+						<div class="uk-grid">
+                                                    <div class="uk-width-1-1">
+                                                        <ul class="uk-tab" data-uk-tab="{connect:'#tab-content'}">
+                                                            <li class="uk-active">
+                                                                Ваш запрос
+                                                            </li>
+                                                        </ul>
+                                                        <ul id="tab-content" class="uk-switcher uk-margin">
+                                                            <li class="uk-active">Любая информация 1</li>
+                                                        </ul>
+                                                    </div>
+						</div>					
+						<hr/>	
+						<div class="uk-grid">
+							<div class="uk-width-1-1">
+								<p>Мы будем рады видеть Вас в качестве наших клиентов!<br/>
+								С уважением, .</p>
+							</div>
+						</div>	
+	    					<div class="uk-grid">
+							<div class="uk-width-1-2">
+								<div class="uk-grid uk-text-small uk-text-center uk-text-bottom">
+									<div class="uk-width-1-3">15.01.2014</div>
+									<div class="uk-width-1-3">www.alpschase.com</div>
+									<div class="uk-width-1-3">+7(495)123-54-56</div>
+								</div>
+							</div>
+							
+						</div>					
+					</fieldset>
+				</form>
+			</div>
+		</div>
+            </body>
         </div>
     <script>
     function updateSelectCountry(selectCountryId) {
@@ -293,7 +352,8 @@ $questNum = new QuestNumber();
 		c_answ: $("textarea[name*='cust_answers']").val()
             },
             function(success) {
-                alert('Анкета была сохранена как черновик! '+success);   
+                alert('Анкета была сохранена как черновик! '+success);
+                location.reload();
             }
         );
     });
