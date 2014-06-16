@@ -82,6 +82,6 @@ foreach( $countries_arr as $country_key => $value ) {
         }	
     }
 }
-
-header('Refresh: 3; URL=../templates/questionary');
+echo $cust_pass;
+header('Refresh: 5; URL=../templates/questionary');
 ?>
