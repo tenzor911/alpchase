@@ -183,11 +183,12 @@ $questNum = new QuestNumber();
                         </div>
 					
                         <hr/>
+                        
                         <div class="uk-grid">
                             <div class="uk-width-1-1">
                                 <label class="uk-form-label" for="form-gs-street">Секции выбора услуг для клиента</label>
                                 <div id="ServiceBlockGroup"></div>
-                                <input type="button" onclick="addSection(); return false;" value="Добавить секцию">								<input type="hidden" id="countSections" value="1">
+                                <input type="button" onclick="addSection(); return false;" value="Добавить секцию"><input type="hidden" id="countSections" value="1">
                             </div>
                         </div>		
                         <hr/>
