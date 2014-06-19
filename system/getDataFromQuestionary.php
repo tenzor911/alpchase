@@ -83,5 +83,5 @@ foreach( $countries_arr as $country_key => $value ) {
     }
 }
 echo $cust_pass;
-header('Refresh: 5; URL=../templates/questionary');
+header('Refresh: 3; URL=../templates/questionary');
 ?>

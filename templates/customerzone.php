@@ -13,9 +13,19 @@ if(!$_SESSION['email']){
 
 echo "Welcome ".$_SESSION['email']."! <a href='../exit'>Logout Here</a></h1>";
 
-$customer_data = mysql_query("SELECT customer_name FROM users_customers WHERE customer_email = '".$_SESSION['email']."'");
-
+$customer_data = mysql_query("SELECT customer_id, quest_date, customer_name, customer_surn, customer_midd, customer_compname FROM users_customers WHERE customer_email = '".$_SESSION['email']."'");
 $data = mysql_fetch_assoc($customer_data);
+
+$cust_id = $data['customer_id'];
+
+$order = mysql_query("SELECT system_countries.country_name, system_services.service_name, system_podservice.podservice_name
+FROM system_services 
+INNER JOIN (system_podservice 
+INNER JOIN (users_customers 
+INNER JOIN (system_countries 
+INNER JOIN order_basket ON system_countries.country_id = order_basket.country_id) ON users_customers.customer_id = order_basket.customer_id) ON system_podservice.podservice_id = order_basket.podservice_id) ON system_services.service_id = order_basket.service_id WHERE (((order_basket.customer_id)='37'));");
+
+
 
 echo "<hr>";
 ?>
@@ -60,19 +70,19 @@ echo "<hr>";
                     <div class="uk-grid">
                         <div class="uk-width-1-3">
                             <label for="form-s-mix2">
-                                Ф.И.О <?php echo $data['customer_name']?>
+                                Ф.И.О <?php echo $data['customer_name']." ".$data['customer_surn'];?>
                             </label>
                             
                         </div>
                         <div class="uk-width-1-3">
                             <label for="form-s-mix2">
-                                Компания
+                                Компания <?php echo $data['customer_compname'];?>
                             </label>
                             
                         </div>
                         <div class="uk-width-1-3">
                             <label for="form-s-mix2">
-                                Дата
+                                Дата <?php echo $data['quest_date'];?>
                             </label>
                             
                         </div>
@@ -80,14 +90,20 @@ echo "<hr>";
                     <div class="uk-grid">
                         <div class="uk-width-1-1">
                            <p>Добрый день, Иван Иванович</p>
-                           <p>Вас приветствует компания "ALPS and CHASE" и любезно просит бля, посмотреть наше предложение!</p>
+                           <p>Вас приветствует компания "ALPS and CHASE" и любезно просит, посмотреть наше предложение!</p>
                         </div>
                     </div>					
                     <div class="uk-grid">
                         <div class="uk-width-1-1">
                             <ul class="uk-tab" data-uk-tab="{connect:'#tab-content'}">
                                 <li class="uk-active">
-                                    <a href="#">Ваш запрос</a>
+                                    <a href="#">Ваш запрос:</a> <p>
+                                        <?php while ($order_data = mysql_fetch_assoc($order)) {?>
+                                        <?php echo $order_data['country_name'];?><p>
+                                        <?php echo $order_data['service_name'];?><p>
+                                        <?php echo $order_data['podservice_name'];?><p>
+                                            <hr>
+                                        <?php }?>
                                 </li>
                                 <li class="">
                                     <a href="#">В чем мы можем быть Вам полезны?</a>

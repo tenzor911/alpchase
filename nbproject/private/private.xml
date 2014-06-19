@@ -6,6 +6,7 @@
             <file>file:/C:/Users/tenzor/Documents/xampp/htdocs/alpchase/ajax_scripts/loadDraftData.php</file>
             <file>file:/C:/Users/tenzor/Documents/xampp/htdocs/alpchase/templates/navigation.php</file>
             <file>file:/C:/Users/tenzor/Documents/xampp/htdocs/alpchase/templates/customerzone.php</file>
+            <file>file:/C:/Users/tenzor/Documents/xampp/htdocs/alpchase/system/getDataFromDraft.php</file>
             <file>file:/C:/Users/tenzor/Documents/xampp/htdocs/alpchase/ajax_scripts/podserviceListUpdate.php</file>
             <file>file:/C:/Users/tenzor/Documents/xampp/htdocs/alpchase/ajax_scripts/countryListUpdate.php</file>
             <file>file:/C:/Users/tenzor/Documents/xampp/htdocs/alpchase/system/getDataFromQuestionary.php</file>
@@ -19,6 +20,7 @@
             <file>file:/C:/Users/tenzor/Documents/xampp/htdocs/alpchase/ajax_scripts/emailDatabaseCheck.php</file>
             <file>file:/C:/Users/tenzor/Documents/xampp/htdocs/alpchase/templates/drafts.php</file>
             <file>file:/C:/Users/tenzor/Documents/xampp/htdocs/alpchase/templates/questionary.php</file>
+            <file>file:/C:/Users/tenzor/Documents/xampp/htdocs/alpchase/system/getQuestNumber.php</file>
             <file>file:/C:/Users/tenzor/Documents/xampp/htdocs/alpchase/system/draftSave.php</file>
         </group>
     </open-files>
