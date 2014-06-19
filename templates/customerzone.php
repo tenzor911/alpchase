@@ -23,7 +23,7 @@ FROM system_services
 INNER JOIN (system_podservice 
 INNER JOIN (users_customers 
 INNER JOIN (system_countries 
-INNER JOIN order_basket ON system_countries.country_id = order_basket.country_id) ON users_customers.customer_id = order_basket.customer_id) ON system_podservice.podservice_id = order_basket.podservice_id) ON system_services.service_id = order_basket.service_id WHERE (((order_basket.customer_id)='37'));");
+INNER JOIN order_basket ON system_countries.country_id = order_basket.country_id) ON users_customers.customer_id = order_basket.customer_id) ON system_podservice.podservice_id = order_basket.podservice_id) ON system_services.service_id = order_basket.service_id WHERE (((order_basket.customer_id)=".$cust_id."));");
 
 
 
@@ -50,7 +50,7 @@ echo "<hr>";
                     <div class="uk-grid">
                         <div class="uk-width-1-2">
                             <legend>
-                                Комерческое предложение
+                                Коммерческое предложение
                             </legend>
                         </div>
                         <div class="uk-width-1-2">
@@ -98,12 +98,7 @@ echo "<hr>";
                             <ul class="uk-tab" data-uk-tab="{connect:'#tab-content'}">
                                 <li class="uk-active">
                                     <a href="#">Ваш запрос:</a> <p>
-                                        <?php while ($order_data = mysql_fetch_assoc($order)) {?>
-                                        <?php echo $order_data['country_name'];?><p>
-                                        <?php echo $order_data['service_name'];?><p>
-                                        <?php echo $order_data['podservice_name'];?><p>
-                                            <hr>
-                                        <?php }?>
+                                     
                                 </li>
                                 <li class="">
                                     <a href="#">В чем мы можем быть Вам полезны?</a>
@@ -113,7 +108,14 @@ echo "<hr>";
                                 </li>
                             </ul>
                             <ul id="tab-content" class="uk-switcher uk-margin">
-                                <li class="uk-active">Любая информация 1</li>
+                                <li class="uk-active">
+                                        <?php while ($order_data = mysql_fetch_assoc($order)) {?><p>
+                                        <?php echo $order_data['country_name'];?><p>
+                                        <?php echo $order_data['service_name'];?><p>
+                                        <?php echo $order_data['podservice_name'];?><p>
+                                            <hr>
+                                        <?php }?></li>
+                                
                                 <li class="">Профиль компании
                                             Услуги
                                                 (по странам)
