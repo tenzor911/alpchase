@@ -11,7 +11,7 @@ if(!$_SESSION['uname']){
     header("location: ../index");
 }
 
-echo "Welcome ".$_SESSION['uname']."! <a href='../logout'>Logout Here</a></h1>";
+echo "Добро пожаловать! Вы зашли, как: ".$_SESSION['uname']."!";
 
 ?>
 
@@ -26,8 +26,10 @@ echo "Welcome ".$_SESSION['uname']."! <a href='../logout'>Logout Here</a></h1>";
         <script type="text/javascript" src="../js/jquery/jquery-1.10.2.js"> </script>
         <link rel="stylesheet" type="text/css" href="../css/styleRegistry.css">   </link>   
     </head>
-    <body onload="refreshRegistryData()">
-        <hr></hr>
+    <body>
+        <hr>      
+            <input type="button" value="создать новую анкету" onclick="location.href='../templates/questionary'"><input type="button" value="просмотр реестра" onclick="location.href='../templates/registry'"><input type="button" value="выход из системы" onclick="location.href='../logout'">
+        <hr>
         <center>
             <select name='' id="filter_option">
                 <option value='null'>критерий фильтра не указан</option>

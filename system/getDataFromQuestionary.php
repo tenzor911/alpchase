@@ -63,7 +63,6 @@ $customer_id = mysql_insert_id();
 $countries_arr = $_POST['countries'];
 $services_arr = $_POST['services'];
 $podservices_arr = $_POST['podservices'];
-print_r( $_POST);
 
 foreach( $countries_arr as $country_key => $value ) {	
     $country_id = intval( $countries_arr[$country_key] );	
@@ -77,11 +76,11 @@ foreach( $countries_arr as $country_key => $value ) {
                 $podservice_id = 0;			
             if( $service_id > 0 ) {	
                 mysql_query( "INSERT INTO `order_basket` (`customer_id`, `country_id`, `service_id`, `podservice_id`) VALUES ('{$customer_id}', '{$country_id}', '{$service_id}', '{$podservice_id}')" );				
-                echo "INSERT INTO `order_basket` (`customer_id`, `country_id`, `service_id`, `podservice_id`) VALUES ('{$customer_id}', '{$country_id}', '{$service_id}', '{$podservice_id}')<br>";			
+                //echo "INSERT INTO `order_basket` (`customer_id`, `country_id`, `service_id`, `podservice_id`) VALUES ('{$customer_id}', '{$country_id}', '{$service_id}', '{$podservice_id}')<br>";			
             }		
         }	
     }
 }
-echo $cust_pass;
+//echo $cust_pass;
 header('Refresh: 3; URL=../templates/questionary');
 ?>
