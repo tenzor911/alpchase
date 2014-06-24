@@ -19,7 +19,7 @@ $questNum = new QuestNumber();
         <script src="../js/functions/function_AddOrDeleteFields.js"></script>
         <script src="../js/functions/function_CheckLegalForm.js"></script>
         <script src="../js/functions/function_EmailChecking.js"></script>
-        <script src="../js/functions/function_FormPreview.js.js"></script>
+        <script src="../js/functions/function_FormPreview.js"></script>
         <script src="../js/functions/function_MakeNewPass.js"></script>
         <script src="../js/functions/function_OnlyNumbersField.js"></script>
         <script src="../js/functions/function_RequiredFields.js"></script>
@@ -31,7 +31,7 @@ $questNum = new QuestNumber();
             <div class="uk-container uk-container-center uk-header-bg">
                 <form class="uk-form uk-margin uk-form-stacked" method="post" action="../system/getDataFromQuestionary.php" id="QuestionaryForm">
                     <fieldset class="action">
-                        <legend><center>Анкета № <?php $questNum->countQuestCustomer()?> / Дата <?php echo date("d.m.y");?></center></legend>
+                        <legend><center>Анкета № <input type="text" id="form-gs-street1" name="cust_id" value="<?php $questNum->countQuestCustomer()?>" class="uk-width-1-6" readonly > / Дата <input type="text" id="form-gs-street1" name="cust_date" value="<?php echo date("d.m.y");?>" class="uk-width-1-6" readonly></center></legend>
                         <div class="uk-grid">
                             <div class="uk-width-1-1">
                                 <div class="uk-form-controls">
@@ -335,22 +335,12 @@ $questNum = new QuestNumber();
     }
     
     $("#saveDraft").click(function(){    
+       formData = $("#QuestionaryForm").serialize();
        $.post( 
             "../system/getDataFromDraft.php",
-            {   c_name: $("input[name*='cust_name']").val(), 
-                c_surn: $("input[name*='cust_surname']").val(),
-		c_midd: $("input[name*='cust_middle']").val(),
-		c_comp: $("input[name*='cust_companyname']").val(),
-		c_psit: $("input[name*='cust_position']").val(),
-		c_mail: $("input[name*='cust_email']").val(),
-		c_prim: $("input[name*='cust_primphone']").val(),
-		c_addt: $("input[name*='cust_addphone']").val(),
-		c_cntr: $("input[name*='cust_country']").val(),
-		c_city: $("input[name*='cust_city']").val(),
-		c_trst: $("input[name*='cust_trustee']").val(),
-		c_knab: $("select[name*='cust_knowabout']").val(),
-		c_ques: $("textarea[name*='cust_questions']").val(),
-		c_answ: $("textarea[name*='cust_answers']").val()
+            {   
+            myData: formData,
+            dataType: "json"
             },
             function(success) {
                 alert('Анкета была сохранена как черновик! '+success);
