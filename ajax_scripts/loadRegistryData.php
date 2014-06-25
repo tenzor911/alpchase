@@ -151,10 +151,19 @@ echo "
         }
         echo    "</td>";
         echo    "<td width='40'><center><a href='../system/questionaryEdit.php?edit=".$data['customer_id']."'><img src='../icons/bullet_edit.png' alt='редактировать' title='редактировать'></a></center></td>";
-        echo    "<td width='40'><center><a href='../system/questionaryDelete.php?delete=".$data['customer_id']."'><img src='../icons/bullet_cross.png' onclick='deleteCustomerData()' alt='удалить' title='удалить' ></a></center></td>";
         echo    "<td width='40'><center><a href='../system/questionarySendToDraft.php?change=".$data['customer_id']."'><img src='../icons/script_stop.png' alt='отправить в черновики' title='отправить в черновики'></a></center></td>";
+        echo    "<td width='40'><center><a href='#'><img src='../icons/bullet_cross.png' onclick='away(".$data['customer_id'].")' alt='удалить' title='удалить'></a></center></td>";
         echo "</tr>";
     }
     echo "</table>";   
 }
 ?>
+
+<script>
+    function away(dataNumber)   {
+        var answer = confirm ('Запись будет удалена! Продолжить?')
+        if (answer) { 
+            window.location='../system/questionaryDelete.php?delete='+dataNumber;  
+        }   
+    } 
+</script>

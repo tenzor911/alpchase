@@ -30,6 +30,6 @@ mysql_query("UPDATE users_customers SET "
         . "customer_city='$c_city' WHERE customer_id='$edit_id'");
 
 echo "Черновик сохранён!";
-header('Refresh: 1; URL=../templates/drafts');
+header('Refresh: 0; URL=../templates/drafts');
 
 ?>

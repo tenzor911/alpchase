@@ -9,6 +9,6 @@ mysql_query("SET CHARACTER SET 'utf8'");
 
 mysql_query("DELETE FROM users_customers WHERE customer_id = '$delete_id'");
 
-header('Refresh: 1; URL=../templates/registry');
+header('Refresh: 0; URL=../templates/registry');
 
 ?>

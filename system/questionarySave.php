@@ -31,6 +31,6 @@ mysql_query("UPDATE users_customers SET "
 
 echo "Запись сохранена!";
 
-header('Refresh: 1; URL=../templates/registry');
+header('Refresh: 0; URL=../templates/registry');
 
 ?>
