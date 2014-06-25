@@ -29,7 +29,8 @@ mysql_query("UPDATE users_customers SET "
         . "customer_country='$c_cntr', "
         . "customer_city='$c_city' WHERE customer_id='$edit_id'");
 
-echo "Черновик сохранён!";
-header('Refresh: 1; URL=../templates/drafts');
+echo "Запись сохранена!";
+
+header('Refresh: 1; URL=../templates/registry');
 
 ?>
