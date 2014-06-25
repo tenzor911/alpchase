@@ -15,17 +15,17 @@ if( isset($_POST["parameter"]) )
     echo "
         <table width='2200' border='1' cellpadding='0' cellspacing='0' align='center'>
             <tr>
-                <td width='40'><center>№</center></td>
-                <td width='60'><center>Дата</center></td>
-                <td width='200'><center>ФИО</center></td>
-                <td width='180'><center>Email</center></td>
-                <td width='140'><center>Телефон</center></td>
-                <td width='200'><center>Наименование компании</center></td>
-                <td width='120'><center>Страна обращения</center></td>
-                <td width='120'><center>Город обращения</center></td>
-                <td width='120'><center>Страна услуги</center></td>
-                <td width='200'><center>Наименование услуги</center></td>
-                <td width='200'><center>Опции</center></td>
+                <td width='40'><center><b>№</b></center></td>
+                <td width='60'><center><b>Дата</b></center></td>
+                <td width='200'><center><b>ФИО</b></center></td>
+                <td width='180'><center><b>Email</b></center></td>
+                <td width='140'><center><b>Телефон</b></center></td>
+                <td width='200'><center><b>Наименование компании</b></center></td>
+                <td width='120'><center><b>Страна обращения</b></center></td>
+                <td width='120'><center><b>Город обращения</b></center></td>
+                <td width='120'><center><b>Страна услуги</b></center></td>
+                <td width='200'><center><b>Наименование услуги</b></center></td>
+                <td width='240' colspan='3'><center><b>Опции</b></center></td>
             </tr>";
 
     while($data = mysql_fetch_assoc($result))
@@ -41,10 +41,10 @@ if( isset($_POST["parameter"]) )
         echo    "<td width='120'>".$data['customer_city']."</td>";
         echo    "<td width='120'>".$data['customer_country']."</td>";
         echo    "<td width='200'>".$data['customer_compname']."</td>";
-        echo    "<td width='200'><center><input type=button value=редактировать onclick=location.href='../system/draftEdit.php?edit=".$data['customer_id']." style='width:100;height:21'/>";
+        echo    "<td width='80'><center><input type=button value=редактировать onclick=location.href='../system/draftEdit.php?edit=".$data['customer_id']." style='width:100;height:21'/></td>";
         if ($data['customer_email'] != '')
         { 
-            echo " <input type=button value='известить клиента' onclick=location.href='../system/draftChange.php?change=".$data['customer_id']."' style='width:130;height:21'/></center></td>"; 
+            echo " <td width='80'><input type=button value='известить клиента' onclick=location.href='../system/draftChange.php?change=".$data['customer_id']."' style='width:130;height:21'/></center></td>"; 
         }
         echo "</tr>";
      }
@@ -57,17 +57,17 @@ if( isset($_POST["parameter"]) )
 echo "
     <table width='2200' border='1' cellpadding='0' cellspacing='0' align='center'>
         <tr>
-            <td width='40'><center>№</center></td>
-            <td width='60'><center>Дата</center></td>
-            <td width='200'><center>ФИО</center></td>
-            <td width='180'><center>Email</center></td>
-            <td width='140'><center>Телефон</center></td>
-            <td width='200'><center>Наименование компании</center></td>
-            <td width='120'><center>Страна обращения</center></td>
-            <td width='120'><center>Город обращения</center></td>
-            <td width='120'><center>Страна услуги</center></td>
-            <td width='200'><center>Наименование услуги</center></td>
-            <td width='200'><center>Опции</center></td>
+            <td width='40'><center><b>№</b></center></td>
+            <td width='60'><center><b>Дата</b></center></td>
+            <td width='200'><center><b>ФИО</b></center></td>
+            <td width='180'><center><b>Email</b></center></td>
+            <td width='140'><center><b>Телефон</b></center></td>
+            <td width='200'><center><b>Наименование компании</b></center></td>
+            <td width='120'><center><b>Страна обращения</b></center></td>
+            <td width='120'><center><b>Город обращения</b></center></td>
+            <td width='120'><center><b>Страна услуги</b></center></td>
+            <td width='200'><center><b>Наименование услуги</b></center></td>
+            <td width='200'><center><b>Опции</b></center></td>
         </tr>";
 
 
@@ -98,17 +98,17 @@ echo "
     echo "
     <table width='2200' border='1' cellpadding='0' cellspacing='0' align='center'>
         <tr>
-            <td width='40'><center>№</center></td>
-            <td width='60'><center>Дата</center></td>
-            <td width='200'><center>ФИО</center></td>
-            <td width='180'><center>Email</center></td>
-            <td width='140'><center>Телефон</center></td>
-            <td width='200'><center>Наименование компании</center></td>
-            <td width='120'><center>Страна обращения</center></td>
-            <td width='120'><center>Город обращения</center></td>
-            <td width='120'><center>Страна услуги</center></td>
-            <td width='200'><center>Наименование услуги</center></td>
-            <td width='200'><center>Опции</center></td>
+            <td width='40'><center><b>№</b></center></td>
+            <td width='60'><center><b>Дата</b></center></td>
+            <td width='200'><center><b>ФИО</b></center></td>
+            <td width='180'><center><b>Email</b></center></td>
+            <td width='140'><center><b>Телефон</b></center></td>
+            <td width='200'><center><b>Наименование компании</b></center></td>
+            <td width='120'><center><b>Страна обращения</b></center></td>
+            <td width='120'><center><b>Город обращения</b></center></td>
+            <td width='120'><center><b>Страна услуги</b></center></td>
+            <td width='200'><center><b>Наименование услуги</b></center></td>
+            <td width='240' colspan='3'><center><b>Опции</b></center></td>
         </tr>";
 
 
@@ -125,11 +125,13 @@ echo "
         echo    "<td width='120'><center>".$data['customer_city']."</td>";
         echo    "<td width='120'><center>".$data['customer_country']."</td>";
         echo    "<td width='200'><center>".$data['customer_compname']."</td>";
-        echo    "<td width='200'><center><input type=button value=редактировать onclick=location.href='../system/draftEdit.php?edit=".$data['customer_id']."' style='width:100;height:21'/>"; 
+        echo    "<td width='20'><center><a href='../system/draftEdit.php?edit=".$data['customer_id']."'><img src='../icons/bullet_edit.png'></a></center></td>"; 
+        echo    "<td width='20'>"; 
         if ($data['customer_email'] != '')
         { 
-            echo " <input type=button value='известить клиента' onclick=location.href='../system/draftChange.php?change=".$data['customer_id']." style='width:130;height:21'/></center></td>"; 
+            echo "<center><a href='../system/draftChange.php?change=".$data['customer_id']."'><img src='../icons/mail.png'></a></center></td>"; 
         }
+        echo    "<td width='20'><center><a href='../system/draftChange.php?change=".$data['customer_id']."'><img src='../icons/bullet_cross.png'></a></center></td>";
         echo "</tr>";
     }
     echo "</table>";

@@ -59,7 +59,7 @@ mysql_query("INSERT INTO users_customers "
         . "'$cust_answers',"
         . "'извещён')");//Услуги
 
-$customer_id = mysql_insert_id();
+$customer_id = $_REQUEST['cust_id'];
 $countries_arr = $_POST['countries'];
 $services_arr = $_POST['services'];
 $podservices_arr = $_POST['podservices'];
