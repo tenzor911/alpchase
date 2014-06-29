@@ -22,6 +22,7 @@ echo "Добро пожаловать! Вы зашли, как: ".$_SESSION['una
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>ALPCHASE - Реестр анкет клиентов</title>
+        <script type="text/javascript" src="../js/functions/function_DeleteStringData.js"></script>
         <script type="text/javascript" src="../js/jquery/jquery-1.10.2.js"> </script>
         <link rel="stylesheet" type="text/css" href="../css/styleRegistry.css">   </link>   
     </head>
@@ -44,6 +45,7 @@ echo "Добро пожаловать! Вы зашли, как: ".$_SESSION['una
         <div id="data_field" align="center">Загрузка данных...</div>
             <script>
                 $(document).ready(function() {
+                    
                     $("#filter_option").change(function(){
                         $.post( 
                             "../ajax_scripts/filterDataUpdate.php",

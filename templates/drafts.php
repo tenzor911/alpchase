@@ -22,8 +22,8 @@ echo "Добро пожаловать! Вы зашли, как: ".$_SESSION['una
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>ALPCHASE - Реестр черновиков</title>
-        <script type="text/javascript" src="../js/ajaxLoadRegistryData.js"> </script>
-        <script type="text/javascript" src="../js/jquery/jquery-1.10.2.js"> </script>
+        <script type="text/javascript" src="../js/functions/function_DeleteStringData.js"></script>
+        <script type="text/javascript" src="../js/jquery/jquery-1.10.2.js"></script>
         <link rel="stylesheet" type="text/css" href="../css/styleRegistry.css">   </link>   
     </head>
     <body>
@@ -31,18 +31,18 @@ echo "Добро пожаловать! Вы зашли, как: ".$_SESSION['una
             <input type="button" value="создать новую анкету" onclick="location.href='../templates/questionary'"><input type="button" value="просмотр реестра" onclick="location.href='../templates/registry'"><input type="button" value="выход из системы" onclick="location.href='../logout'">
         <hr>
         <center>
-            <select name='' id="filter_option">
+            <select id="filter_option">
                 <option value='null'>критерий фильтра не указан</option>
                 <option value='customer_country'>страна обращения</option>
                 <option value='customer_city'>город обращения</option>
                 <option value=''>страна услуги</option>
             </select>
-            <select name='' id="filter_parameter"></select>
+            <select id="filter_parameter"></select>
             <input type="text" value="" id="search_data" placeholder="введите название фирмы" style="width: 220px;">
             <input type="button" value="сброс критериев поиска" onclick="location.reload();">
         </center>
         <br></br>
-        <div id="data_field" align="center">Загрузка данных...</div>
+        <div id="data_field" align="center">Загрузка данных...</div>     
     </body>
     <script>
         $(document).ready(function() {
