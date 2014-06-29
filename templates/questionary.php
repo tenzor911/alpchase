@@ -1,5 +1,5 @@
 <?php
-include('../system/getQuestNumber.php');
+include('../classes/system/getQuestNumber.php');
 
 $questNum = new QuestNumber();
 

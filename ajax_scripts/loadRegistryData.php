@@ -16,13 +16,13 @@ $searchData = new registryLoaderSearch();
     <tr>
         <td width='40'><center><b>№</b></center></td>
         <td width='60'><center><b>Дата</b></center></td>
-        <td width='200'><center><b>ФИО</b></center></td>
+        <td width='60'><center><b>Статус</b></center></td>
+        <td width='300'><center><b>ФИО</b></center></td>
         <td width='180'><center><b>Email</b></center></td>
         <td width='140'><center><b>Телефон</b></center></td>
         <td width='200'><center><b>Наименование компании</b></center></td>
         <td width='120'><center><b>Страна обращения</b></center></td>
         <td width='120'><center><b>Город обращения</b></center></td>
-        <td width='120'><center><b>Страна услуги</b></center></td>
         <td width='200'><center><b>Наименование услуги</b></center></td>
         <td width='240' colspan='3'><center><b>Опции</b></center></td>
     </tr>
