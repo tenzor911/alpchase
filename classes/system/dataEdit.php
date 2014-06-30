@@ -1,3 +1,5 @@
+<script type="text/javascript" src="../../js/functions/function_AddOrDeleteFields.js"></script>
+
 <?php
 
 class dataEdit 
@@ -58,15 +60,19 @@ class dataEdit
                         <td colspan='3'><center><b>Секция услуг</b></center></td>
                       </tr> ";
                         
-                      
+                      echo "<div id='ServiceBlockGroup'></div>";
                       while ($basket_data = mysql_fetch_assoc($order_basket)) 
                       {
                             echo "<tr>";
-                            echo    "<td><center><b>".$basket_data['country_name']."</b></center></td>";
-                            echo    "<td><center><b>".$basket_data['service_name']."</b></center></td>";
-                            echo    "<td><center><b>".$basket_data['podservice_name']."</b></center></td>";
+                            echo    "<td><center><select><option value=''>".$basket_data['country_name']."</option></select></center></td>";
+                            echo    "<td><center><select><option value=''>".$basket_data['service_name']."</option></select></center></td>";
+                            echo    "<td><center><select><option value=''>".$basket_data['podservice_name']."</option></select></center></td>";
                             echo "</tr> ";
                       }
+                      
+                      
+                            
+                      
         }
     }
 }

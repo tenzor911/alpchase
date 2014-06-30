@@ -228,7 +228,7 @@ $questNum = new QuestNumber();
 					<fieldset>
 						<div class="uk-grid">
 							<div class="uk-width-1-2">
-								<legend>Комерческое предложение</legend>
+								<legend>Коммерческое предложение</legend>
 							</div>
 							<div class="uk-width-1-2">
 								<div class="uk-grid uk-text-small uk-text-center uk-text-bottom">
@@ -315,12 +315,12 @@ $questNum = new QuestNumber();
         function(data) {			
             $('.select_service'+id).each( 
                 function() {				
-                    $( this ).html(data);			
+                    $(this).html(data);			
                 }
             );			
             $('.select_podservice'+id).each( 
                 function() {				
-                    $( this ).html('<option value="0">Услуга не назначена</option>');			
+                    $(this).html('<option value="0">Услуга не назначена</option>');			
                 }
             );		
         });    
