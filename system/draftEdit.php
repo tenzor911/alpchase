@@ -16,7 +16,7 @@ $loadDataForEdit = new dataEdit();
         <link rel="stylesheet" type="text/css" href="css/grayhint.css">
         <script type="text/javascript" src="../js/functions/function_OnlyNumbersField.js"></script>
         <script type="text/javascript" src="../js/functions/function_EditRegistryData.js"></script>
-        <script type="text/javascript" src="jquery/jquery-1.10.2.js"></script>
+        <script type="text/javascript" src="../js/jquery/jquery-1.10.2.js"></script>
     </head>
     <body>
         <form action ='draftSave.php' method ='post'>
@@ -29,13 +29,13 @@ $loadDataForEdit = new dataEdit();
                 <tr>
                     <td width='200' colspan='3'><center><b>Опции</center></b></td>
                 </tr>
-                    <tr>
-                        <td height='26'><center><button type='button' onclick='dropData()'style='width:60px' alt='очистить все поля' title='очистить все поля'><img src='../icons/asterisk_red.png'></button></center></td>
-                        <td height='26'><center><button type='button' onclick='reviveData()' style='width:60px' alt='отменить все действия' title='отменить все действия'><img src='../icons/reload.png'></button></center></td>
-                        <td height='26'><center><button type='submit' style='width:60px' alt='сохранить изменения' title='сохранить изменения'><img src='../icons/disk_black.png'></button></center></td>
-                    </tr>
-                </table>         
-</form>    
+                <tr>
+                    <td height='26'><center><button type='button' style='width:60px' alt='очистить все поля' title='очистить все поля' onclick='dropData()'><img src='../icons/asterisk_red.png'></button></center></td>
+                    <td height='26'><center><button type='button' style='width:60px' alt='отменить все действия' title='отменить все действия' onclick='reviveData()'><img src='../icons/reload.png'></button></center></td>
+                    <td height='26'><center><button type='submit' style='width:60px' alt='сохранить изменения' title='сохранить изменения'><img src='../icons/disk_black.png'></button></center></td>
+                </tr>
+            </table>         
+        </form>
     </body>
 </html>
 

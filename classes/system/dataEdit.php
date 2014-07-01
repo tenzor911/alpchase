@@ -1,11 +1,17 @@
-<script type="text/javascript" src="../../js/functions/function_AddOrDeleteFields.js"></script>
-
 <?php
 
 class dataEdit 
-{
-    function loadDataForEdit($dataId)
+{   
+    
+    function loadJS()
     {
+        
+    }
+    
+    function loadDataForEdit($dataId)
+    {   echo "<script type='text/javascript' src='../js/functions/test.js'></script>";
+        echo "<script type='text/javascript' src='../js/jquery/jquery-1.10.2.js'></script>";
+        $row_counter = 0;
         if ($request_info=mysql_query("SELECT * FROM users_customers where customer_id ='$dataId'"))
         {
             $order_basket = mysql_query("SELECT system_countries.country_name, system_services.service_name, system_podservice.podservice_name
@@ -63,16 +69,21 @@ class dataEdit
                       echo "<div id='ServiceBlockGroup'></div>";
                       while ($basket_data = mysql_fetch_assoc($order_basket)) 
                       {
+                            $row_counter++;
+                            echo "<script>test(".$row_counter.", ".json_encode($basket_data['country_name']).");</script>";
                             echo "<tr>";
-                            echo    "<td><center><select><option value=''>".$basket_data['country_name']."</option></select></center></td>";
-                            echo    "<td><center><select><option value=''>".$basket_data['service_name']."</option></select></center></td>";
-                            echo    "<td><center><select><option value=''>".$basket_data['podservice_name']."</option></select></center></td>";
+                            echo    "<td><center><select name='countries[".$row_counter."]' id='select_country_id".$row_counter."' ></center></td>";
+                            echo    "<td><center><select name='services[".$row_counter."]' id='select_service_id".$row_counter."' class='select_service".$row_counter."'></select></center></td>";
+                            echo    "<td><center><select name='podservices[".$row_counter."]' id='select_podservice_id".$row_counter."' class='select_podservice".$row_counter."'></select></center></td>";
                             echo "</tr> ";
-                      }
-                      
-                      
-                            
+                      }  
                       
         }
+        
     }
 }
+?>
+
+
+      
+
