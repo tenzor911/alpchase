@@ -85,7 +85,7 @@ class dataEdit
                             echo    "<td><center><select name='countries[".$row_counter."]' id='select_country_id".$row_counter."' onchange='selectCountryAll(".$row_counter.",this.value);'></select></center></td>";
                             echo    "<td><center><select name='services[".$row_counter."]' id='select_service_id".$row_counter."' class='select_service".$row_counter."' onchange='selectService(".$row_counter.",this.value);'><option value=".$basket_data['service_id']." selected>".$basket_data['service_name']."</option></select></center></td>";
                             echo    "<td><center><select name='podservices[".$row_counter."]' id='select_podservice_id".$row_counter."' class='select_podservice".$row_counter."'><option value=".$basket_data['podservice_id']." selected>".$basket_data['service_name']."</option></select></select></center></td>";
-                            echo    "<td>test</td>";   
+                            echo    "<td><center><a href='#'><img src='../icons/bullet_cross.png' id='deleteData' class='.del' alt='удалить' title='удалить' onclick='deleteItem(".$row_counter.")'></a></center></td>";   
                             echo "</tr> ";
                       }  
     }

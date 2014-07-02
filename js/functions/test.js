@@ -39,3 +39,7 @@
         });    
     }
     
+    function deleteItem(item_id) {    
+        alert(item_id);
+        $('#select_country_id' + item_id).remove();
+    }

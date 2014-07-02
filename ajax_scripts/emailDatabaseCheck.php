@@ -4,9 +4,7 @@ include('../setup/mysql_settings.php');
 mysql_query("SET NAMES 'utf8'");
 mysql_query("SET CHARACTER SET 'utf8'");
 
-
-    $requestedEmail = $_REQUEST['name_d'];
-
+$requestedEmail = $_REQUEST['name_d'];
 
 $sql_get_emails = mysql_query("SELECT * FROM users_customers WHERE customer_email = '$requestedEmail'");
 
