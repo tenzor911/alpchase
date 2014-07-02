@@ -19,7 +19,7 @@
 <?php
     session_start();
 
-    include('./setup/mysql_settings.php');
+    require('./setup/mysql_settings.php');
 
     if(isset($_POST['login']))
 	{

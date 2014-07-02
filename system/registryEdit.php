@@ -27,15 +27,31 @@ $loadDataForEdit = new dataEdit();
                 </tr>
                 <?php $loadDataForEdit->loadDataForEdit($dataId); ?>
                 <tr>
-                    <td width='200' colspan='3'><center><b>Опции</center></b></td>
+                    <td width='200' colspan='4'><center><b>Опции</center></b></td>
                 </tr>
                     <tr>
                         <td height='26'><center><button type='button' onclick='dropData()'style='width:60px' alt='очистить все поля' title='очистить все поля'><img src='../icons/asterisk_red.png'></button></center></td>
                         <td height='26'><center><button type='button' onclick='reviveData()' style='width:60px' alt='отменить все действия' title='отменить все действия'><img src='../icons/reload.png'></button></center></td>
                         <td height='26'><center><button type='submit' style='width:60px' alt='сохранить изменения' title='сохранить изменения'><img src='../icons/disk_black.png'></button></center></td>
                     </tr>
-                </table>         
-</form>    
+            </table>  
+            <br>
+            <hr>
+            <br>
+            <table border='1' width='800' cellpadding='0' cellspacing='0' align='center'>
+                <tr>
+                    <td colspan='4'><center><b>Секция услуг</b></center></td>
+                </tr>
+                <tr>
+                    <td width='200'><center><b>Страна</b></center></td>
+                    <td width='200'><center><b>Услуга</b></center></td>
+                    <td width='200'><center><b>Подуслуга</b></center></td>
+                    <td width='200'><center><b>Опции</b></center></td>
+                </tr>
+                
+                    <?php $loadDataForEdit->loadCustomerBasket($dataId); ?>
+            </table>   
+        </form>    
     </body>
 </html>
 
