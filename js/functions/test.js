@@ -39,7 +39,26 @@
         });    
     }
     
-    function deleteItem(item_id) {    
-        alert(item_id);
-        $('#select_country_id' + item_id).remove();
+    function deleteItem(row_id, user_id, country_id, service_id, podservice_id) {    
+        var answer = confirm ('Секция услуг будет удалена! Продолжить?');
+        if (answer) 
+        $.post( "../ajax_scripts/deleteBasketItem.php", 
+        {user_index: user_id, 
+         country_index: country_id, 
+         service_index: service_id, 
+         podservice_index: podservice_id},
+         function(data) {			
+            $("#itemRowNumber"+row_id).remove();	
+        }); 
+    }
+    
+      function addSection(row_id, user_id, country_id, service_id, podservice_id) {    
+        $.post( "../ajax_scripts/deleteBasketItem.php", 
+        {user_index: user_id, 
+         country_index: country_id, 
+         service_index: service_id, 
+         podservice_index: podservice_id},
+         function(data) {			
+            $("#itemRowNumber"+row_id).remove();	
+        }); 
     }

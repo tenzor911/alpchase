@@ -48,8 +48,7 @@ $loadDataForEdit = new dataEdit();
                     <td width='200'><center><b>Подуслуга</b></center></td>
                     <td width='200'><center><b>Опции</b></center></td>
                 </tr>
-                
-                    <?php $loadDataForEdit->loadCustomerBasket($dataId); ?>
+                <?php $loadDataForEdit->loadCustomerBasket($dataId); ?>
             </table>   
         </form>    
     </body>

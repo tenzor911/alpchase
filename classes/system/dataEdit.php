@@ -62,7 +62,7 @@ class dataEdit
     {
         if ($request_info=mysql_query("SELECT * FROM users_customers where customer_id ='$dataId'"))
         {
-            $order_basket = mysql_query("SELECT system_countries.country_id, system_services.service_id, system_podservice.podservice_id, system_countries.country_name, system_services.service_name, system_podservice.podservice_name
+            $order_basket = mysql_query("SELECT users_customers.customer_id, system_countries.country_id, system_services.service_id, system_podservice.podservice_id, system_countries.country_name, system_services.service_name, system_podservice.podservice_name
                 FROM system_services 
                 INNER JOIN (system_podservice 
                 INNER JOIN (users_customers 
@@ -73,21 +73,17 @@ class dataEdit
             echo "<script type='text/javascript' src='../js/jquery/jquery-1.10.2.js'></script>";
             
             $row_counter = 0;
-            
-  
-                        
-                      echo "<div id='ServiceBlockGroup'></div>";
-                      while ($basket_data = mysql_fetch_assoc($order_basket)) 
-                      {
-                            $row_counter++;
-                            echo "<script>test(".$row_counter.", ".$basket_data['country_id'].", ".json_encode($basket_data['country_name']).");</script>";
-                            echo "<tr>";
-                            echo    "<td><center><select name='countries[".$row_counter."]' id='select_country_id".$row_counter."' onchange='selectCountryAll(".$row_counter.",this.value);'></select></center></td>";
-                            echo    "<td><center><select name='services[".$row_counter."]' id='select_service_id".$row_counter."' class='select_service".$row_counter."' onchange='selectService(".$row_counter.",this.value);'><option value=".$basket_data['service_id']." selected>".$basket_data['service_name']."</option></select></center></td>";
-                            echo    "<td><center><select name='podservices[".$row_counter."]' id='select_podservice_id".$row_counter."' class='select_podservice".$row_counter."'><option value=".$basket_data['podservice_id']." selected>".$basket_data['service_name']."</option></select></select></center></td>";
-                            echo    "<td><center><a href='#'><img src='../icons/bullet_cross.png' id='deleteData' class='.del' alt='удалить' title='удалить' onclick='deleteItem(".$row_counter.")'></a></center></td>";   
-                            echo "</tr> ";
-                      }  
+            while ($basket_data = mysql_fetch_assoc($order_basket)) 
+                {
+                    $row_counter++;
+                    echo "<script>test(".$row_counter.", ".$basket_data['country_id'].", ".json_encode($basket_data['country_name']).");</script>";
+                    echo    "<tr id='itemRowNumber".$row_counter."'>";
+                    echo        "<td><center><select name='countries[".$row_counter."]' id='select_country_id".$row_counter."' onchange='selectCountryAll(".$row_counter.",this.value);'></select></center></td>";
+                    echo        "<td><center><select name='services[".$row_counter."]' id='select_service_id".$row_counter."' class='select_service".$row_counter."' onchange='selectService(".$row_counter.",this.value);'><option value=".$basket_data['service_id']." selected>".$basket_data['service_name']."</option></select></center></td>";
+                    echo        "<td><center><select name='podservices[".$row_counter."]' id='select_podservice_id".$row_counter."' class='select_podservice".$row_counter."'><option value=".$basket_data['podservice_id']." selected>".$basket_data['service_name']."</option></select></select></center></td>";
+                    echo        "<td><center><a href='#'><img src='../icons/bullet_cross.png' id='deleteData' class='.del' alt='удалить' title='удалить' onclick='deleteItem(".$row_counter.", ".$basket_data['customer_id'].",".$basket_data['country_id'].",".$basket_data['service_id'].",".$basket_data['podservice_id'].")'></a></center></td>";   
+                    echo    "</tr> ";  
+                }  
     }
 }
 }
