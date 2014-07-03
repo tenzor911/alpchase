@@ -1,7 +1,16 @@
     function test(element_row_number, country_id, country_name){
         updateSelectCountry('select_country_id'+element_row_number, country_id, country_name); 
     }
+    
+    function getRow(numrows){
+        getRows = numrows;
+    }
 
+    function setRow() {
+        getRows++;
+        return  getRows;
+    }
+    
     function updateSelectCountry(element_row_number, country_id, country_name) {
         $.ajax({
             type: "POST",
@@ -53,12 +62,9 @@
     }
     
       function addSection(row_id, user_id, country_id, service_id, podservice_id) {    
-        $.post( "../ajax_scripts/deleteBasketItem.php", 
-        {user_index: user_id, 
-         country_index: country_id, 
-         service_index: service_id, 
-         podservice_index: podservice_id},
-         function(data) {			
-            $("#itemRowNumber"+row_id).remove();	
-        }); 
+        var x = setRow();
+        var newTextBoxDiv = $(document.createElement('tr')).attr("id", 'CountryServiceOptionsBlock' + x);
+        newTextBoxDiv.after().html('<input type=text id='+x+'>');
+        newTextBoxDiv.appendTo("#newdata");
+        alert(x);
     }

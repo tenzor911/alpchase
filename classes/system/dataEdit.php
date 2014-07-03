@@ -77,6 +77,7 @@ class dataEdit
                 {
                     $row_counter++;
                     echo "<script>test(".$row_counter.", ".$basket_data['country_id'].", ".json_encode($basket_data['country_name']).");</script>";
+                    echo "<script>getRow(".mysql_num_rows($order_basket).");</script>";
                     echo    "<tr id='itemRowNumber".$row_counter."'>";
                     echo        "<td><center><select name='countries[".$row_counter."]' id='select_country_id".$row_counter."' onchange='selectCountryAll(".$row_counter.",this.value);'></select></center></td>";
                     echo        "<td><center><select name='services[".$row_counter."]' id='select_service_id".$row_counter."' class='select_service".$row_counter."' onchange='selectService(".$row_counter.",this.value);'><option value=".$basket_data['service_id']." selected>".$basket_data['service_name']."</option></select></center></td>";
