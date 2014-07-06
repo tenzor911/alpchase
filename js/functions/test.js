@@ -63,8 +63,8 @@
     
       function addSection(row_id, user_id, country_id, service_id, podservice_id) {    
         var x = setRow();
-        var newTextBoxDiv = $(document.createElement('tr')).attr("id", 'CountryServiceOptionsBlock' + x);
-        newTextBoxDiv.after().html('<input type=text id='+x+'>');
-        newTextBoxDiv.appendTo("#newdata");
+        var newTextBoxDiv = $(document.createElement('tr')).attr("id", 'itemRowNumber' + x);
+        newTextBoxDiv.before().html('<td width=200>2</td>3<td width=200>4</td><td width=200>6</td><td width=200>5</td>');
+        newTextBoxDiv.appendTo("#mytable");
         alert(x);
     }

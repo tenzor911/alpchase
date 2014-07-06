@@ -38,7 +38,7 @@ $loadDataForEdit = new dataEdit();
             <br>
             <hr>
             <br>
-            <table border='1' width='800' cellpadding='0' cellspacing='0' align='center'>
+            <table border='1' width='800' cellpadding='0' cellspacing='0' align='center' id='mytable'>
                 <tr>
                     <td colspan='4'><center><b>Секция услуг</b></center></td>
                 </tr>
@@ -49,7 +49,6 @@ $loadDataForEdit = new dataEdit();
                     <td width='200'><center><b>Опции</b></center></td>
                 </tr>
                 <?php $loadDataForEdit->loadCustomerBasket($dataId); ?>
-                <div id="newdata"></div>
                 <tr>
                     <td colspan="4"><input type="button" value="добавить ряд" onclick="addSection()"></td>
                 </tr>
