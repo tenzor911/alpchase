@@ -61,10 +61,18 @@
         }); 
     }
     
-      function addSection(row_id, user_id, country_id, service_id, podservice_id) {    
+      function addSection() {    
         var x = setRow();
         var newTextBoxDiv = $(document.createElement('tr')).attr("id", 'itemRowNumber' + x);
-        newTextBoxDiv.before().html('<td width=200>2</td>3<td width=200>4</td><td width=200>6</td><td width=200>5</td>');
+        newTextBoxDiv.before().html('<td><center><select name="countries['+ x +']" id="select_country_id'+ x +'" onchange="selectCountryAll('+ x +', this.value);"></select></center></td><td><center><select name="services['+ x +']" id="select_service_id' + x + '" class="select_service'+ x +'" onclick="selectService('+ x +',this.value)";></select></center></td><td><center><select name="podservices['+ x +']" id="select_podservice_id'+ x +'" class="select_podservice'+ x +'"></select></center></td><td><center><a href="#"><img src="../icons/bullet_cross.png" alt="удалить" title="удалить" onclick="removeItem('+ x +')";></a></center></td>');
         newTextBoxDiv.appendTo("#mytable");
-        alert(x);
+        test(x);
     }
+    
+    function removeItem(itemId) {    
+        var answer = confirm ('Секция услуг будет удалена! Продолжить?');
+        if (answer)
+        $("#itemRowNumber" + itemId).remove();
+    }
+    
+    

@@ -49,10 +49,12 @@ $loadDataForEdit = new dataEdit();
                     <td width='200'><center><b>Опции</b></center></td>
                 </tr>
                 <?php $loadDataForEdit->loadCustomerBasket($dataId); ?>
-                <tr>
-                    <td colspan="4"><input type="button" value="добавить ряд" onclick="addSection()"></td>
-                </tr>
             </table>   
+            <table border='1' width='800' cellpadding='0' cellspacing='0' align='center'>
+                <tr>
+                    <td colspan="4"><center><input type="button" value="добавить ряд" onclick="addSection()"></center></td>
+                </tr>
+            </table>    
         </form>    
     </body>
 </html>
