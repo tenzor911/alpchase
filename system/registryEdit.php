@@ -13,10 +13,9 @@ $loadDataForEdit = new dataEdit();
 <meta http-equiv="Content-Type" content="text/html; charset=utf8">    
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <link rel="stylesheet" type="text/css" href="css/grayhint.css">
         <script type="text/javascript" src="../js/functions/function_OnlyNumbersField.js"></script>
         <script type="text/javascript" src="../js/functions/function_EditRegistryData.js"></script>
-        <script type="text/javascript" src="jquery/jquery-1.10.2.js"></script>
+        <script type="text/javascript" src="../js/jquery/jquery-1.10.2.js"></script>
     </head>
     <body>
         <form action ='registrySave.php' method ='post'>

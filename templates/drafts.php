@@ -24,7 +24,7 @@ echo "Добро пожаловать! Вы зашли, как: ".$_SESSION['una
         <title>ALPCHASE - Реестр черновиков</title>
         <script type="text/javascript" src="../js/functions/function_DeleteStringData.js"></script>
         <script type="text/javascript" src="../js/jquery/jquery-1.10.2.js"></script>
-        <link rel="stylesheet" type="text/css" href="../css/styleRegistry.css">   </link>   
+        
     </head>
     <body>
         <hr>      

@@ -73,6 +73,11 @@ class dataEdit
             echo "<script type='text/javascript' src='../js/jquery/jquery-1.10.2.js'></script>";
             
             $row_counter = 0;
+            
+            $num_results = mysql_num_rows($order_basket); 
+            
+            if ($num_results > 0) {
+            
             while ($basket_data = mysql_fetch_assoc($order_basket)) 
                 {
                     $row_counter++;
@@ -85,7 +90,10 @@ class dataEdit
                     echo        "<td><center><a href='#'><img src='../icons/bullet_cross.png' id='deleteData' class='.del' alt='удалить' title='удалить' onclick='deleteItem(".$row_counter.", ".$basket_data['customer_id'].",".$basket_data['country_id'].",".$basket_data['service_id'].",".$basket_data['podservice_id'].")'></a></center></td>";   
                     echo    "</tr> ";  
                 }  
-    }
+            } else {
+                echo "<script>getRow(1);</script>";
+            }
+        }
 }
 }
 ?>

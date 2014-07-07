@@ -23,8 +23,7 @@ echo "Добро пожаловать! Вы зашли, как: ".$_SESSION['una
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>ALPCHASE - Реестр анкет клиентов</title>
         <script type="text/javascript" src="../js/functions/function_DeleteStringData.js"></script>
-        <script type="text/javascript" src="../js/jquery/jquery-1.10.2.js"> </script>
-        <link rel="stylesheet" type="text/css" href="../css/styleRegistry.css">   </link>   
+        <script type="text/javascript" src="../js/jquery/jquery-1.10.2.js"> </script> 
     </head>
     <body>
         <hr>      

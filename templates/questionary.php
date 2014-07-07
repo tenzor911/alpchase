@@ -15,7 +15,6 @@ $questNum = new QuestNumber();
         <link rel="stylesheet" href="../css/uikit.css">
         <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
         <script src="../js/jquery/jquery-1.10.2.js"></script>
-        <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
         <script src="../js/functions/function_AddOrDeleteFields.js"></script>
         <script src="../js/functions/function_CheckLegalForm.js"></script>
         <script src="../js/functions/function_EmailChecking.js"></script>

@@ -3,7 +3,10 @@
     }
     
     function getRow(numrows){
+        
+        
         getRows = numrows;
+        
     }
 
     function setRow() {
