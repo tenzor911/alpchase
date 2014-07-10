@@ -21,7 +21,6 @@ function addSection() {
 	$("#countSections").val(section_i);
 }
 
-
 function addService( section_i ) {
 
 	var service_i = $("#countServices"+section_i).val();
@@ -53,6 +52,3 @@ $(document).ready(function(){
     $("#countSections").val('0');
     addSection();
 });  
-
-
-

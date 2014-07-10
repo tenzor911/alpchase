@@ -13,7 +13,7 @@ if(!$_SESSION['email']){
 
 echo "Welcome ".$_SESSION['email']."! <a href='../exit'>Logout Here</a></h1>";
 
-$customer_data = mysql_query("SELECT customer_id, quest_date, customer_name, customer_surn, customer_midd, customer_compname FROM users_customers WHERE customer_email = '".$_SESSION['email']."'");
+$customer_data = mysql_query("SELECT customer_id, quest_date, customer_name, customer_surn, customer_compname FROM users_customers WHERE customer_email = '".$_SESSION['email']."'");
 $data = mysql_fetch_assoc($customer_data);
 
 $cust_id = $data['customer_id'];
@@ -24,8 +24,6 @@ INNER JOIN (system_podservice
 INNER JOIN (users_customers 
 INNER JOIN (system_countries 
 INNER JOIN order_basket ON system_countries.country_id = order_basket.country_id) ON users_customers.customer_id = order_basket.customer_id) ON system_podservice.podservice_id = order_basket.podservice_id) ON system_services.service_id = order_basket.service_id WHERE (((order_basket.customer_id)=".$cust_id."));");
-
-
 
 echo "<hr>";
 ?>

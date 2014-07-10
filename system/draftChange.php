@@ -9,6 +9,6 @@ $ID = $_REQUEST['change'];
 
 mysql_query("UPDATE users_customers SET quest_status='извещён' WHERE customer_id='$ID'");
 
-header('Refresh: 0; URL=../templates/drafts');
+header('Refresh: 0; URL=../templates/registry');
 
 ?>
