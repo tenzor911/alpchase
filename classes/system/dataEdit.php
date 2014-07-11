@@ -27,10 +27,6 @@ class dataEdit
                         <td><b>Имя</b></td>
                         <td width='400' colspan='3'><input type=text name=edit_name placeholder='введите имя' size='25' value=".$returned_info['customer_name']."></td>
                       </tr>
-                      <tr>     
-                        <td><b>Отчество</b></td>
-                        <td width='400' colspan='3'><input type=text name=edit_midd placeholder='введите отчество' size='25' value=".$returned_info['customer_midd']."></td>
-                      </tr>
                       <tr>
                         <td><b>Email</b></td>
                         <td width='400' colspan='3'><input type=text name=edit_email placeholder='введите email' size='25' value=".$returned_info['customer_email']."></td>

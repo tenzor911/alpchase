@@ -45,7 +45,6 @@ echo "Добро пожаловать! Вы зашли, как: ".$_SESSION['una
         <div id="data_field" align="center">Загрузка данных...</div>
             <script>
                 $(document).ready(function() {
-                    
                     $("#filter_option").change(function(){
                         $.post( 
                             "../ajax_scripts/filterDataUpdate.php",

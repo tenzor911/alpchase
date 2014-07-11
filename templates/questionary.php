@@ -59,15 +59,6 @@ $questNum = new QuestNumber();
                         </div>
 					
                         <div class="uk-grid">
-                            <div class="uk-width-1-1">
-                                <label class="uk-form-label" for="form-gs-street">Отчество</label>
-                                <div class="uk-form-controls">
-                                    <input type="text" id="form-gs-street" name="cust_middle" placeholder="Введите ваше отчество" class="uk-width-1-1">
-                                </div>
-                            </div>
-                        </div>					
-
-                        <div class="uk-grid">
                             <div class="uk-width-1-1 uk-text-center">
                                 <label><input type="radio" class="radio_fz" name="lico_type"/>Частное лицо</label>     
                                 <label><input type="radio" class="radio_ur" name="lico_type" checked="true"/> Организация</label>

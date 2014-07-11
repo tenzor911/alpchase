@@ -6,7 +6,6 @@ include('../setup/mysql_settings.php');
 $date_today = date("d.m.y");
 $cust_name = $_REQUEST['cust_name'];
 $cust_surname = $_REQUEST['cust_surname'];
-$cust_middle = $_REQUEST['cust_middle'];
 $cust_companyname = $_REQUEST['cust_companyname'];
 $cust_position = $_REQUEST['cust_position'];
 $cust_email = $_REQUEST['cust_email'];
@@ -26,7 +25,6 @@ mysql_query("INSERT INTO users_customers "
         . "(quest_date, "
         . "customer_name, "
         . "customer_surn, "
-        . "customer_midd, "
         . "customer_compname, "
         . "customer_position, "
         . "customer_email, "
@@ -44,7 +42,6 @@ mysql_query("INSERT INTO users_customers "
         . "('$date_today', "
         . "'$cust_name', "
         . "'$cust_surname', "
-        . "'$cust_middle', "
         . "'$cust_companyname', "
         . "'$cust_position', "
         . "'$cust_email', "

@@ -19,7 +19,7 @@ $loadDataForEdit = new dataEdit();
         <script type="text/javascript" src="jquery/jquery-1.10.2.js"></script>
     </head>
     <body>
-        <form action ='registrySave.php' method ='post'>
+        <form method ='post' id='registryDataForm'>
             <table border='1' width='600' cellpadding='0' cellspacing='0' align='center'>
                 <tr>
                     <td width='200'><center><b>Информация</b></center></td>
@@ -32,7 +32,7 @@ $loadDataForEdit = new dataEdit();
                     <tr>
                         <td height='26'><center><button type='button' onclick='dropData()'style='width:60px' alt='очистить все поля' title='очистить все поля'><img src='../icons/asterisk_red.png'></button></center></td>
                         <td height='26'><center><button type='button' onclick='reviveData()' style='width:60px' alt='отменить все действия' title='отменить все действия'><img src='../icons/reload.png'></button></center></td>
-                        <td height='26'><center><button type='submit' style='width:60px' alt='сохранить изменения' title='сохранить изменения'><img src='../icons/disk_black.png'></button></center></td>
+                        <td height='26'><center><button type='button' id='saveRegistryFormButton' style='width:60px' alt='сохранить изменения' title='сохранить изменения'><img src='../icons/disk_black.png'></button></center></td>
                     </tr>
             </table>  
             <br>
@@ -48,16 +48,33 @@ $loadDataForEdit = new dataEdit();
                     <td width='200'><center><b>Подуслуга</b></center></td>
                     <td width='200'><center><b>Опции</b></center></td>
                 </tr>
-                
-                    <?php $loadDataForEdit->loadCustomerBasket($dataId); ?>
+                <?php $loadDataForEdit->loadCustomerBasket($dataId); ?>
             </table> 
             <table border='1' width='800' cellpadding='0' cellspacing='0' align='center'>
                 <tr>
                     <td colspan="4"><center><input type="button" value="добавить ряд" onclick="addSection()"></center></td>
                 </tr>
-            </table> 
-                
+            </table>     
         </form>    
+        <script>
+            $("#saveRegistryFormButton").click(function(){    
+                formData = $("#registryDataForm").serialize();
+                $.post( 
+                    "../system/draftSave.php",
+                {   
+                    myData: formData,
+                    dataType: "json"
+                },
+                function(success) {
+                    alert('Анкета была сохранена как черновик! '+success);
+                        location.reload();
+                    }
+                );
+            });
+        </script>
+        
+        
+        
     </body>
 </html>
 

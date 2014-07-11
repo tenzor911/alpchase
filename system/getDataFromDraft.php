@@ -13,7 +13,6 @@ $date_today = date("d.m.y");
 
 $c_name = $cust_name;
 $c_surname = $cust_surname;
-$c_middle = $cust_middle;
 $c_companyname = $cust_companyname;
 $c_position = $cust_position;
 $c_email = $cust_email;
@@ -33,7 +32,6 @@ mysql_query("INSERT INTO users_customers "
         . "(quest_date, "
         . "customer_name, "
         . "customer_surn, "
-        . "customer_midd, "
         . "customer_compname, "
         . "customer_position, "
         . "customer_email, "
@@ -50,7 +48,6 @@ mysql_query("INSERT INTO users_customers "
         . "('$date_today', "
         . "'$c_name', "
         . "'$c_surname', "
-        . "'$c_middle', "
         . "'$c_companyname', "
         . "'$c_position', "
         . "'$c_email', "

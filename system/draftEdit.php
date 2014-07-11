@@ -19,7 +19,7 @@ $loadDataForEdit = new dataEdit();
         <script type="text/javascript" src="../js/jquery/jquery-1.10.2.js"></script>
     </head>
     <body>
-        <form action ='draftSave.php' method ='post'>
+        <form action ='draftSave.php' method ='post' id='draftDataForm'>
             <table border='1' width='600' cellpadding='0' cellspacing='0' align='center'>
                 <tr>
                     <td width='200'><center><b>Информация</b></center></td>
@@ -32,23 +32,43 @@ $loadDataForEdit = new dataEdit();
                 <tr>
                     <td height='26'><center><button type='button' style='width:60px' alt='очистить все поля' title='очистить все поля' onclick='dropData()'><img src='../icons/asterisk_red.png'></button></center></td>
                     <td height='26'><center><button type='button' style='width:60px' alt='отменить все действия' title='отменить все действия' onclick='reviveData()'><img src='../icons/reload.png'></button></center></td>
-                    <td height='26'><center><button type='submit' style='width:60px' alt='сохранить изменения' title='сохранить изменения'><img src='../icons/disk_black.png'></button></center></td>
+                    <td height='26'><center><button type='button' style='width:60px' alt='сохранить изменения' title='сохранить изменения' id='saveDraftFormButton'><img src='../icons/disk_black.png'></button></center></td>
                 </tr>
             </table> 
-            <table border='1' width='800' cellpadding='0' cellspacing='0' align='center'>
+            <table border="1" width="800" cellpadding="0" cellspacing="0" align="center" id="mytable">
                 <tr>
-                    <td colspan='4'><center><b>Секция услуг</b></center></td>
+                    <td colspan="4"><center><b>Секция услуг</b></center></td>
                 </tr>
                 <tr>
-                    <td width='200'><center><b>Страна</b></center></td>
-                    <td width='200'><center><b>Услуга</b></center></td>
-                    <td width='200'><center><b>Подуслуга</b></center></td>
-                    <td width='200'><center><b>Опции</b></center></td>
+                    <td width="200"><center><b>Страна</b></center></td>
+                    <td width="200"><center><b>Услуга</b></center></td>
+                    <td width="200"><center><b>Подуслуга</b></center></td>
+                    <td width="200"><center><b>Опции</b></center></td>
                 </tr>
-                
-                    <?php $loadDataForEdit->loadCustomerBasket($dataId); ?>
+                <?php $loadDataForEdit->loadCustomerBasket($dataId); ?>
             </table> 
+            <table border="1" width="800" cellpadding="0" cellspacing="0" align="center">
+                <tr>
+                    <td colspan="4"><center><input type="button" value="добавить ряд" onclick="addSection()"></center></td>
+                </tr>
+            </table>
         </form>
+        <script>
+            $("#saveDraftFormButton").click(function(){    
+                formData = $("#draftDataForm").serialize();
+                $.post( 
+                    "../system/draftSave.php",
+                {   
+                    myData: formData,
+                    dataType: "json"
+                },
+                function(success) {
+                    alert('Данные успешно сохранены! '+success);
+                        location.reload();
+                    }
+                );
+            });
+        </script>
     </body>
 </html>
 
