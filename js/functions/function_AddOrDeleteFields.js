@@ -21,6 +21,7 @@ function addSection() {
 	$("#countSections").val(section_i);
 }
 
+
 function addService( section_i ) {
 
 	var service_i = $("#countServices"+section_i).val();
@@ -41,7 +42,7 @@ function addService( section_i ) {
 }
 
 function delSection( section_i ) {
-	$("#CountryServiceOptionsBlock" + section_i).remove();
+	$("#CountryServiceOptionsBlock" + section_i).remove();   
 }
 
 function delService( section_i, service_i ) {
@@ -52,3 +53,6 @@ $(document).ready(function(){
     $("#countSections").val('0');
     addSection();
 });  
+
+
+

@@ -4,6 +4,9 @@ include('../setup/mysql_settings.php');
 mysql_query("SET NAMES 'utf8'");
 mysql_query("SET CHARACTER SET 'utf8'");
 
+$country_id = $_REQUEST['country_select'];
+$country_name = $_REQUEST['country_name'];
+
 $sql_get_countries = mysql_query("SELECT * FROM system_countries");
 
 while($row_country = mysql_fetch_array($sql_get_countries)) {

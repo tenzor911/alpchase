@@ -13,6 +13,7 @@ $loadDataForEdit = new dataEdit();
 <meta http-equiv="Content-Type" content="text/html; charset=utf8">    
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
+        <link rel="stylesheet" type="text/css" href="css/grayhint.css">
         <script type="text/javascript" src="../js/functions/function_OnlyNumbersField.js"></script>
         <script type="text/javascript" src="../js/functions/function_EditRegistryData.js"></script>
         <script type="text/javascript" src="../js/jquery/jquery-1.10.2.js"></script>
@@ -33,7 +34,20 @@ $loadDataForEdit = new dataEdit();
                     <td height='26'><center><button type='button' style='width:60px' alt='отменить все действия' title='отменить все действия' onclick='reviveData()'><img src='../icons/reload.png'></button></center></td>
                     <td height='26'><center><button type='submit' style='width:60px' alt='сохранить изменения' title='сохранить изменения'><img src='../icons/disk_black.png'></button></center></td>
                 </tr>
-            </table>         
+            </table> 
+            <table border='1' width='800' cellpadding='0' cellspacing='0' align='center'>
+                <tr>
+                    <td colspan='4'><center><b>Секция услуг</b></center></td>
+                </tr>
+                <tr>
+                    <td width='200'><center><b>Страна</b></center></td>
+                    <td width='200'><center><b>Услуга</b></center></td>
+                    <td width='200'><center><b>Подуслуга</b></center></td>
+                    <td width='200'><center><b>Опции</b></center></td>
+                </tr>
+                
+                    <?php $loadDataForEdit->loadCustomerBasket($dataId); ?>
+            </table> 
         </form>
     </body>
 </html>

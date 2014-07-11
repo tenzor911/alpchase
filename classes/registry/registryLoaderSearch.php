@@ -18,7 +18,7 @@ class registryLoaderSearch
             echo    "<td width='40'>".$data['customer_id']."</td>";
             echo    "<td width='60'>".$data['quest_date']."</td>";
             echo    "<td width='100'>".$data['quest_status']."</td>";
-            echo    "<td width='200'>".$data['customer_surn']." ".$data['customer_name']."</td>";
+            echo    "<td width='200'>".$data['customer_surn']." ".$data['customer_name']." ".$data['customer_midd']."</td>";
             echo    "<td width='180'>".$data['customer_email']."</td>";
             echo    "<td width='140'>".$data['customer_primaryphone']."</td>";
             echo    "<td width='200'>".$data['customer_compname']."</td>";

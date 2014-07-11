@@ -8,6 +8,7 @@ $edit_id = $_REQUEST['edit_id'];
 $date = $_REQUEST['edit_date'];
 $c_name = $_REQUEST['edit_name'];
 $c_surn = $_REQUEST['edit_surn'];
+$c_midd = $_REQUEST['edit_midd'];
 $c_email = $_REQUEST['edit_email'];
 $c_prim = $_REQUEST['edit_primphone'];
 $c_addt = $_REQUEST['edit_addphone'];
@@ -20,6 +21,7 @@ mysql_query("UPDATE users_customers SET "
         . "quest_date='$date', "
         . "customer_name='$c_name', "
         . "customer_surn='$c_surn', "
+        . "customer_midd='$c_midd', "
         . "customer_email='$c_email', "
         . "customer_primaryphone='$c_prim', "
         . "customer_additphone='$c_addt', "
@@ -29,29 +31,5 @@ mysql_query("UPDATE users_customers SET "
 
 echo "Черновик сохранён!";
 header('Refresh: 0; URL=../templates/drafts');
-
-$customer_id = $_REQUEST['edit_id'];
-$countries_arr = $_POST['countries'];
-$services_arr = $_POST['services'];
-$podservices_arr = $_POST['podservices'];
-
-
-foreach( $countries_arr as $country_key => $value ) {	
-    $country_id = intval( $countries_arr[$country_key] );	
-    if( $country_id > 0 ) {			
-        foreach( $services_arr as $key => $value ) {				
-            if( isset( $services_arr[$country_key][$key] ) ) $service_id = intval( $services_arr[$country_key][$key] ); 
-            else 
-                $service_id = 0;			
-            if( isset( $services_arr[$country_key][$key] ) ) $podservice_id = intval( $podservices_arr[$country_key][$key] ); 
-            else 
-                $podservice_id = 0;			
-            if( $service_id > 0 ) {	
-                mysql_query( "INSERT INTO `order_basket` (`customer_id`, `country_id`, `service_id`, `podservice_id`) VALUES ('{$customer_id}', '{$country_id}', '{$service_id}', '{$podservice_id}')" );				
-                //echo "INSERT INTO `order_basket` (`customer_id`, `country_id`, `service_id`, `podservice_id`) VALUES ('{$customer_id}', '{$country_id}', '{$service_id}', '{$podservice_id}')<br>";			
-            }		
-        }	
-    }
-}
 
 ?>

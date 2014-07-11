@@ -301,14 +301,6 @@ $questNum = new QuestNumber();
 	});
     }		    
     
-    function selectCountry(id, country) {		
-        $.post( "../ajax_scripts/serviceListUpdate.php", 
-        {country_select: country}, 
-        function(data) {
-            $('#select_service_id'+id).html(data);		
-        });    
-    }
-    
     function selectCountryAll(id, country) {		
         $.post( "../ajax_scripts/serviceListUpdate.php", 
         {country_select: country}, 
@@ -325,6 +317,15 @@ $questNum = new QuestNumber();
             );		
         });    
     }
+	
+    function selectCountry(id, country) {		
+        $.post( "../ajax_scripts/serviceListUpdate.php", 
+        {country_select: country}, 
+        function(data) {
+            $('#select_service_id'+id).html(data);		
+        });    
+    }
+    
     
     function selectService(id,service) {         		
         $.post( "../ajax_scripts/podserviceListUpdate.php", 

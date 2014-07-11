@@ -13,9 +13,10 @@ $loadDataForEdit = new dataEdit();
 <meta http-equiv="Content-Type" content="text/html; charset=utf8">    
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
+        <link rel="stylesheet" type="text/css" href="css/grayhint.css">
         <script type="text/javascript" src="../js/functions/function_OnlyNumbersField.js"></script>
         <script type="text/javascript" src="../js/functions/function_EditRegistryData.js"></script>
-        <script type="text/javascript" src="../js/jquery/jquery-1.10.2.js"></script>
+        <script type="text/javascript" src="jquery/jquery-1.10.2.js"></script>
     </head>
     <body>
         <form action ='registrySave.php' method ='post'>
@@ -37,7 +38,7 @@ $loadDataForEdit = new dataEdit();
             <br>
             <hr>
             <br>
-            <table border='1' width='800' cellpadding='0' cellspacing='0' align='center' id='mytable'>
+            <table border='1' width='800' cellpadding='0' cellspacing='0' align='center' id="mytable">
                 <tr>
                     <td colspan='4'><center><b>Секция услуг</b></center></td>
                 </tr>
@@ -47,13 +48,15 @@ $loadDataForEdit = new dataEdit();
                     <td width='200'><center><b>Подуслуга</b></center></td>
                     <td width='200'><center><b>Опции</b></center></td>
                 </tr>
-                <?php $loadDataForEdit->loadCustomerBasket($dataId); ?>
-            </table>   
+                
+                    <?php $loadDataForEdit->loadCustomerBasket($dataId); ?>
+            </table> 
             <table border='1' width='800' cellpadding='0' cellspacing='0' align='center'>
                 <tr>
                     <td colspan="4"><center><input type="button" value="добавить ряд" onclick="addSection()"></center></td>
                 </tr>
-            </table>    
+            </table> 
+                
         </form>    
     </body>
 </html>
