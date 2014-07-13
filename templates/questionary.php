@@ -29,6 +29,30 @@ $questNum = new QuestNumber();
     <body class="tm-background">
         <div class="tm-header">
             <div class="uk-container uk-container-center uk-header-bg">
+                <div class="uk-grid uk-text-center">
+                    <br>
+                    <div class="uk-width-1-4">
+                        <div class="uk-form-controls">
+                            <input type="submit" value="просмотр реестра" onclick="location.href='../templates/registry'">
+                        </div>
+                    </div>
+                    <div class="uk-width-1-4">
+                        <div class="uk-form-controls">
+                            <input type="submit" value="просмотр черновиков" onclick="location.href='../templates/drafts'">
+                        </div>
+                    </div>
+                    <div class="uk-width-1-4">
+                        <div class="uk-form-controls">
+                            <input type="submit" value="назад к навигации" onclick="location.href='../templates/navigation'">
+                        </div>
+                    </div>
+                    <div class="uk-width-1-4">
+                        <div class="uk-form-controls">
+                            <input type="submit" value="выход из системы" onclick="location.href='../logout'">
+                        </div>
+                    </div>
+                    <br>
+                </div>
                 <form class="uk-form uk-margin uk-form-stacked" method="post" action="../system/getDataFromQuestionary.php" id="QuestionaryForm">
                     <fieldset class="action">
                         <legend><center>Анкета № <input type="text" id="form-gs-street1" name="cust_id" value="<?php $questNum->countQuestCustomer()?>" class="uk-width-1-6" readonly > / Дата <input type="text" id="form-gs-street1" name="cust_date" value="<?php echo date("d.m.y");?>" class="uk-width-1-6" readonly></center></legend>
@@ -179,7 +203,7 @@ $questNum = new QuestNumber();
                             <div class="uk-width-1-1">
                                 <label class="uk-form-label" for="form-gs-street">Секции выбора услуг для клиента</label>
                                 <div id="ServiceBlockGroup"></div>
-                                <input type="button" onclick="addSection(); return false;" value="Добавить секцию"><input type="hidden" id="countSections" value="1">
+                                 <input type="button" onclick="addSection(); return false;" value="Добавить секцию"><input type="hidden" id="countSections" value="1"><input type="hidden" id="iSections" value="1">
                             </div>
                         </div>		
                         <hr/>
@@ -303,7 +327,7 @@ $questNum = new QuestNumber();
             );			
             $('.select_podservice'+id).each( 
                 function() {				
-                    $(this).html('<option value="0">Услуга не назначена</option>');			
+                    $(this).html('<option value="0">услуга не назначена</option>');			
                 }
             );		
         });    

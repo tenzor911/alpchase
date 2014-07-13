@@ -32,7 +32,7 @@ $loadDataForEdit = new dataEdit();
                 <tr>
                     <td height='26'><center><button type='button' style='width:60px' alt='очистить все поля' title='очистить все поля' onclick='dropData()'><img src='../icons/asterisk_red.png'></button></center></td>
                     <td height='26'><center><button type='button' style='width:60px' alt='отменить все действия' title='отменить все действия' onclick='reviveData()'><img src='../icons/reload.png'></button></center></td>
-                    <td height='26'><center><button type='button' style='width:60px' alt='сохранить изменения' title='сохранить изменения' id='saveDraftFormButton'><img src='../icons/disk_black.png'></button></center></td>
+                    <td height='26'><center><button type='submit' style='width:60px' alt='сохранить изменения' title='сохранить изменения' id='saveDraftFormButton'><img src='../icons/disk_black.png'></button></center></td>
                 </tr>
             </table> 
             <table border="1" width="800" cellpadding="0" cellspacing="0" align="center" id="mytable">
@@ -53,22 +53,6 @@ $loadDataForEdit = new dataEdit();
                 </tr>
             </table>
         </form>
-        <script>
-            $("#saveDraftFormButton").click(function(){    
-                formData = $("#draftDataForm").serialize();
-                $.post( 
-                    "../system/draftSave.php",
-                {   
-                    myData: formData,
-                    dataType: "json"
-                },
-                function(success) {
-                    alert('Данные успешно сохранены! '+success);
-                        location.reload();
-                    }
-                );
-            });
-        </script>
     </body>
 </html>
 

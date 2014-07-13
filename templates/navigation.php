@@ -8,7 +8,7 @@ if(!$_SESSION['uname']){
     header("location: ../index");
 }
 
-echo "Welcome ".$_SESSION['uname']."! <a href='../logout'>Logout Here</a></h1>";
+echo "Welcome ".$_SESSION['uname']."!";
 
 
 ?>
@@ -28,8 +28,10 @@ echo "Welcome ".$_SESSION['uname']."! <a href='../logout'>Logout Here</a></h1>";
         <hr>
             <input value="Создать новую анкету" onclick="location.href='questionary'" type="button" style="width: 200px">
         <br>
-        <input value="Реестр анкет клиентов" onclick="location.href='registry'" type="button" style="width: 200px">
+            <input value="Реестр анкет клиентов" onclick="location.href='registry'" type="button" style="width: 200px">
         <br>
-        <input value="Черновики анкет" onclick="location.href='drafts'" type="button" style="width: 200px">
+            <input value="Черновики анкет" onclick="location.href='drafts'" type="button" style="width: 200px">
+        <br>
+            <input value="Выход из системы" onclick="location.href='../logout'" type="button" style="width: 200px">     
     </body>
 </html>

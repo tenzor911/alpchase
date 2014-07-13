@@ -21,4 +21,4 @@
     {
         die("DB conection: Error! Database doesn't exist!");
     }
-    
+?>

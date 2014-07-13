@@ -26,7 +26,7 @@ $searchData = new draftLoaderSearch;
         <td width='200'><center><b>Наименование услуги</b></center></td>
         <td width='60' colspan='3'><center><b>Опции</b></center></td>
     </tr>
-<?            
+<?php            
 if( isset($_POST["parameter"]) )
 {
     $filter = $_REQUEST['filter_parameter_select'];

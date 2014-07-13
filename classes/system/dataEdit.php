@@ -63,7 +63,20 @@ class dataEdit
                 INNER JOIN (system_podservice 
                 INNER JOIN (users_customers 
                 INNER JOIN (system_countries 
-                INNER JOIN order_basket ON system_countries.country_id = order_basket.country_id) ON users_customers.customer_id = order_basket.customer_id) ON system_podservice.podservice_id = order_basket.podservice_id) ON system_services.service_id = order_basket.service_id WHERE (((order_basket.customer_id)=".$dataId."));");
+                INNER JOIN order_basket ON system_countries.country_id = order_basket.country_id) ON users_customers.customer_id = order_basket.customer_id) ON system_podservice.podservice_id = order_basket.podservice_id) ON system_services.service_id = order_basket.service_id 
+                WHERE (((order_basket.customer_id)=".$dataId."));");
+            
+            $getBasketId = mysql_query("SELECT order_basket.basket_id, order_basket.customer_id "
+                    . "FROM users_customers "
+                    . "INNER JOIN (system_services "
+                    . "INNER JOIN (system_podservice "
+                    . "INNER JOIN (system_countries "
+                    . "INNER JOIN order_basket ON system_countries.country_id = order_basket.country_id) ON system_podservice.podservice_id = order_basket.podservice_id) ON system_services.service_id = order_basket.service_id) ON users_customers.customer_id = order_basket.customer_id "
+                    . "WHERE (((order_basket.customer_id)=".$dataId."))");
+            
+            
+
+
             $returned_info = mysql_fetch_array($request_info);
             echo "<script type='text/javascript' src='../js/functions/test.js'></script>";
             echo "<script type='text/javascript' src='../js/jquery/jquery-1.10.2.js'></script>";
@@ -79,6 +92,7 @@ class dataEdit
             
             while ($basket_data = mysql_fetch_assoc($order_basket)) 
             {
+                $getBasketItemId = mysql_fetch_assoc($getBasketId);
                 $row_counter++;
                 echo "<script>test(".$row_counter.", ".$basket_data['country_id'].", ".json_encode($basket_data['country_name']).");</script>";
                 echo "<script>getRow(".mysql_num_rows($order_basket).");</script>";    
@@ -86,7 +100,7 @@ class dataEdit
                 echo    "<td><center><select name='countries[".$row_counter."]' id='select_country_id".$row_counter."' class='select_country_class".$row_counter."' onchange='selectCountryAll(".$row_counter.",this.value);'></select></center></td>";
                 echo    "<td><center><select name='services[".$row_counter."]' id='select_service_id".$row_counter."' class='select_service".$row_counter."' onchange='selectService(".$row_counter.",this.value);'><option value=".$basket_data['service_id']." selected>".$basket_data['service_name']."</option></select></center></td>";
                 echo    "<td><center><select name='podservices[".$row_counter."]' id='select_podservice_id".$row_counter."' class='select_podservice".$row_counter."'><option value=".$basket_data['podservice_id']." selected>".$basket_data['podservice_name']."</option></select></select></center></td>";
-                echo    "<td><center><a href='#'><img src='../icons/bullet_cross.png' id='deleteData' class='.del' alt='удалить' title='удалить' onclick='deleteItem(".$row_counter.", ".$basket_data['customer_id'].",".$basket_data['country_id'].",".$basket_data['service_id'].",".$basket_data['podservice_id'].")'></a></center></td>"; 
+                echo    "<td><center><input type='hidden' id='".$getBasketItemId['basket_id']."'><a href='#'><img src='../icons/bullet_cross.png' id='deleteData' class='.del' alt='удалить' title='удалить' onclick='deleteItem(".$row_counter.", ".$getBasketItemId['basket_id'].")'></a></center></td>"; 
                 echo "</tr> ";
             }  
     }

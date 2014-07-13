@@ -50,16 +50,14 @@
         });    
     }
     
-    function deleteItem(row_id, user_id, country_id, service_id, podservice_id) {    
+    function deleteItem(row_id, basket_id) {    
         var answer = confirm ('Секция услуг будет удалена! Продолжить?');
         if (answer) 
         $.post( "../ajax_scripts/deleteBasketItem.php", 
-        {user_index: user_id, 
-         country_index: country_id, 
-         service_index: service_id, 
-         podservice_index: podservice_id},
-         function(data) {			
+        {basket_id: basket_id},
+         function(data) {
             $("#itemRowNumber"+row_id).remove();	
+            alert(data);
         }); 
     }
     

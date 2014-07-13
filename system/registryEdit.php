@@ -60,13 +60,13 @@ $loadDataForEdit = new dataEdit();
             $("#saveRegistryFormButton").click(function(){    
                 formData = $("#registryDataForm").serialize();
                 $.post( 
-                    "../system/draftSave.php",
+                    "../system/registrySave.php",
                 {   
                     myData: formData,
                     dataType: "json"
                 },
                 function(success) {
-                    alert('Анкета была сохранена как черновик! '+success);
+                    alert('Редактирование анкеты завершено! '+success);
                         location.reload();
                     }
                 );
