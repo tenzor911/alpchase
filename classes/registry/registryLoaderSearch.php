@@ -4,7 +4,6 @@ class registryLoaderSearch
     function loadRegistryBySearch($searchWord)
     {
         $result = mysql_query("SELECT * FROM users_customers WHERE customer_compname LIKE '%$searchWord%' AND quest_status != 'черновик' ORDER BY customer_id DESC");
-
         while($data = mysql_fetch_assoc($result))
         {   
             $order_basket = mysql_query("SELECT system_countries.country_name, system_services.service_name, system_podservice.podservice_name
@@ -27,7 +26,9 @@ class registryLoaderSearch
             echo    "<td width='400'>";
             while ($basket_data = mysql_fetch_assoc($order_basket)) 
             {
+                echo "<hr>";
                 echo $basket_data['country_name']." - ".$basket_data['service_name']." - ".$basket_data['podservice_name']."<br>"; 
+                echo "<hr>";
             }
             echo    "<td width='40'><center><a href='../system/registryEdit.php?edit=".$data['customer_id']."'><img src='../icons/bullet_edit.png' alt='редактировать' title='редактировать'></a></center></td>";
             echo    "<td width='40'><center><a href='../system/registrySendToDraft.php?change=".$data['customer_id']."'><img src='../icons/script_stop.png' alt='отправить в черновики' title='отправить в черновики'></a></center></td>";

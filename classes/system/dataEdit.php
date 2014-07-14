@@ -15,7 +15,7 @@ class dataEdit
             $returned_info = mysql_fetch_array($request_info);
             echo "    <tr>
                         <td><b>№</b></td>
-                        <td width='400' colspan='3'><input type=text name=edit_id size='1' readonly=readonly value=".$returned_info['customer_id']."></td>
+                        <td width='400' colspan='3'><input type=text name='edit_id' size='1' readonly=readonly value=".$returned_info['customer_id']."></td>
                       </tr>       
                         <td><b>Дата</b></td>
                         <td width='400' colspan='3'><input type=text name=edit_date size='25' readonly=readonly value=".$returned_info['quest_date']."></td>

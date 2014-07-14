@@ -22,8 +22,7 @@ $searchData = new draftLoaderSearch;
         <td width='200'><center><b>Наименование компании</b></center></td>
         <td width='200'><center><b>Страна обращения</b></center></td>
         <td width='200'><center><b>Город обращения</b></center></td>
-        <td width='120'><center><b>Страна услуги</b></center></td>
-        <td width='200'><center><b>Наименование услуги</b></center></td>
+        <td width='600'><center><b>Наименование услуги</b></center></td>
         <td width='60' colspan='3'><center><b>Опции</b></center></td>
     </tr>
 <?php            

@@ -61,20 +61,17 @@ $loadDataForEdit = new dataEdit();
                 formData = $("#registryDataForm").serialize();
                 $.post( 
                     "../system/registrySave.php",
-                {   
-                    myData: formData,
-                    dataType: "json"
-                },
-                function(success) {
-                    alert('Редактирование анкеты завершено! '+success);
-                        location.reload();
+                    {   
+                        myData: formData,
+                        dataType: "json"
+                    },
+                    function(success) {
+                        alert('Редактирование анкеты завершено! '+success);
+                        window.location.href = '../templates/registry';
                     }
                 );
             });
         </script>
-        
-        
-        
     </body>
 </html>
 

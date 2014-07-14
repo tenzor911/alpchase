@@ -10,6 +10,17 @@ parse_str($dataFromRegistryEdit);
 
 $customer_id = $edit_id;
 
+echo $c_id = $edit_id;
+echo $c_date = $edit_date;
+echo $c_name = $edit_name;
+echo $c_surname = $edit_surn;
+echo $c_email = $edit_email;
+echo $c_primphone = $edit_primphone;
+echo $c_addphone = $edit_addphone;
+echo $c_company = $edit_compname;
+echo $c_country = $edit_country;
+echo $c_city = $edit_city;
+
 foreach ($countries as $country_key => $value){
     $country_id = intval($countries[$country_key]);
     if( $country_id > 0 ) {	

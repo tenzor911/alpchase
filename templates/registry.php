@@ -28,7 +28,7 @@ echo "Добро пожаловать! Вы зашли, как: ".$_SESSION['una
     </head>
     <body>
         <hr>      
-            <input type="button" value="создать новую анкету" onclick="location.href='../templates/questionary'"><input type="button" value="просмотр черновиков" onclick="location.href='../templates/drafts'"><input type="button" value="выход из системы" onclick="location.href='../logout'">
+            <center><input type="button" value="создать новую анкету" onclick="location.href='../templates/questionary'"><input type="button" value="просмотр черновиков" onclick="location.href='../templates/drafts'"><input type="button" value="выход из системы" onclick="location.href='../logout'"></center>
         <hr>
         <center>
             <select name='' id="filter_option">
