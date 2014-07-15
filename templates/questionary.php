@@ -158,7 +158,7 @@ $questNum = new QuestNumber();
 
                         <div class="uk-grid">
                             <div class="uk-width-1-1">
-                                <label class="uk-form-label" for="form-gs-street">Лицо принимающее решение (обязательное поле)</label>
+                                <label class="uk-form-label" for="form-gs-street">Лицо принимающее решение</label>
                                 <div class="uk-form-controls">
                                     <input type="text" id="form-gs-street" name="cust_trustee" placeholder="Должность лица принимающего решения" class="uk-width-1-1">
                                 </div>

@@ -17,6 +17,7 @@ $searchData = new registryLoaderSearch();
         <td width='40'><center><b>№</b></center></td>
         <td width='60'><center><b>Дата</b></center></td>
         <td width='60'><center><b>Статус</b></center></td>
+        <td width='80'><center><b>Просмотры</b></center></td>
         <td width='180'><center><b>ФИО</b></center></td>
         <td width='180'><center><b>Email</b></center></td>
         <td width='140'><center><b>Телефон</b></center></td>
