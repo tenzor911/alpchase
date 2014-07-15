@@ -1,4 +1,3 @@
-
 <?php
 
 include('../setup/mysql_settings.php');

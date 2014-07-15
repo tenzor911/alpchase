@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <link rel="stylesheet" type="text/css" href="css/grayhint.css">
-        <script type="text/javascript" src="jquery/jquery-1.10.2.js"></script>
+            <script type="text/javascript" src="js/jquery/jquery-1.10.2.js"></script>
     </head>
     <body>
         <form method="POST" action="index">
