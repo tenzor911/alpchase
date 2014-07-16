@@ -24,10 +24,17 @@ INNER JOIN (system_podservice
 INNER JOIN (users_customers 
 INNER JOIN (system_countries 
 INNER JOIN order_basket ON system_countries.country_id = order_basket.country_id) ON users_customers.customer_id = order_basket.customer_id) ON system_podservice.podservice_id = order_basket.podservice_id) ON system_services.service_id = order_basket.service_id WHERE (((order_basket.customer_id)=".$cust_id."));");
-
-
-
 echo "<hr>";
+
+if(isset($_SESSION['email']))
+{
+  $getUserVisits = mysql_query("SELECT customer_visits FROM users_customers WHERE customer_email='".$_SESSION['email']."'");
+  $counterVal = mysql_fetch_array($getUserVisits);
+  $counterVal['customer_visits']++;
+  mysql_query("UPDATE users_customers SET customer_visits=".$counterVal['customer_visits']." WHERE customer_email='".$_SESSION['email']."'");
+  echo "counter: ". $counterVal['customer_visits'];
+}
+
 ?>
 <html lang="en-gb" dir="ltr">
     <head>

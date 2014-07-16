@@ -17,7 +17,7 @@ class registryLoaderGeneral
             echo    "<td width='40'>".$data['customer_id']."</td>";
             echo    "<td width='60'>".$data['quest_date']."</td>";
             echo    "<td width='100'>".$data['quest_status']."</td>";
-            echo    "<td width='80'>0</td>";
+            echo    "<td width='80'>".$data['customer_visits']."</td>";
             echo    "<td width='100'>".$data['customer_surn']." ".$data['customer_name']."</td>";
             echo    "<td width='180'>".$data['customer_email']."</td>";
             echo    "<td width='140'>".$data['customer_primaryphone']."</td>";
