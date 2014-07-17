@@ -32,7 +32,6 @@ if(isset($_SESSION['email']))
   $counterVal = mysql_fetch_array($getUserVisits);
   $counterVal['customer_visits']++;
   mysql_query("UPDATE users_customers SET customer_visits=".$counterVal['customer_visits']." WHERE customer_email='".$_SESSION['email']."'");
-  echo "counter: ". $counterVal['customer_visits'];
 }
 
 ?>
@@ -46,6 +45,7 @@ if(isset($_SESSION['email']))
         <link rel="stylesheet" href="../css/uikit.css">
         <script src="../js/jquery/jquery-1.10.2.js"></script>
         <script src="../js/functions/function_AddOrDeleteFields.js"></script>
+        <script src="../js/functions/function_OrderBasket.js"></script>
         <script src="../js/uikit.js"></script>
         <script src="../js/switcher.js"></script>
     </head>
@@ -69,7 +69,7 @@ if(isset($_SESSION['email']))
                                     Презентация
                                 </div>
                                 <div class="uk-width-1-3">
-                                    Просмотры: 15
+                                    Просмотры: <?php echo $counterVal['customer_visits'];?>
                                 </div>
                             </div>
 			</div>
@@ -154,7 +154,7 @@ if(isset($_SESSION['email']))
                         <div class="uk-width-1-1">
                             <label class="uk-form-label" for="form-gs-street">Пожалуйста выберите дополнительные услуги </label>
                             <div id="ServiceBlockGroup"></div>
-                            <input type="button" onclick="addSection(); return false;" value="Добавить секцию"><input type="hidden" id="countSections" value="1">
+                            <input type="button" onclick="addSection(); return false;" value="Добавить секцию"><input type="hidden" id="countSections" value="1"><input type="hidden" id="iSections" value="1">
                         </div>
                     </div>		
                         <hr/>
@@ -212,6 +212,7 @@ if(isset($_SESSION['email']))
                                     www.alpschase.com
                                 </div>
                                 <div class="uk-width-1-3">
+                                    <a class="preview2" data-fancybox-type="ajax" href="preview.php" id="preview2">Preview</a>
                                     +7(495) 123-54-56
                                 </div>
                             </div>
@@ -224,50 +225,30 @@ if(isset($_SESSION['email']))
         </div>
    </div>
         <script>
-    function updateSelectCountry(selectCountryId) {
-        $.ajax({
-            type: "POST",
-            url: "../ajax_scripts/countryListUpdate.php",  
-            dataType: "html",
-            cache: false,
-            success: function (response) {
-                $('#' + selectCountryId).html(response);
-            }
-	});
-    }		    
-    
-    function selectCountry(id, country) {		
-        $.post( "../ajax_scripts/serviceListUpdate.php", 
-        {country_select: country}, 
-        function(data) {
-            $('#select_service_id'+id).html(data);		
-        });    
-    }
-    
-    function selectCountryAll(id, country) {		
-        $.post( "../ajax_scripts/serviceListUpdate.php", 
-        {country_select: country}, 
-        function(data) {			
-            $('.select_service'+id).each( 
-                function() {				
-                    $( this ).html(data);			
-                }
-            );			
-            $('.select_podservice'+id).each( 
-                function() {				
-                    $( this ).html('<option value="0">Услуга не назначена</option>');			
-                }
-            );		
-        });    
-    }
-    
-    function selectService(id,service) {         		
-        $.post( "../ajax_scripts/podserviceListUpdate.php", 
-        {service_select: service}, 
-        function(data) {			
-            $('#select_podservice_id'+id).html(data);		
-        });    
-    }
-    </script>
+            $(document).ready(function () {
+  $('.preview2').on("click", function (e) {
+    e.preventDefault(); // avoids calling preview.php
+    $.ajax({
+      type: "POST",
+      cache: false,
+      url: this.href, // preview.php
+      data: $("#postp").serializeArray(), // all form fields
+      success: function (data) {
+        // on success, post (preview) returned data in fancybox
+        $.fancybox(data, {
+          // fancybox API options
+          fitToView: false,
+          width: 905,
+          height: 505,
+          autoSize: false,
+          closeClick: false,
+          openEffect: 'none',
+          closeEffect: 'none'
+        }); // fancybox
+      } // success
+    }); // ajax
+  }); // on
+}); // ready
+        </script>
 </body>
 </html>

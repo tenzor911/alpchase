@@ -1,10 +1,7 @@
 <?php
-include('../classes/system/getQuestNumber.php');
-
-$questNum = new QuestNumber();
-
+    include('../classes/system/getQuestNumber.php');
+    $questNum = new QuestNumber();
 ?>
-
 <html lang="en-gb" dir="ltr">
     <head>
         <meta charset="utf-8">
@@ -22,10 +19,9 @@ $questNum = new QuestNumber();
         <script src="../js/functions/function_FormPreview.js"></script>
         <script src="../js/functions/function_MakeNewPass.js"></script>
         <script src="../js/functions/function_OnlyNumbersField.js"></script>
+        <script src="../js/functions/function_OrderBasket.js"></script>
         <script src="../js/functions/function_RequiredFields.js"></script>
     </head>
-    
-    
     <body class="tm-background">
         <div class="tm-header">
             <div class="uk-container uk-container-center uk-header-bg">
@@ -203,7 +199,7 @@ $questNum = new QuestNumber();
                             <div class="uk-width-1-1">
                                 <label class="uk-form-label" for="form-gs-street">Секции выбора услуг для клиента</label>
                                 <div id="ServiceBlockGroup"></div>
-                                 <input type="button" onclick="addSection(); return false;" value="Добавить секцию"><input type="hidden" id="countSections" value="1"><input type="hidden" id="iSections" value="1">
+                                <input type="button" onclick="addSection(); return false;" value="Добавить секцию"><input type="hidden" id="countSections" value="1"><input type="hidden" id="iSections" value="1">
                             </div>
                         </div>		
                         <hr/>
@@ -304,52 +300,6 @@ $questNum = new QuestNumber();
             </body>
         </div>
     <script>
-    function updateSelectCountry(selectCountryId) {
-        $.ajax({
-            type: "POST",
-            url: "../ajax_scripts/countryListUpdate.php",  
-            dataType: "html",
-            cache: false,
-            success: function (response) {
-                $('#' + selectCountryId).html(response);
-            }
-	});
-    }		    
-    
-    function selectCountryAll(id, country) {		
-        $.post( "../ajax_scripts/serviceListUpdate.php", 
-        {country_select: country}, 
-        function(data) {			
-            $('.select_service'+id).each( 
-                function() {				
-                    $(this).html(data);			
-                }
-            );			
-            $('.select_podservice'+id).each( 
-                function() {				
-                    $(this).html('<option value="0">услуга не назначена</option>');			
-                }
-            );		
-        });    
-    }
-	
-    function selectCountry(id, country) {		
-        $.post( "../ajax_scripts/serviceListUpdate.php", 
-        {country_select: country}, 
-        function(data) {
-            $('#select_service_id'+id).html(data);		
-        });    
-    }
-    
-    
-    function selectService(id,service) {         		
-        $.post( "../ajax_scripts/podserviceListUpdate.php", 
-        {service_select: service}, 
-        function(data) {			
-            $('#select_podservice_id'+id).html(data);		
-        });    
-    }
-    
     $("#saveDraft").click(function(){    
        formData = $("#QuestionaryForm").serialize();
        $.post( 

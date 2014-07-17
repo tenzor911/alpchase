@@ -8,8 +8,28 @@ $dataFromDraftEdit = urldecode($_POST['myData']);
 
 parse_str($dataFromDraftEdit);
 
-echo $dataFromDraftEdit;
+$c_id       = $edit_id;
 
+$c_name     = $edit_name;
+$c_surn     = $edit_surn;
+$c_email    = $edit_email;
+$c_prim     = $edit_primphone;
+$c_addt     = $edit_addphone;
+$c_comp     = $edit_compname;
+$c_cntr     = $edit_country;
+$c_city     = $edit_city;
+
+mysql_query("UPDATE users_customers SET "
+        . "customer_name='$c_name', "
+        . "customer_surn='$c_surn', "
+        . "customer_email='$c_email', "
+        . "customer_primaryphone='$c_prim', "
+        . "customer_additphone='$c_addt', "
+        . "customer_compname='$c_comp', "
+        . "customer_country='$c_cntr', "
+        . "customer_city='$c_city' WHERE customer_id='$c_id'");
+
+/*
 foreach( $countries as $country_key => $value ) {	
     $country_id = intval( $countries[$country_key] );
     if( $country_id > 0 ) 
@@ -28,5 +48,5 @@ foreach( $countries as $country_key => $value ) {
         }		
     }	
 }
-}
+}*/
 ?>

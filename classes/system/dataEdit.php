@@ -73,9 +73,6 @@ class dataEdit
                     . "INNER JOIN (system_countries "
                     . "INNER JOIN order_basket ON system_countries.country_id = order_basket.country_id) ON system_podservice.podservice_id = order_basket.podservice_id) ON system_services.service_id = order_basket.service_id) ON users_customers.customer_id = order_basket.customer_id "
                     . "WHERE (((order_basket.customer_id)=".$dataId."))");
-            
-            
-
 
             $returned_info = mysql_fetch_array($request_info);
             echo "<script type='text/javascript' src='../js/functions/test.js'></script>";

@@ -19,6 +19,7 @@ $loadDataForEdit = new dataEdit();
         <script type="text/javascript" src="../js/jquery/jquery-1.10.2.js"></script>
     </head>
     <body>
+        <center><h2>Редактирование черновика</h2></center>
         <form action ='draftSave.php' method ='post' id='draftDataForm'>
             <table border='1' width='600' cellpadding='0' cellspacing='0' align='center'>
                 <tr>

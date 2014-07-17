@@ -5,8 +5,8 @@ function deleteFromRegistry(dataNumber)   {
         "../system/dataDelete.php",
         {dataToDelete: dataNumber },
         function(data) {
-            alert(data);
             $("#data_field").load('../ajax_scripts/loadRegistryData.php');
+            //alert("Запись № " + data + " удалена!");
         }        
     );
 }
@@ -18,8 +18,8 @@ function deleteFromDraft(dataNumber)   {
         "../system/dataDelete.php",
         {dataToDelete: dataNumber },
         function(data) {
-            alert(data);
             $("#data_field").load('../ajax_scripts/loadDraftData.php');
+            //alert("Запись № " + data + " удалена!");
         }        
     );
 }
