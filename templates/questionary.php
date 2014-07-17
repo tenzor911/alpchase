@@ -17,7 +17,6 @@
         <script src="../js/functions/function_CheckLegalForm.js"></script>
         <script src="../js/functions/function_EmailChecking.js"></script>
         <script src="../js/functions/function_FormPreview.js"></script>
-        <script src="../js/functions/function_MakeNewPass.js"></script>
         <script src="../js/functions/function_OnlyNumbersField.js"></script>
         <script src="../js/functions/function_OrderBasket.js"></script>
         <script src="../js/functions/function_RequiredFields.js"></script>
@@ -52,14 +51,6 @@
                 <form class="uk-form uk-margin uk-form-stacked" method="post" action="../system/getDataFromQuestionary.php" id="QuestionaryForm">
                     <fieldset class="action">
                         <legend><center>Анкета № <input type="text" id="form-gs-street1" name="cust_id" value="<?php $questNum->countQuestCustomer()?>" class="uk-width-1-6" readonly > / Дата <input type="text" id="form-gs-street1" name="cust_date" value="<?php echo date("d.m.y");?>" class="uk-width-1-6" readonly></center></legend>
-                        <div class="uk-grid">
-                            <div class="uk-width-1-1">
-                                <div class="uk-form-controls">
-                                    <input type="hidden" id="form-gs-street" name="cust_pass" class="uk-width-1-1" value="">
-                                </div>
-                            </div>
-                        </div>
-                        
                         <div class="uk-grid">
                             <div class="uk-width-1-1">
                                 <label class="uk-form-label" for="form-gs-street">Имя (обязательное поле)</label>

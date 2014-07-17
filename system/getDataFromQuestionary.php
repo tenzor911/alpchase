@@ -1,7 +1,16 @@
-
 <?php
 
 include('../setup/mysql_settings.php');
+include('../classes/system/class.passwordGen');
+include('../classes/email/class.sendemail.php');
+
+mysql_query("SET NAMES 'utf8'");
+mysql_query("SET CHARACTER SET 'utf8'");
+
+$customerPassword = new passwordGen();
+$emailGenerate = new sendEmail();
+
+$newGeneratedPassword = $customerPassword->randomPassword();
 
 $date_today = date("d.m.y");
 $cust_name = $_REQUEST['cust_name'];
@@ -9,7 +18,7 @@ $cust_surname = $_REQUEST['cust_surname'];
 $cust_companyname = $_REQUEST['cust_companyname'];
 $cust_position = $_REQUEST['cust_position'];
 $cust_email = $_REQUEST['cust_email'];
-$cust_pass = $_REQUEST['cust_pass'];
+$cust_pass = $newGeneratedPassword;
 $cust_primphone = $_REQUEST['cust_primphone'];
 $cust_addphone = $_REQUEST['cust_addphone'];
 $cust_country = $_REQUEST['cust_country'];
@@ -18,8 +27,6 @@ $cust_trustee = $_REQUEST['cust_trustee'];
 $cust_knowabout = $_POST['cust_knowabout'];
 $cust_questions = $_REQUEST['cust_questions'];
 $cust_answers = $_REQUEST['cust_answers'];
-mysql_query("SET NAMES 'utf8'");
-mysql_query("SET CHARACTER SET 'utf8'");
 
 mysql_query("INSERT INTO users_customers "
         . "(quest_date, "
@@ -56,6 +63,10 @@ mysql_query("INSERT INTO users_customers "
         . "'$cust_answers',"
         . "'извещён')");//Услуги
 
+$emailGenerate->getLoginPass($cust_email, $newGeneratedPassword, $cust_name);
+$emailGenerate->emailMethod();
+
+/*
 $customer_id = $_REQUEST['cust_id'];
 $countries_arr = $_POST['countries'];
 $services_arr = $_POST['services'];
@@ -78,6 +89,9 @@ foreach( $countries_arr as $country_key => $value ) {
         }	
     }
 }
-echo "Анкета была сохранена!";
+*/
+
+echo "Анкета была сохранена! Пользователь был извещён!";
 header('Refresh: 3; URL=../templates/questionary');
+
 ?>
