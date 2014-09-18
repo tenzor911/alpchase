@@ -1,5 +1,5 @@
 <?php
-    include('../classes/system/getQuestNumber.php');
+    include('../classes/system/class.getQuestNumber.php');
     $questNum = new QuestNumber();
 ?>
 <html lang="en-gb" dir="ltr">
@@ -12,11 +12,11 @@
         <link rel="stylesheet" href="../css/uikit.css">
         <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
         <script src="../js/jquery/jquery-1.10.2.js"></script>
-        <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
         <script src="../js/functions/function_AddOrDeleteFields.js"></script>
         <script src="../js/functions/function_CheckLegalForm.js"></script>
         <script src="../js/functions/function_EmailChecking.js"></script>
         <script src="../js/functions/function_FormPreview.js"></script>
+        <script src="../js/functions/function_MakeNewPass.js"></script>
         <script src="../js/functions/function_OnlyNumbersField.js"></script>
         <script src="../js/functions/function_OrderBasket.js"></script>
         <script src="../js/functions/function_RequiredFields.js"></script>
@@ -51,6 +51,14 @@
                 <form class="uk-form uk-margin uk-form-stacked" method="post" action="../system/getDataFromQuestionary.php" id="QuestionaryForm">
                     <fieldset class="action">
                         <legend><center>Анкета № <input type="text" id="form-gs-street1" name="cust_id" value="<?php $questNum->countQuestCustomer()?>" class="uk-width-1-6" readonly > / Дата <input type="text" id="form-gs-street1" name="cust_date" value="<?php echo date("d.m.y");?>" class="uk-width-1-6" readonly></center></legend>
+                        <div class="uk-grid">
+                            <div class="uk-width-1-1">
+                                <div class="uk-form-controls">
+                                    <input type="hidden" id="form-gs-street" name="cust_pass" class="uk-width-1-1" value="">
+                                </div>
+                            </div>
+                        </div>
+                        
                         <div class="uk-grid">
                             <div class="uk-width-1-1">
                                 <label class="uk-form-label" for="form-gs-street">Имя (обязательное поле)</label>
@@ -111,7 +119,7 @@
                             <div class="uk-width-1-1">
                                 <label class="uk-form-label" for="form-gs-street">Основной телефон (обязательное поле)</label>
                                 <div class="uk-form-controls">
-                                    <input type="text" id="form-gs-street" name="cust_primphone" maxlength="16" placeholder="Введите телефон с кодом страны и города" class="uk-width-1-1" onkeypress="return isNumber(event)">
+                                    <input type="text" id="form-gs-street" name="cust_primphone" maxlength="16" placeholder="Введите телефон с кодом страны и города" class="uk-width-1-1">
                                 </div>
                             </div>
                         </div>	
@@ -120,7 +128,7 @@
                             <div class="uk-width-1-1">
                                 <label class="uk-form-label" for="form-gs-street">Дополнительный телефон</label>
                                 <div class="uk-form-controls">
-                                    <input type="text" id="form-gs-street" name="cust_addphone" maxlength="16" placeholder="Введите телефон с кодом страны и города" class="uk-width-1-1" onkeypress="return isNumber(event)">
+                                    <input type="text" id="form-gs-street" name="cust_addphone" maxlength="16" placeholder="Введите телефон с кодом страны и города" class="uk-width-1-1">
                                 </div>
                             </div>
                         </div>	
@@ -300,8 +308,7 @@
             dataType: "json"
             },
             function(success) {
-                alert('Анкета была сохранена как черновик! '+success);
-                location.reload();
+                alert('Черновик был успешно сохранён! '+success);
             }
         );
     });

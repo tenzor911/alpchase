@@ -60,7 +60,7 @@ function delService( section_i, service_i ) {
 $(document).ready(function(){
 	
     $("#countSections").val('0');
-	addSection();
+	//addSection();
 	
 	
 });  

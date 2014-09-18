@@ -22,13 +22,16 @@ echo "Добро пожаловать! Вы зашли, как: ".$_SESSION['una
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>ALPCHASE - Реестр анкет клиентов</title>
+        <script type="text/javascript" src="../js/jquery/jquery-1.10.2.js"></script>
         <script type="text/javascript" src="../js/functions/function_DeleteStringData.js"></script>
-        <script type="text/javascript" src="../js/jquery/jquery-1.10.2.js"> </script>
-        <link rel="stylesheet" type="text/css" href="../css/styleRegistry.css">   </link>   
+        <script type="text/javascript" src="../js/functions/function_LoadRegistryData.js"></script>
+        <script type="text/javascript" src="../js/functions/function_SearchRegistry.js"></script>
+        <link rel="stylesheet" type="text/css" href="../css/styleRegistry.css"></link>   
     </head>
     <body>
+        <center><h2>Реестр анкет</h2></center>
         <hr>      
-            <center><input type="button" value="создать новую анкету" onclick="location.href='../templates/questionary'"><input type="button" value="просмотр черновиков" onclick="location.href='../templates/drafts'"><input type="button" value="выход из системы" onclick="location.href='../logout'"></center>
+            <center><input type="button" value="назад к навигации" onclick="location.href='../templates/navigation'"><input type="button" value="создать новую анкету" onclick="location.href='../templates/questionary'"><input type="button" value="просмотр черновиков" onclick="location.href='../templates/drafts'"><input type="button" value="выход из системы" onclick="location.href='../logout'"></center>
         <hr>
         <center>
             <select name='' id="filter_option">
@@ -43,43 +46,5 @@ echo "Добро пожаловать! Вы зашли, как: ".$_SESSION['una
         </center>
         <br></br>
         <div id="data_field" align="center">Загрузка данных...</div>
-            <script>
-                $(document).ready(function() {
-                    $("#filter_option").change(function(){
-                        $.post( 
-                            "../ajax_scripts/filterDataUpdate.php",
-                            {filter_data_select: $(this).val() },
-                            function(data) {
-                                $('#filter_parameter').html(data);
-                                $("#data_field").val("0");
-                            }
-                        );
-                    });
-       
-                    $("#filter_parameter").click(function(){    
-                        $.post( 
-                            "../ajax_scripts/loadRegistryData.php",
-                            {parameter: $(this).val(), filter_parameter_select: $('#filter_option').val() },
-                            function(success) {
-                                $('#data_field').html(success);    
-                            }
-                        );
-                    });
-    
-                    $("#search_data").keyup(function(){
-                        $.post( 
-                            "../ajax_scripts/loadRegistryData.php",
-                            {company_search_name: $(this).val() },
-                            function(data) {
-                                $('#data_field').html(data);
-                            }
-                        );
-                    }); 
-                    
-                    $(document).ready(function(){
-                        $("#data_field").load('../ajax_scripts/loadRegistryData.php');
-                    });
-                });
-            </script>
     </body>
 </html>

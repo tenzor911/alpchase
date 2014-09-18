@@ -6567,3 +6567,7 @@ font-family: 'helioscbold';
 .my_area_width {
     width: 700px;
 }
+
+.required {
+    background-color: #659f13;
+}

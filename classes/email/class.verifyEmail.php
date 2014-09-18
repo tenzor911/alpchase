@@ -190,10 +190,12 @@ class verifyEmail {
      * If an error occurs, returns FALSE
      */
     private function _fsockGetResponseCode(&$fp) {
-        do {
-            $reply = stream_get_line($fp, 1024, "\r\n");
-            $status = stream_get_meta_data($fp);
-        } while (($reply[3] != ' ') && ($status['timed_out'] === FALSE));
+	$reply = stream_get_line($fp, 1);
+	$status = stream_get_meta_data($fp);
+	if ($status['unread_bytes']>0)
+	{
+		$reply .= stream_get_line($fp, $status['unread_bytes'],"\r\n");
+	}
 
         preg_match('/^(?<code>[0-9]{3}) (.*)$/ims', $reply, $matches);
         $code = isset($matches['code']) ? $matches['code'] : false;

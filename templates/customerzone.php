@@ -1,6 +1,10 @@
 <?php 
 
 include('../setup/mysql_settings.php');
+include('../classes/system/dataEdit.php');
+include('../classes/system/class.getQuestNumber.php');
+
+$questNum = new QuestNumber();
 
 mysql_query("SET NAMES 'utf8'");
 mysql_query("SET CHARACTER SET 'utf8'");
@@ -18,14 +22,16 @@ $data = mysql_fetch_assoc($customer_data);
 
 $cust_id = $data['customer_id'];
 
-$order = mysql_query("SELECT system_countries.country_name, system_services.service_name, system_podservice.podservice_name
+$loadBasket = new dataEdit();
+
+/*$order = mysql_query("SELECT system_countries.country_name, system_services.service_name, system_podservice.podservice_name
 FROM system_services 
 INNER JOIN (system_podservice 
 INNER JOIN (users_customers 
 INNER JOIN (system_countries 
 INNER JOIN order_basket ON system_countries.country_id = order_basket.country_id) ON users_customers.customer_id = order_basket.customer_id) ON system_podservice.podservice_id = order_basket.podservice_id) ON system_services.service_id = order_basket.service_id WHERE (((order_basket.customer_id)=".$cust_id."));");
 echo "<hr>";
-
+*/
 if(isset($_SESSION['email']))
 {
   $getUserVisits = mysql_query("SELECT customer_visits FROM users_customers WHERE customer_email='".$_SESSION['email']."'");
@@ -52,51 +58,59 @@ if(isset($_SESSION['email']))
     <body class="tm-background">
     <div class="tm-header">
 	<div class="uk-container uk-container-center uk-header-bg">
-            <form class="uk-form uk-margin uk-form-stacked">
+            <form class="uk-form uk-margin uk-form-stacked" id="customerData">
                 <fieldset>
                     <div class="uk-grid">
-                        <div class="uk-width-1-2">
-                            <legend>
-                                Коммерческое предложение
-                            </legend>
-                        </div>
-                        <div class="uk-width-1-2">
+                        <br>
+                        <div class="uk-width-1-1">
                             <div class="uk-grid uk-text-small uk-text-center uk-text-bottom">
                                 <div class="uk-width-1-3">
-                                    Избранное
+                                    <h3>Избранное</h3>
                                 </div>
                                 <div class="uk-width-1-3">
-                                    Презентация
+                                    <h3>Презентация</h3>
                                 </div>
                                 <div class="uk-width-1-3">
-                                    Просмотры: <?php echo $counterVal['customer_visits'];?>
+                                    <h3>Просмотры: <?php echo $counterVal['customer_visits'];?></h3>
                                 </div>
                             </div>
+                            <br>
 			</div>
+                        <div class="uk-grid uk-text-center">
+            
+                        <div class="uk-width-1-2 uk-text-right">
+                            <b>Коммерческое предложение №</b>
+                        </div>
+                        <div class="uk-width-1-2 uk-text-center">
+                           <input type="text" id="form-gs-street1" name="cust_id" value="<?php $questNum->countQuestCustomer()?>" class="uk-width-1-6" readonly >
+                        </div>
+         
+            </div>
+
                     </div>
                     <div class="uk-grid">
                         <div class="uk-width-1-3">
                             <label for="form-s-mix2">
-                                Ф.И.О <?php echo $data['customer_name']." ".$data['customer_surn'];?>
+                                Ф.И.О: <?php echo " ".$data['customer_name']." ".$data['customer_surn'];?>
                             </label>
                             
                         </div>
                         <div class="uk-width-1-3">
                             <label for="form-s-mix2">
-                                Компания <?php echo $data['customer_compname'];?>
+                                Компания: <?php echo " ".$data['customer_compname'];?>
                             </label>
                             
                         </div>
                         <div class="uk-width-1-3">
                             <label for="form-s-mix2">
-                                Дата <?php echo $data['quest_date'];?>
+                                Дата: <?php echo " ".$data['quest_date'];?>
                             </label>
                             
                         </div>
                     </div>
                     <div class="uk-grid">
                         <div class="uk-width-1-1">
-                           <p>Добрый день, Иван Иванович</p>
+                           <p>Добрый день, <?php echo " ".$data['customer_name'];?></p>
                            <p>Вас приветствует компания "ALPS and CHASE" и любезно просит, посмотреть наше предложение!</p>
                         </div>
                     </div>					
@@ -116,13 +130,16 @@ if(isset($_SESSION['email']))
                             </ul>
                             <ul id="tab-content" class="uk-switcher uk-margin">
                                 <li class="uk-active">
-                                        <?php while ($order_data = mysql_fetch_assoc($order)) {?><p>
-                                        <?php echo $order_data['country_name'];?><p>
-                                        <?php echo $order_data['service_name'];?><p>
-                                        <?php echo $order_data['podservice_name'];?><p>
-                                            <hr>
-                                        <?php }?></li>
-                                
+                                    <table width="600" cellpadding="0" cellspacing="0" align="center" id="mytable">
+                                            <?php $loadBasket->loadCustomerBasket($cust_id);?>
+                                    </table>   
+                                    <hr/>	
+                                    <div class="uk-grid">
+                                        <div class="uk-width-1-1">
+                                            <center><input type="button" onclick="addSection(); return false;" value="Запросить другие услуги компании"><input type="hidden" id="countSections" value="1"><input type="hidden" id="iSections" value="1"></center>
+                                        </div>
+                                    </div>
+                                </li>
                                 <li class="">Профиль компании
                                             Услуги
                                                 (по странам)
@@ -133,31 +150,11 @@ if(isset($_SESSION['email']))
                                 <li class="">Преимущества:
                                                 1.
                                                 2.
-
-
                                 </li>
                             </ul>			
                         </div>
-                    </div>					
-                    <hr/>	
-                    <div class="uk-grid">
-                        <div class="uk-width-1-1">
-                           <h4>Запросить другие услуги компании</h4>
-                            <p>Так же Вы можете запросить стоимость других услуг, выбрав необходимые по нашему прайс-листу.<br/>
-                            После обработки данных секретарём, данные по стоимости и срокам выполнения запрошенных услуг будут добавленны в Ваше коммерческое предложение.
-                            </p>
-                            <p><strong>ЗАПРОС:</strong></p>
-                        </div>
-                    </div>	
+                    </div>						
                     <hr/>					
-                    <div class="uk-grid">
-                        <div class="uk-width-1-1">
-                            <label class="uk-form-label" for="form-gs-street">Пожалуйста выберите дополнительные услуги </label>
-                            <div id="ServiceBlockGroup"></div>
-                            <input type="button" onclick="addSection(); return false;" value="Добавить секцию"><input type="hidden" id="countSections" value="1"><input type="hidden" id="iSections" value="1">
-                        </div>
-                    </div>		
-                        <hr/>
                     <div class="uk-grid">
                         <div class="uk-width-1-1">
                             <span class="uk-form-label" for="form-s-t">
@@ -185,7 +182,7 @@ if(isset($_SESSION['email']))
                         </div>
 			<div class="uk-width-1-3">
                             <div class="uk-form-controls uk-margin-top">
-				<input type="button" value="Отложить предложение">
+				<input type="button" id="activateSubscription" value="Отложить предложение">
                             </div>
 			</div>		  
                     </div>	
@@ -203,7 +200,7 @@ if(isset($_SESSION['email']))
                         </div>
                     </div>	
                     <div class="uk-grid">
-                        <div class="uk-width-1-2">
+                        <div class="uk-width-1-1">
                             <div class="uk-grid uk-text-small uk-text-center uk-text-bottom">
                                 <div class="uk-width-1-3">
                                     15.01.2014
@@ -212,7 +209,6 @@ if(isset($_SESSION['email']))
                                     www.alpschase.com
                                 </div>
                                 <div class="uk-width-1-3">
-                                    <a class="preview2" data-fancybox-type="ajax" href="preview.php" id="preview2">Preview</a>
                                     +7(495) 123-54-56
                                 </div>
                             </div>
@@ -225,30 +221,20 @@ if(isset($_SESSION['email']))
         </div>
    </div>
         <script>
-            $(document).ready(function () {
-  $('.preview2').on("click", function (e) {
-    e.preventDefault(); // avoids calling preview.php
-    $.ajax({
-      type: "POST",
-      cache: false,
-      url: this.href, // preview.php
-      data: $("#postp").serializeArray(), // all form fields
-      success: function (data) {
-        // on success, post (preview) returned data in fancybox
-        $.fancybox(data, {
-          // fancybox API options
-          fitToView: false,
-          width: 905,
-          height: 505,
-          autoSize: false,
-          closeClick: false,
-          openEffect: 'none',
-          closeEffect: 'none'
-        }); // fancybox
-      } // success
-    }); // ajax
-  }); // on
-}); // ready
+            $("#activateSubscription").click(function(){    
+                formData = $("#customerData").serialize();
+                $.post( 
+                    "../ajax_scripts/offerAwaiting.php",
+                    {   
+                        myData: formData,
+                        dataType: "json"
+                    },
+                    function(success) {
+                        alert('Ваша подписка на рассылку активирована! '+success);
+                        window.location.href = 'customerzone';
+                    }
+                );
+            });
         </script>
 </body>
 </html>

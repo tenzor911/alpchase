@@ -75,7 +75,7 @@ class dataEdit
                     . "WHERE (((order_basket.customer_id)=".$dataId."))");
 
             $returned_info = mysql_fetch_array($request_info);
-            echo "<script type='text/javascript' src='../js/functions/test.js'></script>";
+            echo "<script type='text/javascript' src='../js/functions/function_RegistryAndDraftEditData.js'></script>";
             echo "<script type='text/javascript' src='../js/jquery/jquery-1.10.2.js'></script>";
             $row_counter = 0;
             echo "<div id='ServiceBlockGroup'></div>";
@@ -91,7 +91,7 @@ class dataEdit
             {
                 $getBasketItemId = mysql_fetch_assoc($getBasketId);
                 $row_counter++;
-                echo "<script>test(".$row_counter.", ".$basket_data['country_id'].", ".json_encode($basket_data['country_name']).");</script>";
+                echo "<script>RegistryAndDraftEditData(".$row_counter.", ".$basket_data['country_id'].", ".json_encode($basket_data['country_name']).");</script>";
                 echo "<script>getRow(".mysql_num_rows($order_basket).");</script>";    
                 echo "<tr id='itemRowNumber".$row_counter."'>";
                 echo    "<td><center><select name='countries[".$row_counter."]' id='select_country_id".$row_counter."' class='select_country_class".$row_counter."' onchange='selectCountryAll(".$row_counter.",this.value);'></select></center></td>";

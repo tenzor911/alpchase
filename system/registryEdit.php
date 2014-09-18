@@ -19,6 +19,7 @@ $loadDataForEdit = new dataEdit();
         <script type="text/javascript" src="jquery/jquery-1.10.2.js"></script>
     </head>
     <body>
+        <center><h2>Редактирование записи реестра</h2></center>
         <form method ='post' id='registryDataForm'>
             <table border='1' width='600' cellpadding='0' cellspacing='0' align='center'>
                 <tr>
@@ -60,7 +61,7 @@ $loadDataForEdit = new dataEdit();
             $("#saveRegistryFormButton").click(function(){    
                 formData = $("#registryDataForm").serialize();
                 $.post( 
-                    "../system/registrySave.php",
+                    "../system/dataSave.php",
                     {   
                         myData: formData,
                         dataType: "json"

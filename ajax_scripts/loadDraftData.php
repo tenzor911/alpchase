@@ -11,6 +11,7 @@ mysql_query("SET CHARACTER SET 'utf8'");
 $generalData = new draftLoaderGeneral;
 $filterData = new draftLoaderFilter;
 $searchData = new draftLoaderSearch;
+
 ?>
 <table width='2200' border='1' cellpadding='0' cellspacing='0' align='center'>
     <tr>

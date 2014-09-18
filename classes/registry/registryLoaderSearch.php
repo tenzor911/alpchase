@@ -31,8 +31,8 @@ class registryLoaderSearch
                 echo $basket_data['country_name']." - ".$basket_data['service_name']." - ".$basket_data['podservice_name']."<br>"; 
                 echo "<hr>";
             }
+            echo    "<td width='40'><center><a href='#'><img src='../icons/bullet_magnify.png' alt='предпросмотр' title='предпросмотр'></a></center></td>";
             echo    "<td width='40'><center><a href='../system/registryEdit.php?edit=".$data['customer_id']."'><img src='../icons/bullet_edit.png' alt='редактировать' title='редактировать'></a></center></td>";
-            echo    "<td width='40'><center><a href='../system/registrySendToDraft.php?change=".$data['customer_id']."'><img src='../icons/script_stop.png' alt='отправить в черновики' title='отправить в черновики'></a></center></td>";
             echo    "<td width='40'><center><a href='#'><img src='../icons/bullet_cross.png' onclick='deleteFromRegistry(".$data['customer_id'].")' alt='удалить' title='удалить'></a></center></td>";
             echo "</tr>";
         }

@@ -14,18 +14,18 @@ $searchData = new registryLoaderSearch();
 ?>
 <table width='2200' border='1' cellpadding='0' cellspacing='0' align='center'>
     <tr>
-        <td width='40'><center><b>№</b></center></td>
-        <td width='60'><center><b>Дата</b></center></td>
-        <td width='60'><center><b>Статус</b></center></td>
-        <td width='80'><center><b>Просмотры</b></center></td>
-        <td width='180'><center><b>ФИО</b></center></td>
-        <td width='180'><center><b>Email</b></center></td>
-        <td width='140'><center><b>Телефон</b></center></td>
-        <td width='200'><center><b>Наименование компании</b></center></td>
-        <td width='200'><center><b>Страна обращения</b></center></td>
-        <td width='200'><center><b>Город обращения</b></center></td>
-        <td width='600'><center><b>Наименование услуги</b></center></td>
-        <td width='240' colspan='3'><center><b>Опции</b></center></td>
+        <td width='40'><center><font size='2'><b>№</b></center></td>
+        <td width='60'><center><font size='2'><b>Дата</b></center></td>
+        <td width='60'><center><font size='2'><b>Статус</b></center></td>
+        <td width='80'><center><font size='2'><b>Просмотры</b></center></td>
+        <td width='100'><center><font size='2'><b>ФИО</b></center></td>
+        <td width='120'><center><font size='2'><b>Email</b></center></td>
+        <td width='80'><center><font size='2'><b>Телефон</b></center></td>
+        <td width='160'><center><font size='2'><b>Наименование компании</b></center></td>
+        <td width='120'><center><font size='2'><b>Страна обращения</b></center></td>
+        <td width='120'><center><font size='2'><b>Город обращения</b></center></td>
+        <td width='400'><center><font size='2'><b>Наименование услуги</b></center></td>
+        <td width='60' colspan='3'><center><font size='2'><b>Опции</b></center></td>
     </tr>
 <?php      
 if( isset($_POST["parameter"]) )

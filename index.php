@@ -1,3 +1,9 @@
+<?php
+    include ('./classes/login/class.adminLoginSession.php');
+    $adminNewSessionForLogin = new adminLoginSession();
+    $adminNewSessionForLogin->adminMakesLoginIntoSystem();
+?>
+
 <meta http-equiv="Content-Type" content="text/html; charset=utf8">    
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -15,29 +21,19 @@
         </form>
     </body>
 </html>
-
-<?php
-    session_start();
-
-    include('./setup/mysql_settings.php');
-
-    if(isset($_POST['login']))
-	{
-
-		$uname = $_POST['uname'];
-		$password = $_POST['pass'];
-		$check_user = "SELECT * FROM users_managers WHERE um_pass=MD5('$password') AND um_login='$uname'";
-		$run = mysql_query($check_user);
-
-		if(mysql_num_rows($run)>0)
-		{
-			$_SESSION['uname']=$uname;
-
-			echo "<script>window.open('./templates/navigation','_self')</script>";
-		}
-		else 
-        {
-            echo "<script>alert('Email or password is incorrect!')</script>";
-		}
-    }
-?>
+     <script>
+         /*
+            $(".email").change(function() {
+                var emailToRestore = $(this).val();
+                $.post( 
+                    "ajax_scripts/emailCheck.php",
+                    {   
+                        email: emailToRestore,
+                        dataType: "json"
+                    },
+                    function(success) {
+                        $('#emailexist').text(success);
+                    }
+                );
+            });*/
+        </script>

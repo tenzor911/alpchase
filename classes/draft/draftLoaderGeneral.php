@@ -31,7 +31,12 @@ class draftLoaderGeneral
             }
             echo    "</td>";
             echo    "<td width='40'><center><a href='../system/draftEdit.php?edit=".$data['customer_id']."'><img src='../icons/bullet_edit.png' alt='редактировать' title='редактировать'></a></center></td>";
-            echo    "<td width='40'><center><a href='../system/draftChange.php?change=".$data['customer_id']."'><img src='../icons/mail.png' alt='известить клиента' title='известить клиента'></a></center></td>";
+            echo    "<td width='40'>";
+            if ($data['customer_email'] != '')
+            {
+                echo    "<center><a href='../system/draftChange.php?change=".$data['customer_id']."'><img src='../icons/mail.png' alt='известить клиента' title='известить клиента'></a></center>";
+            }
+            echo    "</td>";
             echo    "<td width='40'><center><a href='#'><img src='../icons/bullet_cross.png' onclick='deleteFromDraft(".$data['customer_id'].")' alt='удалить' title='удалить'></a></center></td>";
             echo "</tr>";
         }

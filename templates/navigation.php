@@ -7,10 +7,7 @@ session_start();
 if(!$_SESSION['uname']){
     header("location: ../index");
 }
-
-echo "Welcome ".$_SESSION['uname']."!";
-
-
+echo "Добро пожаловать! Вы зашли, как : ".$_SESSION['uname']."";
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -26,6 +23,7 @@ echo "Welcome ".$_SESSION['uname']."!";
     <body>
         <br>
         <hr>
+            <?php if($_SESSION['uname']=="admin") {echo "<input value='Административная панель' onclick=location.href='adminpanel' type=button style='width: 200px'><br>";} ?>
             <input value="Создать новую анкету" onclick="location.href='questionary'" type="button" style="width: 200px">
         <br>
             <input value="Реестр анкет клиентов" onclick="location.href='registry'" type="button" style="width: 200px">
