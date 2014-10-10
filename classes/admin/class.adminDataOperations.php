@@ -20,7 +20,7 @@ class adminDataOperations   {
         }
     }
     
-    public function insertPacketData($dbInstanceName, $dbDataName, $dbDataId, $dbTableName, $dbFieldName, $packetCat) 
+    public function insertPacketData($dbInstanceName, $dbDataName, $dbDataId, $dbTableName, $dbFieldName, $commonPrice, $economPrice, $standartPrice, $vipPrice) 
     {
         $checkDataPresence = mysql_query("SELECT ".$dbDataId." FROM ".$dbTableName." WHERE ".$dbFieldName."='$dbDataName' LIMIT 1");
         if( mysql_num_rows( $checkDataPresence ) > 0 ) 
@@ -29,7 +29,7 @@ class adminDataOperations   {
         } 
         else 
         {
-            mysql_query("INSERT INTO ".$dbTableName." (".$dbFieldName.", packet_type) VALUES ('$dbDataName', '$packetCat')");    
+            mysql_query("INSERT INTO ".$dbTableName." (".$dbFieldName.", price_common, price_econom, price_standart, price_vip) VALUES ('$dbDataName', '$commonPrice', '$economPrice', '$standartPrice', '$vipPrice')");    
             echo "".$dbInstanceName." ".$dbDataName." успешно добавлен!";
             /*echo $packetCat;*/
         }
@@ -50,45 +50,45 @@ class adminDataOperations   {
     }
     
     public function saveData($dbInstanceName, $dbDataName, $dbDataId, $dbTableName, $dbFieldName, $dbFieldId) 
-    {
+    {/*
         $checkDataPresence = mysql_query("SELECT ".$dbDataId." FROM ".$dbTableName." WHERE ".$dbFieldName."='$dbDataName' LIMIT 1");
         if( mysql_num_rows( $checkDataPresence ) > 0 ) 
         {
             echo "Ошибка! ".$dbInstanceName." ".$dbDataName." уже есть в списке!";   
         } 
         else 
-        {
+        {*/
             mysql_query("UPDATE ".$dbTableName." SET ".$dbFieldName."='$dbDataName' WHERE ".$dbDataId."='$dbFieldId'");
             echo "".$dbInstanceName." ".$dbDataName." успешно сохранена!";
-        }
+        //}
     }  
     
-    public function savePacketData($dbInstanceName, $dbDataName, $dbDataId, $dbTableName, $dbFieldName, $dbFieldId, $packetCat) 
+    public function savePacketData($dbInstanceName, $dbDataName, $dbDataId, $dbTableName, $dbFieldName, $dbFieldId, $priceCommon, $priceEconom, $priceStandart, $priceVip) 
     {
-        $checkDataPresence = mysql_query("SELECT ".$dbDataId." FROM ".$dbTableName." WHERE ".$dbFieldName."='$dbDataName' LIMIT 1");
+        /*$checkDataPresence = mysql_query("SELECT ".$dbDataId." FROM ".$dbTableName." WHERE ".$dbFieldName."='$dbDataName' LIMIT 1");
         if( mysql_num_rows( $checkDataPresence ) > 0 ) 
         {
             echo "Ошибка! ".$dbInstanceName." ".$dbDataName." уже есть в списке!";   
         } 
         else 
-        {
-            mysql_query("UPDATE ".$dbTableName." SET ".$dbFieldName."='$dbDataName', packet_type='$packetCat' WHERE ".$dbDataId."='$dbFieldId'");
+        {*/
+            mysql_query("UPDATE ".$dbTableName." SET ".$dbFieldName."='$dbDataName', price_common='$priceCommon', price_econom='$priceEconom', price_standart='$priceStandart', price_vip='$priceVip' WHERE ".$dbDataId."='$dbFieldId'");
             echo "".$dbInstanceName." ".$dbDataName." успешно сохранен!";
-        }
+        //}
     }  
     
     public function saveUserData($dbInstanceName, $dbDataName, $dbUsrPassword, $dbUsrEmail, $dbUsrRole, $dbDataId, $dbTableName, $dbFieldName, $dbFieldId) 
-    {
+    {/*
         $checkDataPresence = mysql_query("SELECT ".$dbDataId." FROM ".$dbTableName." WHERE ".$dbFieldName."='$dbDataName' LIMIT 1");
         if( mysql_num_rows( $checkDataPresence ) > 0 ) 
         {
             echo "Ошибка! ".$dbInstanceName." ".$dbDataName." уже есть в списке!";   
         } 
         else 
-        {
+        {*/
             mysql_query("UPDATE ".$dbTableName." SET ".$dbFieldName."='$dbDataName', um_pass=MD5('".$dbUsrPassword."'), um_email='$dbUsrEmail', um_role='$dbUsrRole' WHERE ".$dbDataId."='$dbFieldId'");
             echo "".$dbInstanceName." ".$dbDataName." успешно сохранен!";
-        }
+        //}
     }  
     
     

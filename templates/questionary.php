@@ -1,4 +1,11 @@
 <?php
+include('../setup/mysql_settings.php');
+
+session_start();
+
+if(!$_SESSION['uname']){
+    header("location: ../index");
+}
     include('../classes/system/class.getQuestNumber.php');
     $questNum = new QuestNumber();
 ?>

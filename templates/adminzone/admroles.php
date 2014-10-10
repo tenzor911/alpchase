@@ -1,3 +1,21 @@
+<?php 
+
+include('../../setup/mysql_settings.php');
+
+session_start();
+
+    mysql_query("SET NAMES 'utf8'");
+    mysql_query("SET CHARACTER SET 'utf8'");
+
+if($_SESSION['uname']!='admin'){
+    header("location: ../index");
+}
+
+echo "Добро пожаловать! Вы зашли, как: ".$_SESSION['uname']."!";
+
+?>
+
+
 <html lang="en-gb" dir="ltr">
     <head>
 	<meta charset="utf-8">
@@ -10,7 +28,8 @@
         <script src="../../js/functions/function_AdminOperations.js"></script>
     </head>
     <body class="tm-background">
-        <input value="Вернуться назад" onclick="location.href='../adminpanel'" type="button" style="width: 300px">
+        <center><input value="Вернуться назад" onclick="location.href='../adminpanel'" type="button" style="width: 150px"> <input value="Пользователи" onclick="location.href='admusers.php'" type="button" style="width: 150px"> <input value="Услуги" onclick="location.href='admservices.php'" type="button" style="width: 150px"> <input value="Подуслуги" onclick="location.href='admpodservices.php'" type="button" style="width: 150px"> <input value="Пакеты" onclick="location.href='admpackets.php'" type="button" style="width: 150px"> <input value="Соотношения" onclick="location.href='admrelations.php'" type="button" style="width: 150px"> <input value="Соотношение пакетных услуг" onclick="location.href='admpacketsrelation.php'" type="button" style="width: 200px"></center>
+        <hr>
         <center><h2>Редактировать список ролей</h2></center>
         <hr>
     </body>

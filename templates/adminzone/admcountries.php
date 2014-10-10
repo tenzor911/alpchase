@@ -10,7 +10,8 @@
         <script src="../../js/functions/function_AdminOperations.js"></script>
     </head>
     <body class="tm-background">
-        <input value="Вернуться назад" onclick="location.href='../adminpanel'" type="button" style="width: 300px">
+        <center><input value="Вернуться назад" onclick="location.href='../adminpanel'" type="button" style="width: 150px"> <input value="Пользователи" onclick="location.href='../adminpanel/admusers.php'" type="button" style="width: 150px"> <input value="Роли" onclick="location.href='../adminpanel/admroles.php'" type="button" style="width: 150px"> <input value="Услуги" onclick="location.href='../adminpanel/admservices.php'" type="button" style="width: 150px"> <input value="Подуслуги" onclick="location.href='../adminpanel/admpodservices.php'" type="button" style="width: 150px"> <input value="Пакеты" onclick="location.href='../adminpanel/admpackets.php'" type="button" style="width: 150px"> <input value="Соотношения" onclick="location.href='../adminpanel/admrelations.php'" type="button" style="width: 150px"> <input value="Соотношение пакетных услуг" onclick="location.href='admpacketsrelation.php'" type="button" style="width: 200px"></center>
+        <hr>
         <center><h2>Редактировать список стран</h2></center>
         <hr>
     </body>

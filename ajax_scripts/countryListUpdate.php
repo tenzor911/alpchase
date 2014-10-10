@@ -4,9 +4,9 @@ include('../setup/mysql_settings.php');
 mysql_query("SET NAMES 'utf8'");
 mysql_query("SET CHARACTER SET 'utf8'");
 
-$sql_get_countries = mysql_query("SELECT * FROM system_countries");
+$sql_get_countries = mysql_query("SELECT * FROM system_countries ORDER BY country_id ASC");
 
 while($row_country = mysql_fetch_array($sql_get_countries)) {
-        echo "<option value='".$row_country['country_id']."'>".$row_country['country_name']."</option>";
+        echo "<option value='".$row_country['country_id']."'>".$row_country['country_id']." - ".$row_country['country_name']."</option>";
 }
 ?>

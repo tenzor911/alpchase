@@ -38,6 +38,8 @@ echo "Добро пожаловать! Вы зашли, как: ".$_SESSION['una
         <hr>
            <input value="Редактировать список пакетов" onclick="location.href='adminzone/admpackets.php'" type="button" style="width: 300px"> - Здесь можно добавлять и редактировать список пакетов услуг, которые будут доступны конечному пользователю.
         <hr>
+          <input value="Редактировать соотношения сущностей" onclick="location.href='adminzone/admrelations.php'" type="button" style="width: 300px"> - Здесь можно редактировать привязку подуслуг к услугам, а так же услуг к странам.
+        <hr>
            <input value="Назад к навигации" onclick="location.href='navigation'" type="button" style="width: 300px">
         <hr>
     </body>

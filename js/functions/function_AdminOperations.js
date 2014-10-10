@@ -101,7 +101,14 @@ $(document).ready(function(){
     //------------------------------------------------------------------------------  ПАКЕТЫ --------------------------------------------------------------------------------
     $("#addpacket").click(function() {
         var newDataName = $('#newPacket').val();
-        var newCategory = $('#packetCat').val();
+        
+        var priceCommon = $('#commonPrice').val();
+        var priceEconom = $('#economPrice').val();
+        var priceStandart = $('#standartPrice').val();
+        var priceVip = $('#vipPrice').val();
+        
+        
+        
         var dbId = 'packet_id';
         var dbTableName = 'system_packets';
         var dbFieldName = 'packet_name';
@@ -109,8 +116,13 @@ $(document).ready(function(){
         $.post( 
                 "../../ajax_scripts/adminInsertPackets.php",
             {   
-                JsCategory: newCategory,
                 JsDataName: newDataName,
+                
+                JsPriceCommon: priceCommon,
+                JsPriceEconom: priceEconom,
+                JsPriceStandart: priceStandart,
+                JsPriceVip: priceVip,
+                
                 JsDataId: dbId,
                 JsTableName: dbTableName,
                 JsFieldName: dbFieldName,
@@ -127,7 +139,10 @@ $(document).ready(function(){
     $('input[id^="editPacketData"]').click(function(){
         var fieldId = $(this).attr('id').replace(/editPacketData/, '');
         $('#packet' + fieldId).prop('disabled', false);
-        $('#packetcategory' + fieldId).prop('disabled', false);
+        $('#commonPrice' + fieldId).prop('disabled', false);
+        $('#economPrice' + fieldId).prop('disabled', false);
+        $('#standartPrice' + fieldId).prop('disabled', false);
+        $('#vipPrice' + fieldId).prop('disabled', false);
         $(this).prop('disabled', true);
         $('#savePacketData' + fieldId).prop('disabled', false);
         $('#deletePacketData' + fieldId).prop('disabled', true);
@@ -136,9 +151,18 @@ $(document).ready(function(){
     $('input[id^="savePacketData"]').click(function(){
         var fieldId = $(this).attr('id').replace(/savePacketData/, '');
         $('#packet'+fieldId).prop('disabled', true);
-        $('#packetcategory' + fieldId).prop('disabled', true);
+        $('#commonPrice' + fieldId).prop('disabled', true);
+        $('#economPrice' + fieldId).prop('disabled', true);
+        $('#standartPrice' + fieldId).prop('disabled', true);
+        $('#vipPrice' + fieldId).prop('disabled', true);
+        
         var newDataName = $('#packet' + fieldId).val();
-        var newCategory = $('#packetcategory' + fieldId).val();
+       
+        var priceCommon = $('#commonPrice' + fieldId).val();
+        var priceEconom = $('#economPrice' + fieldId).val();
+        var priceStandart = $('#standartPrice' + fieldId).val();
+        var priceVip = $('#vipPrice' + fieldId).val();
+       
         var dbId = 'packet_id';
         var dbTableName = 'system_packets';
         var dbFieldName = 'packet_name';
@@ -147,8 +171,13 @@ $(document).ready(function(){
             "../../ajax_scripts/adminSavePackets.php",
             {   
                 JsFieldId       : fieldId,
+                
+                JsPriceCommon: priceCommon,
+                JsPriceEconom: priceEconom,
+                JsPriceStandart: priceStandart,
+                JsPriceVip: priceVip,
+                
                 JsDataName      : newDataName,
-                JsCategory      : newCategory,
                 JsDataId        : dbId,
                 JsTableName     : dbTableName,
                 JsFieldName     : dbFieldName,
@@ -422,4 +451,93 @@ $(document).ready(function(){
         $('#deleteRoleData'+fieldId).prop('disabled', false);
     }); 
     //------------------------------------------------------------------------------ РОЛИ -----------------------------------------------------------------------------------
+    
+    function updateSelectCountry() {
+        $.ajax({
+            type: "POST",
+            url: "../../ajax_scripts/countryListUpdate.php",  
+            dataType: "html",
+            cache: false,
+            success: function (response) {
+                $('#select_country').html(response);
+            }
+        });
+    }	
+    
+    function updateSelectService1() {
+        $.ajax({
+            type: "POST",
+            url: "../../ajax_scripts/serviceSelectSimple.php",  
+            dataType: "html",
+            cache: false,
+            success: function (response) {
+                $('#select_service1').html(response);
+            }
+        });
+    }
+             
+    function updateSelectService2() {
+        $.ajax({
+            type: "POST",
+            url: "../../ajax_scripts/serviceSelectSimple.php",  
+            dataType: "html",
+            cache: false,
+            success: function (response) {
+                $('#select_service2').html(response);
+            }
+        });
+    }
+             
+    function updatePodselectService() {
+        $.ajax({
+            type: "POST",
+            url: "../../ajax_scripts/podserviceSelectSimple.php",  
+            dataType: "html",
+            cache: false,
+            success: function (response) {
+                $('#select_podservice').html(response);
+            }
+        });
+    }
+             
+    $("#insertContServ").click(function(){    
+        var index_Country = document.getElementById('select_country').selectedIndex;
+        var index_Service = document.getElementById('select_service1').selectedIndex;
+        $.post( 
+            "../../ajax_scripts/insertContServRelation.php",
+            {   
+                selectCountryVal : index_Country,
+                selectServiceVal : index_Service,
+                dataType: "json"
+            },
+            function(success) {
+                alert(success);
+                location.reload();
+            }
+        );
+    });
+            
+    $("#insertServPods").click(function(){    
+        var index_Service = document.getElementById('select_service2').selectedIndex;
+        var index_Podservice = document.getElementById('select_podservice').selectedIndex;
+        $.post( 
+            "../../ajax_scripts/insertServPodsRelation.php",
+            {   
+                selectServiceVal : index_Service,
+                selectPodserviceVal : index_Podservice,
+                dataType: "json"
+            },
+            function(success) {
+                alert(success);
+                location.reload();
+            }
+        );
+    });
+            
+    $(document).ready(function(){
+        updateSelectCountry();   
+        updateSelectService1();
+        updateSelectService2();
+        updatePodselectService();
+    });
 });

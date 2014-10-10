@@ -7,9 +7,13 @@ $dbTableName    = $_POST['JsTableName'];
 $dbFieldName    = $_POST['JsFieldName'];
 $dbFieldId      = $_POST['JsFieldId'];
 $dbInstanceName = $_POST['JsInstanceName'];
-$packetCat      = $_POST['JsCategory'];
+
+$priceCommon    = $_POST['JsPriceCommon'];
+$priceEconom    = $_POST['JsPriceEconom'];
+$priceStandart  = $_POST['JsPriceStandart'];
+$priceVip       = $_POST['JsPriceVip'];
 
 $dataOperation = new adminDataOperations();
-$dataOperation->savePacketData($dbInstanceName, $dbDataName, $dbDataId, $dbTableName, $dbFieldName, $dbFieldId, $packetCat);
+$dataOperation->savePacketData($dbInstanceName, $dbDataName, $dbDataId, $dbTableName, $dbFieldName, $dbFieldId, $priceCommon, $priceEconom, $priceStandart, $priceVip);
 
 ?>
