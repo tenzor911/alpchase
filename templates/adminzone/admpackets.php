@@ -48,7 +48,7 @@ $currentPackets = mysql_query("SELECT * FROM system_packets ORDER BY packet_id A
 
 echo "<table border='1' cellspacing='0' cellpadding='0' align='center'>";
 echo    "<tr><td width='50'><center>№</center></td><td width='300'><center>Название пакета</center></td><td width='800' colspan='4'><center>Категории цен пакета</center></td><td width='150' colspan='2'><center>Опции</center></td></tr>";
-$row_counter = -1;
+$row_counter = 0;
 while ($getPacketFields = mysql_fetch_array($currentPackets))
 {
     $row_counter++;

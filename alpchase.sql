@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Сен 25 2014 г., 20:43
+-- Время создания: Окт 15 2014 г., 17:34
 -- Версия сервера: 5.5.27
 -- Версия PHP: 5.4.7
 
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `order_basket` (
   KEY `country_id` (`country_id`),
   KEY `service_id` (`service_id`),
   KEY `podservice_id` (`podservice_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=204 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=218 ;
 
 --
 -- Дамп данных таблицы `order_basket`
@@ -108,10 +108,69 @@ INSERT INTO `order_basket` (`basket_id`, `customer_id`, `country_id`, `service_i
 (197, 37, 2, 3, 5),
 (196, 37, 2, 2, 3),
 (188, 37, 0, 0, 0),
+(204, 39, 1, 2, 3),
 (192, 35, 3, 2, 4),
 (203, 38, 1, 3, 7),
 (202, 38, 1, 3, 7),
-(201, 38, 3, 1, 1);
+(201, 38, 3, 1, 1),
+(205, 39, 1, 3, 5),
+(215, 40, 1, 3, 5),
+(214, 40, 1, 2, 3),
+(216, 40, 2, 0, 0),
+(217, 41, 4, 2, 4);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `packets_basket`
+--
+
+CREATE TABLE IF NOT EXISTS `packets_basket` (
+  `pbasket_id` int(11) NOT NULL AUTO_INCREMENT,
+  `sbasket_id` int(11) NOT NULL,
+  `packet_id` int(11) NOT NULL,
+  PRIMARY KEY (`pbasket_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
+
+--
+-- Дамп данных таблицы `packets_basket`
+--
+
+INSERT INTO `packets_basket` (`pbasket_id`, `sbasket_id`, `packet_id`) VALUES
+(1, 1, 1),
+(2, 1, 2),
+(3, 1, 3),
+(4, 2, 1),
+(5, 2, 2),
+(6, 2, 3),
+(7, 3, 1),
+(8, 3, 2),
+(9, 3, 3),
+(10, 3, 4),
+(11, 3, 5);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `services_basket`
+--
+
+CREATE TABLE IF NOT EXISTS `services_basket` (
+  `sbasket_id` int(11) NOT NULL AUTO_INCREMENT,
+  `country_id` int(11) NOT NULL,
+  `service_id` int(11) NOT NULL,
+  `podservice_id` int(11) NOT NULL,
+  PRIMARY KEY (`sbasket_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+
+--
+-- Дамп данных таблицы `services_basket`
+--
+
+INSERT INTO `services_basket` (`sbasket_id`, `country_id`, `service_id`, `podservice_id`) VALUES
+(1, 1, 2, 1),
+(2, 4, 2, 3),
+(3, 5, 3, 3);
 
 -- --------------------------------------------------------
 
@@ -120,34 +179,21 @@ INSERT INTO `order_basket` (`basket_id`, `customer_id`, `country_id`, `service_i
 --
 
 CREATE TABLE IF NOT EXISTS `system_con_serv` (
+  `id_con_ser` int(11) NOT NULL AUTO_INCREMENT,
   `country_id` int(11) NOT NULL,
-  `service_id` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `service_id` int(11) NOT NULL,
+  PRIMARY KEY (`id_con_ser`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Дамп данных таблицы `system_con_serv`
 --
 
-INSERT INTO `system_con_serv` (`country_id`, `service_id`) VALUES
-(4, 1),
-(3, 4),
-(3, 3),
-(3, 2),
-(3, 1),
-(2, 4),
-(2, 3),
-(2, 2),
-(2, 1),
-(1, 4),
-(1, 3),
-(1, 2),
-(1, 1),
-(0, 0),
-(4, 2),
-(1, 0),
-(2, 0),
-(3, 0),
-(4, 0);
+INSERT INTO `system_con_serv` (`id_con_ser`, `country_id`, `service_id`) VALUES
+(1, 3, 1),
+(2, 1, 1),
+(3, 1, 2),
+(5, 6, 4);
 
 -- --------------------------------------------------------
 
@@ -192,24 +238,29 @@ CREATE TABLE IF NOT EXISTS `system_packets` (
   `packet_id` int(11) NOT NULL AUTO_INCREMENT,
   `packet_name` varchar(100) NOT NULL,
   `packet_type` varchar(40) NOT NULL,
+  `price_common` int(11) NOT NULL,
+  `price_econom` int(11) NOT NULL,
+  `price_standart` int(11) NOT NULL,
+  `price_vip` int(11) NOT NULL,
   PRIMARY KEY (`packet_id`),
   UNIQUE KEY `packet_name` (`packet_name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
 
 --
 -- Дамп данных таблицы `system_packets`
 --
 
-INSERT INTO `system_packets` (`packet_id`, `packet_name`, `packet_type`) VALUES
-(0, 'пак', 'standart'),
-(1, 'Test3', 'standart'),
-(2, 'Test4', 'vip'),
-(3, 'Test7', 'vip'),
-(4, 'test1', ''),
-(5, 'sdf', 'standart'),
-(6, 'пакет10', 'vip'),
-(7, 'пакет8', 'standart'),
-(8, 'пакеты', 'standart');
+INSERT INTO `system_packets` (`packet_id`, `packet_name`, `packet_type`, `price_common`, `price_econom`, `price_standart`, `price_vip`) VALUES
+(1, 'Заверение документов', '', 111, 222, 333, 444),
+(2, 'Создание свидетельства', 'vip', 100, 222, 333, 444),
+(3, 'Консультации', '', 50, 50, 120, 400),
+(4, 'Курьерская доставка', '', 200, 300, 500, 600),
+(5, 'Перевод документов', 'standart', 100, 30, 25, 800),
+(6, 'пакет10', 'vip', 0, 0, 0, 0),
+(7, 'пакет8', 'standart', 0, 0, 0, 0),
+(8, 'пакеты', 'standart', 0, 0, 0, 0),
+(9, 'Создание печати', 'standart', 0, 0, 0, 0),
+(10, 'pavel', '', 11, 22, 33, 44);
 
 -- --------------------------------------------------------
 
@@ -258,7 +309,7 @@ CREATE TABLE IF NOT EXISTS `system_roles` (
   `role_name` varchar(40) NOT NULL,
   PRIMARY KEY (`role_id`),
   UNIQUE KEY `role_name` (`role_name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
 -- Дамп данных таблицы `system_roles`
@@ -269,6 +320,7 @@ INSERT INTO `system_roles` (`role_id`, `role_name`) VALUES
 (5, 'europe'),
 (3, 'moldova'),
 (1, 'russia'),
+(7, 'uganda'),
 (2, 'ukraine'),
 (6, 'usa');
 
@@ -285,7 +337,7 @@ CREATE TABLE IF NOT EXISTS `system_services` (
   `service_price` int(11) NOT NULL,
   PRIMARY KEY (`service_id`),
   UNIQUE KEY `service_id` (`service_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
 
 --
 -- Дамп данных таблицы `system_services`
@@ -303,7 +355,8 @@ INSERT INTO `system_services` (`service_id`, `service_name`, `service_descriptio
 (8, 'test1', '', 0),
 (9, 'Услуга1', '', 0),
 (10, 'test4', '', 0),
-(11, 'test53333', '', 0);
+(11, 'test53333', '', 0),
+(12, 'Готовая компания', '', 0);
 
 -- --------------------------------------------------------
 
@@ -312,27 +365,20 @@ INSERT INTO `system_services` (`service_id`, `service_name`, `service_descriptio
 --
 
 CREATE TABLE IF NOT EXISTS `system_serv_pod` (
+  `id_ser_pod` int(11) NOT NULL AUTO_INCREMENT,
   `service_id` int(11) NOT NULL,
-  `podservice_id` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `podservice_id` int(11) NOT NULL,
+  PRIMARY KEY (`id_ser_pod`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
 
 --
 -- Дамп данных таблицы `system_serv_pod`
 --
 
-INSERT INTO `system_serv_pod` (`service_id`, `podservice_id`) VALUES
-(3, 6),
-(3, 5),
-(2, 4),
-(2, 3),
-(1, 2),
-(1, 1),
-(3, 7),
-(0, 0),
-(3, 8),
-(3, 9),
-(4, 10),
-(4, 11);
+INSERT INTO `system_serv_pod` (`id_ser_pod`, `service_id`, `podservice_id`) VALUES
+(1, 1, 1),
+(3, 3, 5),
+(4, 3, 6);
 
 -- --------------------------------------------------------
 
@@ -393,7 +439,7 @@ CREATE TABLE IF NOT EXISTS `users_customers` (
   `customer_offer` varchar(4000) NOT NULL,
   `customer_subscriptionperiod` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`customer_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=39 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=42 ;
 
 --
 -- Дамп данных таблицы `users_customers`
@@ -408,6 +454,8 @@ INSERT INTO `users_customers` (`quest_date`, `customer_id`, `customer_name`, `cu
 ('15.07.14', 6, 'Виктор', 'Борисов', '', 'Mail@mail.by', 'ada354774c71e351a4e1208cfe04d289', '', '342425', '', 'цукцк', 'Минск', 'Белоруссия', '', '', '', 'извещён', 0, '', '', 'Интернет', '', 0, '', '0000-00-00 00:00:00'),
 ('17.07.14', 7, 'Павлов', 'Семён', '', 'treska@mail.ru', 'a07769f00b14f2f69c6e390ffdc3342b', '', '1241241241241241', '1223124444444444', 'трэйдер', 'Москва', 'Россия', '', '', 'Трескахаус', 'черновик', 0, 'Менеджер', '', 'Интернет', '', 0, '', '0000-00-00 00:00:00'),
 ('18.07.14', 8, 'Владимир', 'Корнеев', '', 'tradebo@inbox.ru', 'a344c4707ac4167caac3a539832f4f45', '', '124214124', '2324324', '', 'Киев', 'Украина', '', '', '', 'извещён', 0, '', '', 'Интернет', '', 1, '', '0000-00-00 00:00:00'),
+('25.09.14', 40, 'Вася', 'Иванов', '', '', '', '', '353453', '', '', '', '', '', '', '23432532', 'черновик', 0, 'цкц5', '', 'Интернет', '', 0, '', '2014-09-25 18:51:27'),
+('25.09.14', 41, 'Вася', 'Андреев', '', 'mail@mail', '', '', '', '', '', '', '', '', '', '', 'черновик', 0, '', '', 'Интернет', '', 0, '', '2014-09-25 18:52:55'),
 ('18.07.14', 12, 'Владимир', 'Никонов', '', 'tenz@gmail.com', '41b54e60eb76d6d5af885a95ec544152', '', '23423424324', '1231231313213', '', 'Петербург', 'Россия', '', '', '', 'извещён', 0, '', '', 'Знакомые', '', 0, '', '0000-00-00 00:00:00'),
 ('01.08.14', 17, 'Виктор', 'Журавлёв', '', '', '', '', '234234', '49932021123', '', 'Харьков', 'Украина', '', '', '', 'черновик', 0, '', '', 'Интернет', '', 0, '', '0000-00-00 00:00:00'),
 ('15.08.14', 26, 'Владимир', 'Некий', '', 'tra@inbox.ru', '6ecb007e13d6558783e736b87fefa47f', '', '1214124', '', '', 'Москва', 'Россия', '', '', 'Неважно', 'извещён', 0, 'Никто', '', 'Интернет', '', 0, '', '2014-08-14 20:08:58'),
@@ -419,7 +467,7 @@ INSERT INTO `users_customers` (`quest_date`, `customer_id`, `customer_name`, `cu
 ('19.08.14', 36, 'Анна', 'Анна', '', 'ananyan@alpschase.com', '914c7eb231006c0694ede0c483e0f0eb', '', '89265226556', '89265226556', 'ЛПР', 'Москва', 'Россия', '', 'Как зарегистрировать ООО?', '', 'извещён', 0, '', 'ООО регистрируют в 46 инспекции', 'Интернет', '', 13, '', '2014-09-09 09:32:25'),
 ('19.08.14', 35, 'аыва', 'ываыа', '', 'ываыва', '', '', '', '', '', 'ываыа', 'ываыва', '', '', '', 'черновик', 0, '', '', 'Интернет', '', 0, '', '2014-08-19 09:38:36'),
 ('04.09.14', 37, 'Николай', 'Абрамов', '', 'tradebox@inbox.ru', '503d04ebd13f22b520a844ab80f595ad', '', '23252525', '2352525235', '', 'Москва', 'Россия', '', 'ываыаыа', 'Организация', 'извещён', 0, '', 'ыаыа', 'Интернет', '', 4, '', '2014-09-05 05:33:24'),
-('05.09.14', 38, 'Виктор', 'Павлов', '', 'braindead@bk.ru', 'e4384c127705370da436ce1a67adb3b7', '', '3232342325', '', '', 'Славянск', 'Украина', '', '', '', 'извещён', 0, '', '', 'Интернет', '', 1, '', '2014-09-05 05:38:13');
+('25.09.14', 39, 'Ковалёв', 'Иван', '', 'braindead@bk.ru', '81b09e2a680c9534a4c835342c3ae27e', '', '+790354647484', '+654757599559', 'некое лицо', 'Астана', 'Казахстан', '', '', 'некая', 'извещён', 0, 'некая', '', 'СМИ', '', 7, '', '2014-09-25 18:26:09');
 
 -- --------------------------------------------------------
 
@@ -437,7 +485,7 @@ CREATE TABLE IF NOT EXISTS `users_managers` (
   UNIQUE KEY `um_login` (`um_login`,`um_email`),
   UNIQUE KEY `um_login_2` (`um_login`),
   UNIQUE KEY `um_email` (`um_email`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
 
 --
 -- Дамп данных таблицы `users_managers`
@@ -449,7 +497,8 @@ INSERT INTO `users_managers` (`um_id`, `um_login`, `um_pass`, `um_email`, `um_ro
 (3, 'user_ukr', 'd54d1702ad0f8326224b817c796763c9', 'mail@mail.ru', 'ukraine'),
 (4, 'user_mol', '9aefeef9c7e53f9de9bb36f32649dc3f', 'mail@mail.com', 'moldova'),
 (5, 'user_geo', '3b712de48137572f3849aabd5666a4e3', 'mailing', 'usa'),
-(8, 'usr', 'd0970714757783e6cf17b26fb8e2298f', 'toolbar@nm.ru', 'russia');
+(8, 'usr', 'd0970714757783e6cf17b26fb8e2298f', 'toolbar@nm.ru', 'russia'),
+(9, 'vasya', '8b38898653cb9421e60fb136b6e02aaa', 'toolwefer', 'russia');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -2,6 +2,7 @@
 
 include ('../../setup/mysql_settings.php');
 include ('../../ajax_scripts/loadPackets.php');
+include ('../../ajax_scripts/loadServiceBasketWithPackets.php');
 
 session_start();
 
@@ -15,6 +16,7 @@ if($_SESSION['uname']!='admin'){
 echo "Добро пожаловать! Вы зашли, как: ".$_SESSION['uname']."!";
 
 $loadPacketData = new loadPackets();
+$loadOtherData = new loadServiceBasketWithPackets();
 
 ?>
 
@@ -56,6 +58,7 @@ $loadPacketData = new loadPackets();
             </table>
         </form>
         <hr>
+        <?php $loadOtherData->loadData();?>
         <script>
             
              $("#submitForm").click(function(){    
@@ -69,6 +72,7 @@ $loadPacketData = new loadPackets();
                     },
                     function(success) {
                         alert(success);
+                        location.reload();
                     }
                 );
             });
